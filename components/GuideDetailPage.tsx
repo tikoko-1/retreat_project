@@ -1,3 +1,5 @@
+"use client";
+
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowRight, Star, MapPin, Calendar, Users, Clock, ChevronLeft, ChevronRight, ExternalLink, Instagram, DollarSign } from "lucide-react";
 import { useState } from "react";
