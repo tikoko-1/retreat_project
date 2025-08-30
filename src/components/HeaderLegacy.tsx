@@ -2,15 +2,28 @@
 
 import { Menu, User, Search, X, Facebook, Instagram, Twitter, Mail, Phone, MapPin, FileText, Home, BookOpen, Building2, Info } from "lucide-react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import HeaderSearchModal from "./HeaderSearchModal";
 import { FilterState } from "./SearchFilters";
 
-export default function Header() {
-  const router = useRouter();
+interface HeaderLegacyProps {
+  onNavigateHome?: () => void;
+  onNavigateToCatalog?: () => void;
+  onNavigateToHostPortal?: () => void;
+  onNavigateToGuides?: () => void;
+  onNavigateToBlog?: () => void;
+  onNavigateToAbout?: () => void;
+}
+
+export default function HeaderLegacy({ 
+  onNavigateHome, 
+  onNavigateToCatalog, 
+  onNavigateToHostPortal,
+  onNavigateToGuides,
+  onNavigateToBlog,
+  onNavigateToAbout
+}: HeaderLegacyProps) {
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [searchFilters, setSearchFilters] = useState<FilterState>({
@@ -31,25 +44,9 @@ export default function Header() {
 
   const handleSearchFromModal = () => {
     setShowSearchModal(false);
-    const params = new URLSearchParams();
-    
-    Object.entries(searchFilters).forEach(([key, value]) => {
-      if (value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
-        if (Array.isArray(value)) {
-          value.forEach(v => params.append(key, v));
-        } else {
-          params.set(key, value.toString());
-        }
-      }
-    });
-
-    const queryString = params.toString();
-    const catalogUrl = queryString ? `/catalog?${queryString}` : '/catalog';
-    router.push(catalogUrl);
-  };
-
-  const handleNavigateToHostPortal = () => {
-    router.push('/dashboard');
+    if (onNavigateToCatalog) {
+      onNavigateToCatalog();
+    }
   };
 
   return (
@@ -59,8 +56,8 @@ export default function Header() {
           <div className="flex items-center justify-between">
           {/* Logo - Clickable to go home */}
           <div className="flex items-center">
-            <Link 
-              href="/"
+            <button 
+              onClick={onNavigateHome}
               className="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer"
             >
               {/* Minimal Logo - R in black circle */}
@@ -77,35 +74,35 @@ export default function Header() {
                   10K+ retreat centers worldwide
                 </span>
               </div>
-            </Link>
+            </button>
           </div>
 
           {/* Navigation - Hidden on mobile */}
           <nav className="hidden lg:flex items-center gap-2">
-            <Link 
-              href="/catalog"
+            <button 
+              onClick={onNavigateToCatalog}
               className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
             >
               Centers
-            </Link>
-            <Link 
-              href="/guides"
+            </button>
+            <button 
+              onClick={onNavigateToGuides}
               className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
             >
               Guides
-            </Link>
-            <Link 
-              href="/blog"
+            </button>
+            <button 
+              onClick={onNavigateToBlog}
               className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
             >
               Blog
-            </Link>
-            <Link 
-              href="/about"
+            </button>
+            <button 
+              onClick={onNavigateToAbout}
               className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
             >
               About
-            </Link>
+            </button>
           </nav>
 
           {/* Right side */}
@@ -120,7 +117,7 @@ export default function Header() {
 
             {/* Add Listing Button - Desktop only */}
             <button 
-              onClick={handleNavigateToHostPortal}
+              onClick={onNavigateToHostPortal}
               className="hidden lg:flex bg-black text-white hover:bg-gray-800 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
             >
               Add Listing
@@ -164,56 +161,66 @@ export default function Header() {
                   {/* Primary Navigation */}
                   <div className="px-8 py-8">
                     <div className="space-y-2">
-                      <Link 
-                        href="/"
-                        onClick={() => setShowMobileMenu(false)}
+                      <button 
+                        onClick={() => {
+                          onNavigateHome?.();
+                          setShowMobileMenu(false);
+                        }}
                         className="flex items-center gap-5 w-full text-left text-gray-900 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-50/50 active:scale-95 transition-all duration-200 px-5 py-5 rounded-2xl group"
                       >
                         <div className="w-10 h-10 rounded-xl bg-gray-100 group-hover:bg-white flex items-center justify-center transition-all duration-200">
                           <Home className="w-5 h-5 text-gray-600 group-hover:text-black transition-colors duration-200" />
                         </div>
                         <span className="font-semibold text-lg">Home</span>
-                      </Link>
-                      <Link 
-                        href="/catalog"
-                        onClick={() => setShowMobileMenu(false)}
+                      </button>
+                      <button 
+                        onClick={() => {
+                          onNavigateToCatalog?.();
+                          setShowMobileMenu(false);
+                        }}
                         className="flex items-center gap-5 w-full text-left text-gray-900 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-50/50 active:scale-95 transition-all duration-200 px-5 py-5 rounded-2xl group"
                       >
                         <div className="w-10 h-10 rounded-xl bg-gray-100 group-hover:bg-white flex items-center justify-center transition-all duration-200">
                           <Building2 className="w-5 h-5 text-gray-600 group-hover:text-black transition-colors duration-200" />
                         </div>
                         <span className="font-semibold text-lg">Centers</span>
-                      </Link>
-                      <Link 
-                        href="/guides"
-                        onClick={() => setShowMobileMenu(false)}
+                      </button>
+                      <button 
+                        onClick={() => {
+                          onNavigateToGuides?.();
+                          setShowMobileMenu(false);
+                        }}
                         className="flex items-center gap-5 w-full text-left text-gray-900 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-50/50 active:scale-95 transition-all duration-200 px-5 py-5 rounded-2xl group"
                       >
                         <div className="w-10 h-10 rounded-xl bg-gray-100 group-hover:bg-white flex items-center justify-center transition-all duration-200">
                           <BookOpen className="w-5 h-5 text-gray-600 group-hover:text-black transition-colors duration-200" />
                         </div>
                         <span className="font-semibold text-lg">Guides</span>
-                      </Link>
-                      <Link 
-                        href="/blog"
-                        onClick={() => setShowMobileMenu(false)}
+                      </button>
+                      <button 
+                        onClick={() => {
+                          onNavigateToBlog?.();
+                          setShowMobileMenu(false);
+                        }}
                         className="flex items-center gap-5 w-full text-left text-gray-900 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-50/50 active:scale-95 transition-all duration-200 px-5 py-5 rounded-2xl group"
                       >
                         <div className="w-10 h-10 rounded-xl bg-gray-100 group-hover:bg-white flex items-center justify-center transition-all duration-200">
                           <FileText className="w-5 h-5 text-gray-600 group-hover:text-black transition-colors duration-200" />
                         </div>
                         <span className="font-semibold text-lg">Blog</span>
-                      </Link>
-                      <Link 
-                        href="/about"
-                        onClick={() => setShowMobileMenu(false)}
+                      </button>
+                      <button 
+                        onClick={() => {
+                          onNavigateToAbout?.();
+                          setShowMobileMenu(false);
+                        }}
                         className="flex items-center gap-5 w-full text-left text-gray-900 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-50/50 active:scale-95 transition-all duration-200 px-5 py-5 rounded-2xl group"
                       >
                         <div className="w-10 h-10 rounded-xl bg-gray-100 group-hover:bg-white flex items-center justify-center transition-all duration-200">
                           <Info className="w-5 h-5 text-gray-600 group-hover:text-black transition-colors duration-200" />
                         </div>
                         <span className="font-semibold text-lg">About</span>
-                      </Link>
+                      </button>
                     </div>
                   </div>
 
@@ -229,7 +236,7 @@ export default function Header() {
                     <div className="space-y-2">
                       <button 
                         onClick={() => {
-                          handleNavigateToHostPortal();
+                          onNavigateToHostPortal?.();
                           setShowMobileMenu(false);
                         }}
                         className="flex items-center gap-4 w-full text-left bg-gradient-to-r from-black to-gray-800 hover:from-gray-800 hover:to-black text-white shadow-lg hover:shadow-xl active:scale-95 transition-all duration-200 px-6 py-5 rounded-2xl group"

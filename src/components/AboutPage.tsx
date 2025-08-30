@@ -1,12 +1,20 @@
+'use client'
+
 import { Shield, Users, Award, Target, Zap, TrendingUp, ArrowRight, Compass, Heart, Star, Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
-interface AboutPageProps {
-  onNavigateToHostPortal?: () => void;
-  onNavigateToCatalog?: () => void;
-}
+export default function AboutPage() {
+  const router = useRouter();
 
-export default function AboutPage({ onNavigateToHostPortal, onNavigateToCatalog }: AboutPageProps) {
+  const handleNavigateToHostPortal = () => {
+    router.push('/dashboard');
+  };
+
+  const handleNavigateToCatalog = () => {
+    router.push('/catalog');
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Manifesto */}
@@ -280,14 +288,14 @@ export default function AboutPage({ onNavigateToHostPortal, onNavigateToCatalog 
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
               <button 
-                onClick={onNavigateToHostPortal}
+                onClick={handleNavigateToHostPortal}
                 className="bg-white text-black px-12 py-6 rounded-2xl hover:bg-gray-100 transition-all duration-300 text-xl font-medium inline-flex items-center justify-center gap-3 min-w-[280px]"
               >
                 List Your Center
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button 
-                onClick={onNavigateToCatalog}
+                onClick={handleNavigateToCatalog}
                 className="border-2 border-white/20 bg-white/5 text-white px-12 py-6 rounded-2xl hover:bg-white/10 hover:border-white/30 transition-all duration-300 text-xl font-medium backdrop-blur-sm min-w-[280px]"
               >
                 Discover Retreat Venues

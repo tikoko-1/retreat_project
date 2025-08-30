@@ -1,14 +1,12 @@
+'use client'
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, MapPin, Users, Calendar, CheckCircle, Clock, Shield, Globe, Star, TrendingUp, Heart, ArrowRight, Award, Zap, Target, Eye, DollarSign, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import SearchFilters, { FilterState } from "./SearchFilters";
 import RetreatCenterCard, { RetreatCenter } from "./RetreatCenterCard";
-
-interface HomePageProps {
-  onNavigateToCatalog: (filters?: Partial<FilterState>) => void;
-  onSelectRetreat: (id: string) => void;
-  onNavigateToHostPortal: () => void;
-}
+import Link from "next/link";
 
 // Extended featured venues data - 20 venues for 2-column grid
 const featuredVenues: RetreatCenter[] = [
@@ -100,212 +98,6 @@ const featuredVenues: RetreatCenter[] = [
     highlights: ['Boutique', 'Surf Nearby'],
     bedrooms: 6,
     bathrooms: 4,
-  },
-  {
-    id: '7',
-    name: 'Desert Oasis Retreat',
-    location: 'Marrakech, Morocco',
-    image: 'https://images.unsplash.com/photo-1679263475972-476e62a54f5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaWRkbGUlMjBlYXN0JTIwZGVzZXJ0JTIwbGFuZHNjYXBlfGVufDF8fHx8MTc1NTg3ODIyOHww&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.6,
-    reviewCount: 134,
-    capacity: 22,
-    priceRange: '$180-320',
-    amenities: ['spa-massage', 'meditation-hall', 'air-conditioning', 'therapy-rooms'],
-    highlights: ['Desert Views', 'Traditional Riad'],
-    bedrooms: 8,
-    bathrooms: 6,
-  },
-  {
-    id: '8',
-    name: 'Forest Sanctuary Lodge',
-    location: 'Costa Rica',
-    image: 'https://images.unsplash.com/photo-1711885751606-5108ca9ac91b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZW50cmFsJTIwYW1lcmljYSUyMGxhbmRzY2FwZSUyMHRyb3BpY2FsfGVufDF8fHx8MTc1NTg3ODIyMXww&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.8,
-    reviewCount: 167,
-    capacity: 16,
-    priceRange: '$220-400',
-    amenities: ['yoga-hall', 'nature-trails', 'pool-heated', 'wildlife-viewing'],
-    highlights: ['Rainforest', 'Eco-Friendly'],
-    bedrooms: 5,
-    bathrooms: 3,
-    isVerified: true,
-  },
-  {
-    id: '9',
-    name: 'Scandinavian Wellness Retreat',
-    location: 'Lofoten, Norway',
-    image: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3J3YXklMjBsb2ZvdGVuJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc1NTg3ODI1N3ww&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.9,
-    reviewCount: 92,
-    capacity: 14,
-    priceRange: '$450-750',
-    amenities: ['sauna-steam', 'yoga-hall', 'heating-system', 'aurora-viewing'],
-    highlights: ['Northern Lights', 'Fjord Views'],
-    bedrooms: 4,
-    bathrooms: 3,
-    isVerified: true,
-  },
-  {
-    id: '10',
-    name: 'Island Paradise Retreat',
-    location: 'Koh Samui, Thailand',
-    image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0aGFpbGFuZCUyMGlzbGFuZCUyMHRyb3BpY2FsfGVufDF8fHx8MTc1NTg3ODI2MHww&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.7,
-    reviewCount: 189,
-    capacity: 20,
-    priceRange: '$190-350',
-    amenities: ['beach-access', 'pool-infinity', 'yoga-hall', 'spa-massage'],
-    highlights: ['Private Beach', 'Infinity Pool'],
-    bedrooms: 6,
-    bathrooms: 4,
-  },
-  {
-    id: '11',
-    name: 'Tuscan Hills Retreat',
-    location: 'Siena, Italy',
-    image: 'https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0dXNjYW55JTIwaXRhbHklMjBoaWxsc3xlbnwxfHx8fDE3NTU4NzgyNjN8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.8,
-    reviewCount: 145,
-    capacity: 26,
-    priceRange: '$300-550',
-    amenities: ['wine-tasting', 'yoga-hall', 'cooking-classes', 'pool-heated'],
-    highlights: ['Vineyard Views', 'Historic Villa'],
-    bedrooms: 9,
-    bathrooms: 7,
-    isVerified: true,
-  },
-  {
-    id: '12',
-    name: 'Patagonian Wilderness Lodge',
-    location: 'Torres del Paine, Chile',
-    image: 'https://images.unsplash.com/photo-1718620086079-c567f5e90583?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb3V0aCUyMGFtZXJpY2ElMjBsYW5kc2NhcGUlMjBtb3VudGFpbnN8ZW58MXx8fHwxNzU1ODc4MjE3fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.9,
-    reviewCount: 76,
-    capacity: 12,
-    priceRange: '$400-700',
-    amenities: ['nature-trails', 'yoga-hall', 'heating-system', 'stargazing'],
-    highlights: ['Glacier Views', 'Adventure Base'],
-    bedrooms: 4,
-    bathrooms: 2,
-    isVerified: true,
-  },
-  {
-    id: '13',
-    name: 'Mediterranean Bliss Villa',
-    location: 'Mykonos, Greece',
-    image: 'https://images.unsplash.com/photo-1665150200731-fecf2b2b4160?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWxjb255JTIwdmlldyUyMG1vZGVybnxlbnwxfHx8fDE3NTU2OTgyNTJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.8,
-    reviewCount: 98,
-    capacity: 22,
-    priceRange: '$350-650',
-    amenities: ['pool-infinity', 'yoga-hall', 'high-speed-wifi', 'air-conditioning'],
-    highlights: ['Aegean Views', 'Luxury Villa'],
-    bedrooms: 8,
-    bathrooms: 6,
-    isVerified: true,
-  },
-  {
-    id: '14',
-    name: 'Zen Garden Monastery',
-    location: 'Kyoto, Japan',
-    image: 'https://images.unsplash.com/photo-1562672753-989b09b0939b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvdXRkb29yJTIwcG9vbCUyMGRlY2t8ZW58MXx8fHwxNzU1Njk4MjU1fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.9,
-    reviewCount: 124,
-    capacity: 16,
-    priceRange: '$200-380',
-    amenities: ['meditation-hall', 'tea-ceremony', 'nature-trails', 'heating-system'],
-    highlights: ['Zen Garden', 'Traditional Ryokan'],
-    bedrooms: 5,
-    bathrooms: 3,
-  },
-  {
-    id: '15',
-    name: 'Outback Spiritual Retreat',
-    location: 'Uluru, Australia',
-    image: 'https://images.unsplash.com/photo-1543539409-f5828ed17c2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvY2VhbmlhJTIwYXVzdHJhbGlhJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc1NTg3ODIyNHww&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.7,
-    reviewCount: 87,
-    capacity: 14,
-    priceRange: '$320-580',
-    amenities: ['stargazing', 'cultural-tours', 'yoga-hall', 'nature-trails'],
-    highlights: ['Uluru Views', 'Aboriginal Culture'],
-    bedrooms: 4,
-    bathrooms: 2,
-    isVerified: true,
-  },
-  {
-    id: '16',
-    name: 'Swiss Alpine Wellness',
-    location: 'Zermatt, Switzerland',
-    image: 'https://images.unsplash.com/photo-1661514840916-5aad01b6290d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwZW50cmFuY2UlMjBoYWxsd2F5JTIwbW9kZXJufGVufDF8fHx8MTc1NTY5ODI3MHww&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.9,
-    reviewCount: 156,
-    capacity: 30,
-    priceRange: '$400-750',
-    amenities: ['spa-massage', 'yoga-hall', 'fitness-gym', 'heating-system'],
-    highlights: ['Matterhorn Views', 'Luxury Spa'],
-    bedrooms: 10,
-    bathrooms: 8,
-    isVerified: true,
-  },
-  {
-    id: '17',
-    name: 'Portuguese Seaside Sanctuary',
-    location: 'Sintra, Portugal',
-    image: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0dWdhbCUyMHNpbnRyYSUyMGNvYXN0fGVufDF8fHx8MTc1NTg3ODI2N3ww&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.8,
-    reviewCount: 112,
-    capacity: 20,
-    priceRange: '$250-450',
-    amenities: ['ocean-views', 'yoga-hall', 'nature-trails', 'spa-massage'],
-    highlights: ['Atlantic Ocean', 'Historic Palace'],
-    bedrooms: 6,
-    bathrooms: 4,
-  },
-  {
-    id: '18',
-    name: 'Canadian Rockies Lodge',
-    location: 'Banff, Canada',
-    image: 'https://images.unsplash.com/photo-1516141535911-e3b982713e61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxub3J0aCUyMGFtZXJpY2ElMjBuYXR1cmUlMjBmb3Jlc3R8ZW58MXx8fHwxNzU1ODc2OTEwfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.9,
-    reviewCount: 134,
-    capacity: 24,
-    priceRange: '$350-600',
-    amenities: ['mountain-views', 'yoga-hall', 'hot-tub', 'nature-trails'],
-    highlights: ['Rocky Mountains', 'Lake Louise'],
-    bedrooms: 8,
-    bathrooms: 6,
-    isVerified: true,
-  },
-  {
-    id: '19',
-    name: 'African Safari Wellness',
-    location: 'Serengeti, Tanzania',
-    image: 'https://images.unsplash.com/photo-1553683700-cb04c63e144a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2ElMjBzYWZhcmklMjBsYW5kc2NhcGV8ZW58MXx8fHwxNzU1ODc2OTExfDA&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.8,
-    reviewCount: 95,
-    capacity: 18,
-    priceRange: '$500-900',
-    amenities: ['safari-tours', 'yoga-hall', 'cultural-immersion', 'stargazing'],
-    highlights: ['Wildlife Safari', 'Maasai Culture'],
-    bedrooms: 6,
-    bathrooms: 4,
-    isVerified: true,
-  },
-  {
-    id: '20',
-    name: 'Sedona Energy Vortex Retreat',
-    location: 'Sedona, USA',
-    image: 'https://images.unsplash.com/photo-1546026423-cc4642628d2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzZWRvbmElMjB1c2ElMjByZWQlMjByb2Nrc3xlbnwxfHx8fDE3NTU4NzgyNzB8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    rating: 4.9,
-    reviewCount: 178,
-    capacity: 22,
-    priceRange: '$280-520',
-    amenities: ['vortex-tours', 'yoga-hall', 'meditation-hall', 'healing-sessions'],
-    highlights: ['Energy Vortexes', 'Red Rock Views'],
-    bedrooms: 7,
-    bathrooms: 5,
-    isVerified: true,
   },
 ];
 
@@ -449,7 +241,8 @@ const blogPosts = [
   },
 ];
 
-export default function HomePage({ onNavigateToCatalog, onSelectRetreat, onNavigateToHostPortal }: HomePageProps) {
+export default function HomePage() {
+  const router = useRouter();
   const [filters, setFilters] = useState<FilterState>({
     search: '',
     guests: '',
@@ -467,15 +260,38 @@ export default function HomePage({ onNavigateToCatalog, onSelectRetreat, onNavig
   });
 
   const handleSearch = () => {
-    onNavigateToCatalog(filters);
+    const params = new URLSearchParams();
+    
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
+        if (Array.isArray(value)) {
+          value.forEach(v => params.append(key, v));
+        } else {
+          params.set(key, value.toString());
+        }
+      }
+    });
+
+    const queryString = params.toString();
+    const catalogUrl = queryString ? `/catalog?${queryString}` : '/catalog';
+    router.push(catalogUrl);
   };
 
   const handleRegionClick = (regionId: string) => {
-    onNavigateToCatalog({ search: regionId.replace('-', ' ') });
+    const searchTerm = regionId.replace('-', ' ');
+    router.push(`/catalog?search=${encodeURIComponent(searchTerm)}`);
   };
 
   const handleCountryClick = (country: string) => {
-    onNavigateToCatalog({ search: country });
+    router.push(`/catalog?search=${encodeURIComponent(country)}`);
+  };
+
+  const handleSelectRetreat = (id: string) => {
+    router.push(`/retreat/${id}`);
+  };
+
+  const handleNavigateToHostPortal = () => {
+    router.push('/dashboard');
   };
 
   return (
@@ -594,7 +410,7 @@ export default function HomePage({ onNavigateToCatalog, onSelectRetreat, onNavig
         </div>
       </section>
 
-      {/* 4. FEATURED VENUES - 20 venues in 2-column grid using RetreatCenterCard */}
+      {/* 4. FEATURED VENUES - 6 venues in 2-column grid using RetreatCenterCard */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-12">
@@ -611,110 +427,162 @@ export default function HomePage({ onNavigateToCatalog, onSelectRetreat, onNavig
               <RetreatCenterCard
                 key={venue.id}
                 retreat={venue}
-                onSelect={onSelectRetreat}
+                onSelect={handleSelectRetreat}
               />
             ))}
           </div>
 
           <div className="text-center">
-            <button
-              onClick={() => onNavigateToCatalog()}
-              className="bg-gray-900 text-white px-10 py-4 rounded-lg hover:bg-gray-800 transition-colors text-lg"
+            <Link
+              href="/catalog"
+              className="bg-gray-900 text-white px-10 py-4 rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center gap-2 font-medium"
             >
-              Browse All Venues
-            </button>
+              <span>View All Centers</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 5. RESOURCES & GUIDES SECTION - Blog posts in 3x2 grid */}
+      {/* 5. BUSINESS FEATURES - 3 columns */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl tracking-tight font-light text-gray-900 mb-4">
-              Resources & Guides
+              Built for Retreat Leaders
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Insights and guides for retreat organizers and facilitators
+              Everything you need to find, book, and manage your perfect retreat venue
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Feature 1 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Advanced Search
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Filter by capacity, amenities, location, and price to find venues that perfectly match your retreat vision.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+                <Shield className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Verified Venues
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                All venues are personally vetted by our team to ensure quality, safety, and authenticity for your participants.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="text-center">
+              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                Expert Support
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Get personalized assistance from our retreat planning experts throughout your booking and planning process.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. RESOURCES SECTION - Blog posts */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl tracking-tight font-light text-gray-900 mb-4">
+              Expert Resources
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Insights and guides to help you create transformational retreat experiences
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {blogPosts.map((post) => (
-              <article
+              <Link
                 key={post.id}
-                className="group cursor-pointer flex flex-col h-full"
+                href={`/blog/${post.id}`}
+                className="group block bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
               >
-                {/* Image */}
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                <div className="aspect-video overflow-hidden">
                   <ImageWithFallback
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-
-                {/* Content */}
-                <div className="flex flex-col flex-grow">
-                  <div className="space-y-1 mb-4">
-                    <span className="text-xs text-gray-500 tracking-wide uppercase">
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="px-2.5 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-md border border-gray-100">
                       {post.category}
                     </span>
+                    <span className="text-xs text-gray-500">{post.readTime}</span>
                   </div>
-
-                  <div className="flex flex-col flex-grow">
-                    <h3 className="text-2xl tracking-tight font-light group-hover:text-gray-700 transition-colors mb-4">
-                      {post.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
-                      {post.excerpt}
-                    </p>
-
-                    {/* Meta */}
-                    <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
-                      <div className="flex items-center space-x-2">
-                        <span>{post.author}</span>
-                        <span>•</span>
-                        <span>{post.readTime}</span>
-                      </div>
-
-                      <div className="flex items-center text-sm group-hover:text-gray-900 transition-colors">
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </div>
-                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-black transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    {post.excerpt}
+                  </p>
+                  <p className="text-xs font-medium text-gray-700">
+                    By {post.author}
+                  </p>
                 </div>
-              </article>
+              </Link>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/blog"
+              className="bg-white border border-gray-300 text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors inline-flex items-center gap-2 font-medium"
+            >
+              <span>View All Resources</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* 6. HOST PORTAL CTA SECTION */}
-      <section className="py-16 lg:py-24 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h2 className="text-3xl lg:text-4xl tracking-tight font-light">
-                Ready to List Your Retreat Center?
-              </h2>
-              <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-                Join hundreds of venue owners connecting with retreat organizers worldwide. List your property and start hosting transformational experiences.
-              </p>
-            </div>
+      {/* 7. CTA SECTION - Join Platform */}
+      <section className="py-16 lg:py-24 bg-black text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+          <h2 className="text-4xl lg:text-5xl tracking-tight font-light mb-6">
+            Ready to List Your Retreat Center?
+          </h2>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Join thousands of retreat centers worldwide and connect with passionate retreat leaders.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <button
+              onClick={handleNavigateToHostPortal}
+              className="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-semibold flex items-center gap-2"
+            >
+              <span>Start Listing</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={onNavigateToHostPortal}
-                className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 rounded-lg transition-colors text-lg"
-              >
-                List Your Property
-              </button>
-              <button className="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-lg transition-colors text-lg">
-                Learn More
-              </button>
-            </div>
+            <Link
+              href="/guides"
+              className="text-white/80 hover:text-white underline underline-offset-4 transition-colors font-medium"
+            >
+              Learn How It Works
+            </Link>
           </div>
         </div>
       </section>

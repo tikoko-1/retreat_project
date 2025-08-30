@@ -1,61 +1,44 @@
-**Add your own guidelines here**
-<!--
+# System Guidelines (authoritative)
 
-System Guidelines
+Target stack:
+- **Next.js 14+ / 15 – App Router (`app/`)**
+- **TypeScript**
+- **TailwindCSS v4 (@tailwindcss/postcss)**
 
-Use this file to provide the AI with rules and guidelines you want it to follow.
-This template outlines a few examples of things you can add. You can add your own sections and format it to suit your needs
+Hard requirements:
+1) **No Vite. No CRA.** `package.json` must have Next scripts only:  
+   "dev": "next dev", "build": "next build", "start": "next start"
+2) **Remove legacy React entry points** like `App.tsx` and any Vite configs.
+3) **App Router structure only**:
+   - `app/layout.tsx`
+   - `app/page.tsx`
+   - feature pages, e.g. `app/catalog/page.tsx`, `app/about/page.tsx`, etc.
+   - API routes under `app/api/*/route.ts` (route handlers)
+4) **Styling**: Tailwind utilities only. Add:
+   - `postcss.config.mjs` with `@tailwindcss/postcss`
+   - `globals.css` with `@import "tailwindcss";`
+   - valid `tailwind.config.ts`
+5) **TypeScript**:
+   - valid `tsconfig.json` (moduleResolution: "bundler", jsx: "preserve")
+   - path alias `"@/*": ["./*"]` or `"./src/*"` if using `/src`
+6) **Components**:
+   - Put shared UI in `components/` (or `src/components/` if using `/src`)
+   - Client interactivity only where needed: add `"use client"` at top of client components
+   - Prefer server components for pages/lists; fetch data server-side
+7) **Data fetching**:
+   - For the catalog: implement server page (SSR) that passes initial data.
+   - Client components manage interactive filters/sort/search.
+8) **Remove all unused/legacy files** left from previous React/Vite setup:
+   - delete `App.tsx` and any “Legacy” files unless they are migrated under `app/`
+   - delete Vite config and deps
+9) **Buildable**:
+   - project must build with `next build` without errors/warnings related to legacy/Vite.
 
-TIP: More context isn't always better. It can confuse the LLM. Try and add the most important rules you need
-
-# General guidelines
-
-Any general rules you want the AI to follow.
-For example:
-
-* Only use absolute positioning when necessary. Opt for responsive and well structured layouts that use flexbox and grid by default
-* Refactor code as you go to keep code clean
-* Keep file sizes small and put helper functions and components in their own files.
-
---------------
-
-# Design system guidelines
-Rules for how the AI should make generations look like your company's design system
-
-Additionally, if you select a design system to use in the prompt box, you can reference
-your design system's components, tokens, variables and components.
-For example:
-
-* Use a base font-size of 14px
-* Date formats should always be in the format “Jun 10”
-* The bottom toolbar should only ever have a maximum of 4 items
-* Never use the floating action button with the bottom toolbar
-* Chips should always come in sets of 3 or more
-* Don't use a dropdown if there are 2 or fewer options
-
-You can also create sub sections and add more specific details
-For example:
-
-
-## Button
-The Button component is a fundamental interactive element in our design system, designed to trigger actions or navigate
-users through the application. It provides visual feedback and clear affordances to enhance user experience.
-
-### Usage
-Buttons should be used for important actions that users need to take, such as form submissions, confirming choices,
-or initiating processes. They communicate interactivity and should have clear, action-oriented labels.
-
-### Variants
-* Primary Button
-  * Purpose : Used for the main action in a section or page
-  * Visual Style : Bold, filled with the primary brand color
-  * Usage : One primary button per section to guide users toward the most important action
-* Secondary Button
-  * Purpose : Used for alternative or supporting actions
-  * Visual Style : Outlined with the primary color, transparent background
-  * Usage : Can appear alongside a primary button for less important actions
-* Tertiary Button
-  * Purpose : Used for the least important actions
-  * Visual Style : Text-only with no border, using primary color
-  * Usage : For actions that should be available but not emphasized
--->
+Deliverables (must exist at root):
+- `package.json` (Next only, no Vite)
+- `tsconfig.json`
+- `postcss.config.mjs`
+- `tailwind.config.ts`
+- `/app` with `layout.tsx`, `page.tsx`, and feature routes
+- `/components` (UI), `/styles/globals.css`
+- No `App.tsx`, no Vite files
