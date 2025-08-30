@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install --legacy-peer-deps && next build"
+    "vercel-install": "npm install --force"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
