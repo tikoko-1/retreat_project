@@ -42,13 +42,14 @@ const mockRetreatDetail = {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     // In a real app, you would fetch from database
-    // const retreat = await db.retreats.findUnique({ where: { id: params.id } })
+    // const retreat = await db.retreats.findUnique({ where: { id } })
     
-    if (params.id !== '1') {
+    if (id !== '1') {
       return NextResponse.json(
         { error: 'Retreat not found' },
         { status: 404 }
@@ -66,14 +67,15 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
     
     // In a real app, you would update the database
     // const updatedRetreat = await db.retreats.update({
-    //   where: { id: params.id },
+    //   where: { id },
     //   data: body
     // })
 
@@ -92,11 +94,12 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     // In a real app, you would delete from database
-    // await db.retreats.delete({ where: { id: params.id } })
+    // await db.retreats.delete({ where: { id } })
 
     return NextResponse.json({
       success: true,

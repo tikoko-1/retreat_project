@@ -15,23 +15,25 @@ import CallToActionSection from "@/components/CallToActionSection";
 import { heroImages, allGalleryImages } from "@/components/constants/images";
 
 interface RetreatPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: RetreatPageProps) {
+  const { id } = await params;
   // In a real app, you would fetch retreat data here
   return {
-    title: `Retreat Center - ${params.id}`,
+    title: `Retreat Center - ${id}`,
     description:
       "Premium retreat center for yoga teachers and wellness professionals.",
   };
 }
 
-export default function RetreatPage({ params }: RetreatPageProps) {
+export default async function RetreatPage({ params }: RetreatPageProps) {
+  const { id } = await params;
   // In a real app, you would validate the retreat exists
-  // const retreat = await getRetreat(params.id)
+  // const retreat = await getRetreat(id)
   // if (!retreat) {
   //   notFound()
   // }

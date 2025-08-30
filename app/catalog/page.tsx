@@ -9,7 +9,7 @@ const mockRetreatCenters = [
     id: '1',
     name: 'Serenity Hills Retreat',
     location: 'Ubud, Indonesia',
-    image: 'https://images.unsplash.com/photo-1630449255710-fee6f188bad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwbW9kZXJuJTIwYXJjaGl0ZWN0dXJlJTIwd2hpdGV8ZW58MXx8fHwxNzU1Njk3OTU5fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: 'https://images.unsplash.com/photo-1630449255710-fee6f188bad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwbW9kZXJuJTIwYXJjaGl0ZWN0dXJlJTIwd2hpdGV8ZW58MXwxfHwxNzU1Njk3OTU5fDA&ixlib=rb-4.1.0&q=80&w=1080',
     rating: 4.9,
     reviewCount: 127,
     capacity: 25,
@@ -56,9 +56,10 @@ const mockRetreatCenters = [
 export default async function CatalogPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-  // In a real app, you would fetch data here based on searchParams
+  const resolvedSearchParams = await searchParams;
+  // In a real app, you would fetch data here based on resolvedSearchParams
   // For now, we'll pass the mock data
   
   return (
@@ -67,7 +68,7 @@ export default async function CatalogPage({
       <Suspense fallback={<CatalogSkeleton />}>
         <CatalogClientPage 
           initialRetreatCenters={mockRetreatCenters}
-          initialSearchParams={searchParams}
+          initialSearchParams={resolvedSearchParams}
         />
       </Suspense>
       <Footer />

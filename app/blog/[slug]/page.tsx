@@ -4,29 +4,31 @@ import Footer from '@/components/Footer'
 import { notFound } from 'next/navigation'
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
+  const { slug } = await params;
   // In a real app, you would fetch blog post data here
   return {
-    title: `Blog: ${params.slug} - Retreat Centers Platform`,
+    title: `Blog: ${slug} - Retreat Centers Platform`,
     description: 'Expert insights on retreat planning and wellness business.',
   }
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
   // In a real app, you would validate the slug exists
-  // if (!blogPostExists(params.slug)) {
+  // if (!blogPostExists(slug)) {
   //   notFound()
   // }
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <BlogDetailPage slug={params.slug} />
+      <BlogDetailPage slug={slug} />
       <Footer />
     </div>
   )
