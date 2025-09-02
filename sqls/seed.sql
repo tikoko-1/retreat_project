@@ -2526,7 +2526,7 @@ WHERE v.title = 'Eternal Spring Center'
     'Year-round Spring'
   );
 -- Insert cancellation policies for venues
--- Each venue gets 2-3 cancellation policies with different timeframes
+-- Each venue get only 1 cancellation policy with different timeframes
 INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
 SELECT v.id,
   30,
@@ -2538,343 +2538,109 @@ SELECT v.id,
   14,
   75
 FROM venues v
-WHERE v.title = 'Serenity Hills Retreat'
+WHERE v.title = 'Mountain View Sanctuary'
 UNION ALL
 SELECT v.id,
   7,
   50
 FROM venues v
-WHERE v.title = 'Serenity Hills Retreat';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
+WHERE v.title = 'Ocean Bliss Retreat'
+UNION ALL
 SELECT v.id,
   21,
   100
 FROM venues v
-WHERE v.title = 'Mountain View Sanctuary'
+WHERE v.title = 'Alpine Wellness Lodge'
 UNION ALL
 SELECT v.id,
   7,
   80
 FROM venues v
-WHERE v.title = 'Mountain View Sanctuary'
+WHERE v.title = 'Sacred Valley Sanctuary'
 UNION ALL
 SELECT v.id,
   3,
   30
 FROM venues v
-WHERE v.title = 'Mountain View Sanctuary';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
+WHERE v.title = 'Mindful Mountain Retreat'
+UNION ALL
 SELECT v.id,
   45,
   100
 FROM venues v
-WHERE v.title = 'Ocean Bliss Retreat'
+WHERE v.title = 'Coastal Zen Retreat'
 UNION ALL
 SELECT v.id,
   21,
   75
 FROM venues v
-WHERE v.title = 'Ocean Bliss Retreat'
+WHERE v.title = 'Desert Oasis Center'
 UNION ALL
 SELECT v.id,
   14,
   50
 FROM venues v
-WHERE v.title = 'Ocean Bliss Retreat';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
+WHERE v.title = 'Forest Healing Lodge'
+UNION ALL
 SELECT v.id,
   60,
   100
 FROM venues v
-WHERE v.title = 'Alpine Wellness Lodge'
+WHERE v.title = 'Island Paradise Retreat'
 UNION ALL
 SELECT v.id,
   30,
   80
 FROM venues v
-WHERE v.title = 'Alpine Wellness Lodge'
+WHERE v.title = 'Himalayan Bliss Center'
 UNION ALL
 SELECT v.id,
   14,
   60
 FROM venues v
-WHERE v.title = 'Alpine Wellness Lodge';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
+WHERE v.title = 'Mediterranean Wellness Villa'
+UNION ALL
 SELECT v.id,
   21,
   100
 FROM venues v
-WHERE v.title = 'Sacred Valley Sanctuary'
+WHERE v.title = 'Zen Garden Retreat'
 UNION ALL
 SELECT v.id,
   14,
   75
 FROM venues v
-WHERE v.title = 'Sacred Valley Sanctuary'
+WHERE v.title = 'Tropical Healing Center'
 UNION ALL
 SELECT v.id,
   7,
   40
 FROM venues v
-WHERE v.title = 'Sacred Valley Sanctuary';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
+WHERE v.title = 'Arctic Wellness Lodge'
+UNION ALL
 SELECT v.id,
   14,
   100
 FROM venues v
-WHERE v.title = 'Mindful Mountain Retreat'
+WHERE v.title = 'Desert Rose Sanctuary'
 UNION ALL
 SELECT v.id,
   7,
   70
 FROM venues v
-WHERE v.title = 'Mindful Mountain Retreat'
+WHERE v.title = 'Mountain Spirit Lodge'
 UNION ALL
 SELECT v.id,
   3,
   25
 FROM venues v
-WHERE v.title = 'Mindful Mountain Retreat';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  30,
-  100
-FROM venues v
-WHERE v.title = 'Coastal Zen Retreat'
-UNION ALL
-SELECT v.id,
-  14,
-  80
-FROM venues v
-WHERE v.title = 'Coastal Zen Retreat'
-UNION ALL
-SELECT v.id,
-  7,
-  50
-FROM venues v
-WHERE v.title = 'Coastal Zen Retreat';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  21,
-  100
-FROM venues v
-WHERE v.title = 'Desert Oasis Center'
-UNION ALL
-SELECT v.id,
-  10,
-  75
-FROM venues v
-WHERE v.title = 'Desert Oasis Center'
-UNION ALL
-SELECT v.id,
-  5,
-  40
-FROM venues v
-WHERE v.title = 'Desert Oasis Center';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  14,
-  100
-FROM venues v
-WHERE v.title = 'Forest Healing Lodge'
-UNION ALL
-SELECT v.id,
-  7,
-  80
-FROM venues v
-WHERE v.title = 'Forest Healing Lodge'
-UNION ALL
-SELECT v.id,
-  3,
-  30
-FROM venues v
-WHERE v.title = 'Forest Healing Lodge';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  60,
-  100
-FROM venues v
-WHERE v.title = 'Island Paradise Retreat'
-UNION ALL
-SELECT v.id,
-  30,
-  75
-FROM venues v
-WHERE v.title = 'Island Paradise Retreat'
-UNION ALL
-SELECT v.id,
-  14,
-  50
-FROM venues v
-WHERE v.title = 'Island Paradise Retreat';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  21,
-  100
-FROM venues v
-WHERE v.title = 'Himalayan Bliss Center'
-UNION ALL
-SELECT v.id,
-  14,
-  75
-FROM venues v
-WHERE v.title = 'Himalayan Bliss Center'
-UNION ALL
-SELECT v.id,
-  7,
-  40
-FROM venues v
-WHERE v.title = 'Himalayan Bliss Center';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  45,
-  100
-FROM venues v
-WHERE v.title = 'Mediterranean Wellness Villa'
-UNION ALL
-SELECT v.id,
-  21,
-  80
-FROM venues v
-WHERE v.title = 'Mediterranean Wellness Villa'
-UNION ALL
-SELECT v.id,
-  14,
-  60
-FROM venues v
-WHERE v.title = 'Mediterranean Wellness Villa';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  30,
-  100
-FROM venues v
-WHERE v.title = 'Zen Garden Retreat'
-UNION ALL
-SELECT v.id,
-  14,
-  80
-FROM venues v
-WHERE v.title = 'Zen Garden Retreat'
-UNION ALL
-SELECT v.id,
-  7,
-  50
-FROM venues v
-WHERE v.title = 'Zen Garden Retreat';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  21,
-  100
-FROM venues v
-WHERE v.title = 'Tropical Healing Center'
-UNION ALL
-SELECT v.id,
-  10,
-  75
-FROM venues v
-WHERE v.title = 'Tropical Healing Center'
-UNION ALL
-SELECT v.id,
-  5,
-  40
-FROM venues v
-WHERE v.title = 'Tropical Healing Center';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  60,
-  100
-FROM venues v
-WHERE v.title = 'Arctic Wellness Lodge'
-UNION ALL
-SELECT v.id,
-  30,
-  80
-FROM venues v
-WHERE v.title = 'Arctic Wellness Lodge'
-UNION ALL
-SELECT v.id,
-  14,
-  60
-FROM venues v
-WHERE v.title = 'Arctic Wellness Lodge';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  21,
-  100
-FROM venues v
-WHERE v.title = 'Desert Rose Sanctuary'
-UNION ALL
-SELECT v.id,
-  10,
-  75
-FROM venues v
-WHERE v.title = 'Desert Rose Sanctuary'
-UNION ALL
-SELECT v.id,
-  5,
-  40
-FROM venues v
-WHERE v.title = 'Desert Rose Sanctuary';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  21,
-  100
-FROM venues v
-WHERE v.title = 'Mountain Spirit Lodge'
-UNION ALL
-SELECT v.id,
-  14,
-  75
-FROM venues v
-WHERE v.title = 'Mountain Spirit Lodge'
-UNION ALL
-SELECT v.id,
-  7,
-  40
-FROM venues v
-WHERE v.title = 'Mountain Spirit Lodge';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  30,
-  100
-FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
 UNION ALL
 SELECT v.id,
-  14,
-  80
-FROM venues v
-WHERE v.title = 'Ocean Spirit Center'
-UNION ALL
-SELECT v.id,
-  7,
-  50
-FROM venues v
-WHERE v.title = 'Ocean Spirit Center';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  14,
-  100
-FROM venues v
-WHERE v.title = 'Forest Wisdom Retreat'
-UNION ALL
-SELECT v.id,
-  7,
-  80
-FROM venues v
-WHERE v.title = 'Forest Wisdom Retreat'
-UNION ALL
-SELECT v.id,
-  3,
-  30
-FROM venues v
-WHERE v.title = 'Forest Wisdom Retreat';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
   30,
   100
 FROM venues v
-WHERE v.title = 'Sky High Sanctuary'
+WHERE v.title = 'Forest Wisdom Retreat'
 UNION ALL
 SELECT v.id,
   14,
@@ -2886,95 +2652,29 @@ SELECT v.id,
   7,
   50
 FROM venues v
-WHERE v.title = 'Sky High Sanctuary';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
+WHERE v.title = 'Valley of Peace'
+UNION ALL
 SELECT v.id,
   21,
-  100
-FROM venues v
-WHERE v.title = 'Valley of Peace'
-UNION ALL
-SELECT v.id,
-  14,
-  75
-FROM venues v
-WHERE v.title = 'Valley of Peace'
-UNION ALL
-SELECT v.id,
-  7,
-  40
-FROM venues v
-WHERE v.title = 'Valley of Peace';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  30,
   100
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
 UNION ALL
 SELECT v.id,
-  14,
-  80
-FROM venues v
-WHERE v.title = 'Crystal Healing Center'
-UNION ALL
-SELECT v.id,
-  7,
-  50
-FROM venues v
-WHERE v.title = 'Crystal Healing Center';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  45,
-  100
-FROM venues v
-WHERE v.title = 'Sunrise Wellness Resort'
-UNION ALL
-SELECT v.id,
-  21,
-  80
-FROM venues v
-WHERE v.title = 'Sunrise Wellness Resort'
-UNION ALL
-SELECT v.id,
-  14,
-  60
-FROM venues v
-WHERE v.title = 'Sunrise Wellness Resort';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  21,
-  100
-FROM venues v
-WHERE v.title = 'Sacred Mountain Lodge'
-UNION ALL
-SELECT v.id,
-  14,
+  10,
   75
 FROM venues v
+WHERE v.title = 'Sunrise Wellness Resort'
+UNION ALL
+SELECT v.id,
+  5,
+  40
+FROM venues v
 WHERE v.title = 'Sacred Mountain Lodge'
 UNION ALL
 SELECT v.id,
-  7,
-  40
-FROM venues v
-WHERE v.title = 'Sacred Mountain Lodge';
-INSERT INTO cancellation_policies (venue_id, days_before, refund_percent)
-SELECT v.id,
-  30,
-  100
-FROM venues v
-WHERE v.title = 'Eternal Spring Center'
-UNION ALL
-SELECT v.id,
   14,
-  80
-FROM venues v
-WHERE v.title = 'Eternal Spring Center'
-UNION ALL
-SELECT v.id,
-  7,
-  50
+  100
 FROM venues v
 WHERE v.title = 'Eternal Spring Center';
 -- Insert sample inquiries from users to venues (10 random inquiries)
