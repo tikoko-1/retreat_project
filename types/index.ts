@@ -70,6 +70,7 @@ export interface Guide {
 export interface FilterState {
   search: string;
   guests: string;
+  priceRange: string;
   sortBy: string;
   amenities: string[];
   area: number[];
