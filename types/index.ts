@@ -77,7 +77,6 @@ export interface FilterState {
   bedrooms: string;
   bathrooms: string;
   venueTypes: string[];
-  foodOptions: string[];
   cancellationPolicy: string;
   hasReviews: boolean;
   topRated: boolean;
