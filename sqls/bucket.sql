@@ -3,7 +3,6 @@
 -- ===========================
 insert into storage.buckets (id, name, public)
 values ('avatars', 'avatars', true),
-  ('amenities', 'amenities', true),
   ('blog_covers', 'blog_covers', true),
   ('guide_covers', 'guide_covers', true),
   ('venue_photos', 'venue_photos', true) on conflict (id) do nothing;
@@ -25,18 +24,6 @@ create policy "Users can update/delete own avatar" on storage.objects for all to
 drop policy if exists "Public can view avatars" on storage.objects;
 create policy "Public can view avatars" on storage.objects for
 select to public using (bucket_id = 'avatars');
--- Amenities: only admin can upload/update
-drop policy if exists "Admins manage amenities icons" on storage.objects;
-create policy "Admins manage amenities icons" on storage.objects for all to authenticated using (
-  bucket_id = 'amenities'
-  and auth.role() = 'admin'
-) with check (
-  bucket_id = 'amenities'
-  and auth.role() = 'admin'
-);
-drop policy if exists "Public can view amenities icons" on storage.objects;
-create policy "Public can view amenities icons" on storage.objects for
-select to public using (bucket_id = 'amenities');
 -- Blog covers: only admin/hosts
 drop policy if exists "Admins manage blog covers" on storage.objects;
 create policy "Admins manage blog covers" on storage.objects for all to authenticated using (

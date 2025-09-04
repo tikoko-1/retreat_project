@@ -11,14 +11,11 @@ CREATE TYPE price_code AS ENUM (
     'custom'
 );
 CREATE TYPE amenity_group AS ENUM (
-    'core',
-    'general',
-    'food_dining',
-    'wellness',
-    'outdoor',
-    'indoor',
-    'tech',
-    'other'
+    'Practice & Wellness',
+    'Food & Dining',
+    'Living & Comfort',
+    'Extras & Nature',
+    'Infrastructure & Policies'
 );
 CREATE TYPE user_role AS ENUM ('client', 'host', 'admin');
 CREATE TYPE inquiry_status AS ENUM ('new', 'viewed', 'responded', 'closed');
@@ -43,10 +40,18 @@ CREATE TABLE IF NOT EXISTS profiles (
     bio TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+-- VENUE TYPES
+CREATE TABLE IF NOT EXISTS venue_types (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name TEXT NOT NULL,
+    description TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
 -- VENUES
 CREATE TABLE IF NOT EXISTS venues (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     owner_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
+    type_id UUID NOT NULL REFERENCES venue_types(id) ON DELETE CASCADE,
     title TEXT NOT NULL,
     description TEXT,
     status venue_status NOT NULL DEFAULT 'draft',
@@ -81,8 +86,8 @@ CREATE TABLE IF NOT EXISTS amenities (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
     "group" amenity_group NOT NULL,
-    icon_url TEXT,
-    description TEXT
+    slug TEXT NOT NULL,
+    icon JSONB
 );
 -- VENUE -> AMENITIES
 CREATE TABLE IF NOT EXISTS venue_amenities (

@@ -1,5 +1,6 @@
 -- Enable RLS on tables
 ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE venue_types ENABLE ROW LEVEL SECURITY;
 ALTER TABLE venues ENABLE ROW LEVEL SECURITY;
 ALTER TABLE venue_photos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE amenities ENABLE ROW LEVEL SECURITY;
@@ -15,6 +16,8 @@ ALTER TABLE guides ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Enable read access for all users" ON profiles;
 DROP POLICY IF EXISTS "Enable insert for authenticated users" ON profiles;
 DROP POLICY IF EXISTS "Enable update for authenticated users" ON profiles;
+DROP POLICY IF EXISTS "Enable read access for all users on venue_types" ON venue_types;
+DROP POLICY IF EXISTS "Enable admins to manage venue_types" ON venue_types;
 DROP POLICY IF EXISTS "Enable read access for all users on published venues" ON venues;
 DROP POLICY IF EXISTS "Enable owner to read, insert, update, and delete their own venues" ON venues;
 DROP POLICY IF EXISTS "Enable read access for all users on photos of published venues" ON venue_photos;
@@ -42,6 +45,10 @@ CREATE POLICY "Enable insert for authenticated users" ON profiles FOR
 INSERT WITH CHECK (auth.uid() = id);
 CREATE POLICY "Enable update for authenticated users" ON profiles FOR
 UPDATE USING (auth.uid() = id);
+-- Policies for `venue_types` table
+CREATE POLICY "Enable read access for all users" ON venue_types FOR
+SELECT USING (true);
+CREATE POLICY "Enable admins to manage venue_types" ON venue_types FOR ALL USING (auth.role() = 'admin');
 -- Policies for `venues` table
 CREATE POLICY "Enable read access for all users on published venues" ON venues FOR
 SELECT USING (status = 'published');

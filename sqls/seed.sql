@@ -139,9 +139,60 @@ VALUES (
     'blog_covers/blog-3.avif',
     ARRAY ['tulum', 'beach', 'wellness', 'mexico']
   );
+-- Insert venue types
+INSERT INTO venue_types (name, description)
+VALUES (
+    'Resort',
+    'Large property with full services, suitable for retreats and groups.'
+  ),
+  (
+    'Boutique Hotel',
+    'Small, stylish hotel offering personalized services.'
+  ),
+  (
+    'Private Villa',
+    'Standalone private villa, often with pool and exclusive amenities.'
+  ),
+  (
+    'Wellness Center',
+    'Dedicated facility focused on wellness, yoga, meditation, spa.'
+  ),
+  (
+    'Retreat Camp',
+    'Nature-focused, eco-friendly lodges or retreat camps.'
+  ),
+  (
+    'Monastery',
+    'Spiritual centers, monasteries, or ashrams for retreats.'
+  ),
+  (
+    'Farmstay',
+    'Retreat venue integrated with working farms or eco-agriculture.'
+  ),
+  (
+    'Guesthouse',
+    'Smaller guesthouses or bed-and-breakfast style venues.'
+  ),
+  (
+    'Beachfront Venue',
+    'Venues located directly on or near the beach.'
+  ),
+  (
+    'Mountain Lodge',
+    'Retreat venues in mountains, cabins or lodges.'
+  ),
+  (
+    'Urban Loft',
+    'City-based spaces adapted for retreats or workshops.'
+  ),
+  (
+    'Conference Center',
+    'Professional facilities with large capacity and meeting rooms.'
+  );
 -- Insert venues (25 retreat centers) - Let Supabase generate UUIDs
 INSERT INTO venues (
     owner_id,
+    type_id,
     title,
     description,
     status,
@@ -160,557 +211,605 @@ INSERT INTO venues (
     bathrooms,
     website_url,
     instagram_url
-  )
-VALUES -- 1. Serenity Hills Retreat
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Serenity Hills Retreat',
-    'Nestled in the lush jungles of Ubud, this retreat offers a perfect blend of modern comfort and traditional Balinese spirituality. Experience daily yoga sessions, meditation workshops, and organic farm-to-table dining.',
-    'published',
-    'Indonesia',
-    'Ubud',
-    'Jl. Raya Ubud No. 88, Ubud, Bali',
-    -8.5069,
-    115.2625,
-    15,
-    25,
-    180,
-    320,
-    'per_night',
-    8500,
-    8,
-    6,
-    'https://serenityhills.com',
-    'https://google.com'
-  ),
-  -- 2. Mountain View Sanctuary
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Mountain View Sanctuary',
-    'Located in the spiritual capital of Rishikesh, this sanctuary offers authentic yoga and meditation experiences. Overlooking the sacred Ganges River, it provides traditional ashram-style accommodation with modern amenities.',
-    'draft',
-    'India',
-    'Rishikesh',
-    'Laxman Jhula, Rishikesh, Uttarakhand',
-    30.0869,
-    78.2676,
-    20,
-    35,
-    120,
-    250,
-    'per_night',
-    12000,
-    12,
-    8,
-    'https://mountainviewsanctuary.com',
-    'https://google.com'
-  ),
-  -- 3. Ocean Bliss Retreat
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Ocean Bliss Retreat',
-    'Beachfront paradise in Tulum offering a unique blend of Mayan culture and modern wellness. Enjoy cenote swimming, beach yoga, and sustainable luxury accommodation.',
-    'pending',
-    'Mexico',
-    'Tulum',
-    'Carretera Tulum-Boca Paila Km 8.5, Tulum',
-    20.2150,
-    -87.4515,
-    12,
-    20,
-    250,
-    450,
-    'per_night',
-    6500,
-    6,
-    4,
-    'https://oceanblissretreat.com',
-    'https://google.com'
-  ),
-  -- 4. Alpine Wellness Lodge
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Alpine Wellness Lodge',
-    'Luxurious mountain retreat in the French Alps offering world-class spa treatments, gourmet dining, and breathtaking alpine views. Perfect for both relaxation and adventure.',
-    'rejected',
-    'France',
-    'Chamonix',
-    '123 Chemin des Aiguilles, Chamonix-Mont-Blanc',
-    45.9237,
-    6.8694,
-    20,
-    30,
-    350,
-    650,
-    'per_night',
-    15000,
-    10,
-    8,
-    'https://alpinewellness.com',
-    'https://google.com'
-  ),
-  -- 5. Sacred Valley Sanctuary
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Sacred Valley Sanctuary',
-    'Immerse yourself in the mystical energy of the Sacred Valley. This retreat combines ancient Incan wisdom with modern wellness practices in a stunning mountain setting.',
-    'draft',
-    'Peru',
-    'Ollantaytambo',
-    'Camino Inca, Ollantaytambo, Cusco',
-    -13.2583,
-    -72.2647,
-    10,
-    18,
-    200,
-    380,
-    'per_night',
-    8000,
-    5,
-    3,
-    'https://sacredvalleysanctuary.com',
-    'https://google.com'
-  ),
-  -- 6. Mindful Mountain Retreat
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Mindful Mountain Retreat',
-    'Authentic ashram experience in the foothills of the Himalayas. Learn traditional yoga, meditation, and Ayurvedic practices from certified masters.',
-    'draft',
-    'India',
-    'Rishikesh',
-    'Neelkanth Road, Rishikesh, Uttarakhand',
-    30.0869,
-    78.2676,
-    15,
-    24,
-    120,
-    250,
-    'per_night',
-    9000,
-    7,
-    5,
-    'https://mindfulmountain.com',
-    'https://google.com'
-  ),
-  -- 7. Coastal Zen Retreat
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Coastal Zen Retreat',
-    'Peaceful coastal retreat combining Japanese Zen philosophy with beachfront luxury. Experience traditional tea ceremonies, meditation, and ocean-inspired wellness programs.',
-    'published',
-    'Mexico',
-    'Puerto Escondido',
-    'Playa Carrizalillo, Puerto Escondido',
-    15.8500,
-    -97.0667,
-    8,
-    15,
-    180,
-    320,
-    'per_night',
-    5000,
-    4,
-    3,
-    'https://coastalzen.com',
-    'https://google.com'
-  ),
-  -- 8. Desert Oasis Center
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Desert Oasis Center',
-    'Transformative retreat in the heart of the desert offering unique experiences like stargazing meditation, desert yoga, and spiritual ceremonies under the vast sky.',
-    'published',
-    'Morocco',
-    'Marrakech',
-    'Route de l''Ourika, Marrakech',
-    31.6295,
-    -7.9811,
-    12,
-    20,
-    150,
-    280,
-    'per_night',
-    7000,
-    6,
-    4,
-    'https://desertoasis.com',
-    'https://google.com'
-  ),
-  -- 9. Forest Healing Lodge
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Forest Healing Lodge',
-    'Nestled in ancient forests, this lodge offers forest bathing, nature therapy, and eco-friendly accommodation. Perfect for reconnecting with nature and finding inner peace.',
-    'rejected',
-    'Canada',
-    'Whistler',
-    '123 Forest Road, Whistler, BC',
-    50.1163,
-    -122.9574,
-    10,
-    18,
-    200,
-    350,
-    'per_night',
-    6000,
-    5,
-    4,
-    'https://foresthealing.com',
-    'https://google.com'
-  ),
-  -- 10. Island Paradise Retreat
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Island Paradise Retreat',
-    'Exclusive island retreat offering overwater bungalows, marine activities, and tropical wellness programs. Experience ultimate luxury in a pristine island setting.',
-    'draft',
-    'Maldives',
-    'Maafushi',
-    'Maafushi Island, Kaafu Atoll',
-    3.2028,
-    73.2207,
-    6,
-    12,
-    400,
-    800,
-    'per_night',
-    8000,
-    4,
-    3,
-    'https://islandparadise.com',
-    'https://google.com'
-  ),
-  -- 11. Himalayan Bliss Center
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Himalayan Bliss Center',
-    'High-altitude retreat in the Himalayas offering advanced yoga practices, meditation techniques, and spiritual teachings from Tibetan masters.',
-    'draft',
-    'Nepal',
-    'Pokhara',
-    'Lakeside, Pokhara, Nepal',
-    28.2096,
-    83.9856,
-    15,
-    25,
-    100,
-    200,
-    'per_night',
-    7500,
-    8,
-    6,
-    'https://himalayanbliss.com',
-    'https://google.com'
-  ),
-  -- 12. Mediterranean Wellness Villa
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Mediterranean Wellness Villa',
-    'Luxurious villa overlooking the Mediterranean Sea offering personalized wellness programs, gourmet Mediterranean cuisine, and private beach access.',
-    'published',
-    'Greece',
-    'Santorini',
-    'Oia, Santorini, Greece',
-    36.4621,
-    25.3761,
-    8,
-    16,
-    300,
-    550,
-    'per_night',
-    10000,
-    6,
-    5,
-    'https://mediterraneanwellness.com',
-    'https://google.com'
-  ),
-  -- 13. Zen Garden Retreat
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Zen Garden Retreat',
-    'Traditional Japanese-style retreat featuring authentic Zen gardens, tea ceremonies, and mindfulness practices in a serene mountain setting.',
-    'published',
-    'Japan',
-    'Kyoto',
-    'Arashiyama, Kyoto, Japan',
-    35.0094,
-    135.6772,
-    6,
-    12,
-    250,
-    450,
-    'per_night',
-    4000,
-    3,
-    2,
-    'https://zengardenretreat.com',
-    'https://google.com'
-  ),
-  -- 14. Tropical Healing Center
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Tropical Healing Center',
-    'Holistic healing center in the tropics offering traditional healing practices, organic farming, and sustainable living workshops.',
-    'published',
-    'Costa Rica',
-    'Nosara',
-    'Playa Guiones, Nosara, Guanacaste',
-    9.9281,
-    -85.6508,
-    20,
-    35,
-    150,
-    280,
-    'per_night',
-    12000,
-    10,
-    8,
-    'https://tropicalhealing.com',
-    'https://google.com'
-  ),
-  -- 15. Arctic Wellness Lodge
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Arctic Wellness Lodge',
-    'Unique wellness experience in the Arctic offering northern lights viewing, ice meditation, and traditional Sami healing practices.',
-    'published',
-    'Norway',
-    'Tromsø',
-    'Tromsø, Norway',
-    69.6492,
-    18.9553,
-    8,
-    15,
-    350,
-    600,
-    'per_night',
-    8000,
-    5,
-    4,
-    'https://arcticwellness.com',
-    'https://google.com'
-  ),
-  -- 16. Desert Rose Sanctuary
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Desert Rose Sanctuary',
-    'Spiritual retreat in the heart of the desert offering Sufi practices, desert meditation, and traditional Middle Eastern healing.',
-    'published',
-    'Jordan',
-    'Wadi Rum',
-    'Wadi Rum Protected Area, Jordan',
-    29.5803,
-    35.4192,
-    10,
-    18,
-    120,
-    220,
-    'per_night',
-    6000,
-    6,
-    4,
-    'https://desertrose.com',
-    'https://google.com'
-  ),
-  -- 17. Mountain Spirit Lodge
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Mountain Spirit Lodge',
-    'High-altitude lodge offering Andean spiritual practices, mountain meditation, and traditional Peruvian healing ceremonies.',
-    'published',
-    'Peru',
-    'Cusco',
-    'Sacred Valley, Cusco, Peru',
-    -13.5167,
-    -71.9789,
-    12,
-    20,
-    180,
-    320,
-    'per_night',
-    7000,
-    7,
-    5,
-    'https://mountainspirit.com',
-    'https://google.com'
-  ),
-  -- 18. Ocean Spirit Center
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Ocean Spirit Center',
-    'Oceanfront center specializing in marine therapy, water meditation, and coastal wellness programs with certified marine therapists.',
-    'published',
-    'Australia',
-    'Byron Bay',
-    'Byron Bay, New South Wales',
-    -28.6474,
-    153.6020,
-    15,
-    25,
-    220,
-    380,
-    'per_night',
-    9000,
-    8,
-    6,
-    'https://oceanspirit.com',
-    'https://google.com'
-  ),
-  -- 19. Forest Wisdom Retreat
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Forest Wisdom Retreat',
-    'Ancient forest retreat offering shamanic practices, nature connection workshops, and traditional forest healing ceremonies.',
-    'published',
-    'Brazil',
-    'Chapada dos Veadeiros',
-    'Chapada dos Veadeiros, Goiás',
-    -14.2350,
-    -47.8113,
-    8,
-    15,
-    100,
-    180,
-    'per_night',
-    5000,
-    4,
-    3,
-    'https://forestwisdom.com',
-    'https://google.com'
-  ),
-  -- 20. Sky High Sanctuary
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Sky High Sanctuary',
-    'Mountain-top sanctuary offering high-altitude yoga, cloud meditation, and panoramic mountain views for ultimate spiritual elevation.',
-    'published',
-    'Switzerland',
-    'Zermatt',
-    'Zermatt, Valais, Switzerland',
-    46.0207,
-    7.7491,
-    6,
-    12,
-    400,
-    700,
-    'per_night',
-    6000,
-    4,
-    3,
-    'https://skyhighsanctuary.com',
-    'https://google.com'
-  ),
-  -- 21. Valley of Peace
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Valley of Peace',
-    'Peaceful valley retreat offering silent meditation, peace workshops, and conflict resolution programs in a serene natural setting.',
-    'published',
-    'India',
-    'Dharamshala',
-    'McLeod Ganj, Dharamshala, Himachal Pradesh',
-    32.2190,
-    76.3234,
-    20,
-    30,
-    80,
-    150,
-    'per_night',
-    10000,
-    12,
-    8,
-    'https://valleyofpeace.com',
-    'https://google.com'
-  ),
-  -- 22. Crystal Healing Center
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Crystal Healing Center',
-    'Specialized center offering crystal therapy, energy healing, and vibrational medicine in a crystal-rich environment.',
-    'published',
-    'Brazil',
-    'Minas Gerais',
-    'Cristalina, Minas Gerais',
-    -16.7677,
-    -47.6138,
-    10,
-    18,
-    150,
-    280,
-    'per_night',
-    7000,
-    6,
-    4,
-    'https://crystalhealing.com',
-    'https://google.com'
-  ),
-  -- 23. Sunrise Wellness Resort
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Sunrise Wellness Resort',
-    'Luxury wellness resort offering sunrise yoga, premium spa treatments, and gourmet wellness cuisine with ocean views.',
-    'published',
-    'Thailand',
-    'Koh Samui',
-    'Chaweng Beach, Koh Samui',
-    9.5120,
-    100.0136,
-    25,
-    40,
-    200,
-    400,
-    'per_night',
-    15000,
-    15,
-    12,
-    'https://sunrisewellness.com',
-    'https://google.com'
-  ),
-  -- 24. Sacred Mountain Lodge
-  (
-    '22222222-2222-2222-2222-222222222222',
-    'Sacred Mountain Lodge',
-    'Sacred mountain retreat offering spiritual pilgrimages, mountain worship ceremonies, and traditional indigenous healing practices.',
-    'draft',
-    'Nepal',
-    'Mount Kailash',
-    'Mount Kailash, Tibet',
-    31.0668,
-    81.3125,
-    15,
-    25,
-    120,
-    220,
-    'per_night',
-    8000,
-    8,
-    6,
-    'https://sacredmountain.com',
-    'https://google.com'
-  ),
-  -- 25. Eternal Spring Center
-  (
-    '44444444-4444-4444-4444-444444444444',
-    'Eternal Spring Center',
-    'Year-round spring retreat offering seasonal wellness programs, nature cycles workshops, and sustainable living practices.',
-    'rejected',
-    'New Zealand',
-    'Rotorua',
-    'Rotorua, Bay of Plenty',
-    -38.1368,
-    176.2497,
-    18,
-    28,
-    180,
-    320,
-    'per_night',
-    11000,
-    9,
-    7,
-    'https://eternalspring.com',
-    'https://google.com'
-  );
+  ) -- 1. Serenity Hills Retreat
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Serenity Hills Retreat',
+  'Nestled in the lush jungles of Ubud, this retreat offers a perfect blend of modern comfort and traditional Balinese spirituality. Experience daily yoga sessions, meditation workshops, and organic farm-to-table dining.',
+  'published'::venue_status,
+  'Indonesia',
+  'Ubud',
+  'Jl. Raya Ubud No. 88, Ubud, Bali',
+  -8.5069,
+  115.2625,
+  15,
+  25,
+  180,
+  320,
+  'per_night'::price_code,
+  8500,
+  8,
+  6,
+  'https://serenityhills.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Resort'
+UNION ALL
+-- 2. Mountain View Sanctuary
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Mountain View Sanctuary',
+  'Located in the spiritual capital of Rishikesh, this sanctuary offers authentic yoga and meditation experiences. Overlooking the sacred Ganges River, it provides traditional ashram-style accommodation with modern amenities.',
+  'draft'::venue_status,
+  'India',
+  'Rishikesh',
+  'Laxman Jhula, Rishikesh, Uttarakhand',
+  30.0869,
+  78.2676,
+  20,
+  35,
+  120,
+  250,
+  'per_night'::price_code,
+  12000,
+  12,
+  8,
+  'https://mountainviewsanctuary.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 3. Ocean Bliss Retreat
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Ocean Bliss Retreat',
+  'Beachfront paradise in Tulum offering a unique blend of Mayan culture and modern wellness. Enjoy cenote swimming, beach yoga, and sustainable luxury accommodation.',
+  'pending'::venue_status,
+  'Mexico',
+  'Tulum',
+  'Carretera Tulum-Boca Paila Km 8.5, Tulum',
+  20.2150,
+  -87.4515,
+  12,
+  20,
+  250,
+  450,
+  'per_night'::price_code,
+  6500,
+  6,
+  4,
+  'https://oceanblissretreat.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Beachfront Venue'
+UNION ALL
+-- 4. Alpine Wellness Lodge
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Alpine Wellness Lodge',
+  'Luxurious mountain retreat in the French Alps offering world-class spa treatments, gourmet dining, and breathtaking alpine views. Perfect for both relaxation and adventure.',
+  'rejected'::venue_status,
+  'France',
+  'Chamonix',
+  '123 Chemin des Aiguilles, Chamonix-Mont-Blanc',
+  45.9237,
+  6.8694,
+  20,
+  30,
+  350,
+  650,
+  'per_night'::price_code,
+  15000,
+  10,
+  8,
+  'https://alpinewellness.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 5. Sacred Valley Sanctuary
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Sacred Valley Sanctuary',
+  'Immerse yourself in the mystical energy of the Sacred Valley. This retreat combines ancient Incan wisdom with modern wellness practices in a stunning mountain setting.',
+  'draft'::venue_status,
+  'Peru',
+  'Ollantaytambo',
+  'Camino Inca, Ollantaytambo, Cusco',
+  -13.2583,
+  -72.2647,
+  10,
+  18,
+  200,
+  380,
+  'per_night'::price_code,
+  8000,
+  5,
+  3,
+  'https://sacredvalleysanctuary.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 6. Mindful Mountain Retreat
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Mindful Mountain Retreat',
+  'Authentic ashram experience in the foothills of the Himalayas. Learn traditional yoga, meditation, and Ayurvedic practices from certified masters.',
+  'draft'::venue_status,
+  'India',
+  'Rishikesh',
+  'Neelkanth Road, Rishikesh, Uttarakhand',
+  30.0869,
+  78.2676,
+  15,
+  24,
+  120,
+  250,
+  'per_night'::price_code,
+  9000,
+  7,
+  5,
+  'https://mindfulmountain.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 7. Coastal Zen Retreat
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Coastal Zen Retreat',
+  'Peaceful coastal retreat combining Japanese Zen philosophy with beachfront luxury. Experience traditional tea ceremonies, meditation, and ocean-inspired wellness programs.',
+  'published'::venue_status,
+  'Mexico',
+  'Puerto Escondido',
+  'Playa Carrizalillo, Puerto Escondido',
+  15.8500,
+  -97.0667,
+  8,
+  15,
+  180,
+  320,
+  'per_night'::price_code,
+  5000,
+  4,
+  3,
+  'https://coastalzen.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Beachfront Venue'
+UNION ALL
+-- 8. Desert Oasis Center
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Desert Oasis Center',
+  'Transformative retreat in the heart of the desert offering unique experiences like stargazing meditation, desert yoga, and spiritual ceremonies under the vast sky.',
+  'published'::venue_status,
+  'Morocco',
+  'Marrakech',
+  'Route de l''Ourika, Marrakech',
+  31.6295,
+  -7.9811,
+  12,
+  20,
+  150,
+  280,
+  'per_night'::price_code,
+  7000,
+  6,
+  4,
+  'https://desertoasis.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 9. Forest Healing Lodge
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Forest Healing Lodge',
+  'Nestled in ancient forests, this lodge offers forest bathing, nature therapy, and eco-friendly accommodation. Perfect for reconnecting with nature and finding inner peace.',
+  'rejected'::venue_status,
+  'Canada',
+  'Whistler',
+  '123 Forest Road, Whistler, BC',
+  50.1163,
+  -122.9574,
+  10,
+  18,
+  200,
+  350,
+  'per_night'::price_code,
+  6000,
+  5,
+  4,
+  'https://foresthealing.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 10. Island Paradise Retreat
+SELECT '44444444-4444-4444-4444-444444444444',
+  vt.id,
+  'Island Paradise Retreat',
+  'Exclusive island retreat offering overwater bungalows, marine activities, and tropical wellness programs. Experience ultimate luxury in a pristine island setting.',
+  'draft'::venue_status,
+  'Maldives',
+  'Maafushi',
+  'Maafushi Island, Kaafu Atoll',
+  3.2028,
+  73.2207,
+  6,
+  12,
+  400,
+  800,
+  'per_night'::price_code,
+  8000,
+  4,
+  3,
+  'https://islandparadise.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Beachfront Venue'
+UNION ALL
+-- 11. Himalayan Bliss Center
+SELECT '44444444-4444-4444-4444-444444444444',
+  vt.id,
+  'Himalayan Bliss Center',
+  'High-altitude retreat in the Himalayas offering advanced yoga practices, meditation techniques, and spiritual teachings from Tibetan masters.',
+  'draft'::venue_status,
+  'Nepal',
+  'Pokhara',
+  'Lakeside, Pokhara, Nepal',
+  28.2096,
+  83.9856,
+  15,
+  25,
+  100,
+  200,
+  'per_night'::price_code,
+  7500,
+  8,
+  6,
+  'https://himalayanbliss.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 12. Mediterranean Wellness Villa
+SELECT '44444444-4444-4444-4444-444444444444',
+  vt.id,
+  'Mediterranean Wellness Villa',
+  'Luxurious villa overlooking the Mediterranean Sea offering personalized wellness programs, gourmet Mediterranean cuisine, and private beach access.',
+  'published'::venue_status,
+  'Greece',
+  'Santorini',
+  'Oia, Santorini, Greece',
+  36.4621,
+  25.3761,
+  8,
+  16,
+  300,
+  550,
+  'per_night'::price_code,
+  10000,
+  6,
+  5,
+  'https://mediterraneanwellness.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Beachfront Venue'
+UNION ALL
+-- 13. Zen Garden Retreat
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Zen Garden Retreat',
+  'Traditional Japanese-style retreat featuring authentic Zen gardens, tea ceremonies, and mindfulness practices in a serene mountain setting.',
+  'published'::venue_status,
+  'Japan',
+  'Kyoto',
+  'Arashiyama, Kyoto, Japan',
+  35.0094,
+  135.6772,
+  6,
+  12,
+  250,
+  450,
+  'per_night'::price_code,
+  4000,
+  3,
+  2,
+  'https://zengardenretreat.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 14. Tropical Healing Center
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Tropical Healing Center',
+  'Holistic healing center in the tropics offering traditional healing practices, organic farming, and sustainable living workshops.',
+  'published'::venue_status,
+  'Costa Rica',
+  'Nosara',
+  'Playa Guiones, Nosara, Guanacaste',
+  9.9281,
+  -85.6508,
+  20,
+  35,
+  150,
+  280,
+  'per_night'::price_code,
+  12000,
+  10,
+  8,
+  'https://tropicalhealing.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 15. Arctic Wellness Lodge
+SELECT '44444444-4444-4444-4444-444444444444',
+  vt.id,
+  'Arctic Wellness Lodge',
+  'Unique wellness experience in the Arctic offering northern lights viewing, ice meditation, and traditional Sami healing practices.',
+  'published'::venue_status,
+  'Norway',
+  'Tromsø',
+  'Tromsø, Norway',
+  69.6492,
+  18.9553,
+  8,
+  15,
+  350,
+  600,
+  'per_night'::price_code,
+  8000,
+  5,
+  4,
+  'https://arcticwellness.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 16. Desert Rose Sanctuary
+SELECT '22222222-2222-2222-2222-222222222222',
+  vt.id,
+  'Desert Rose Sanctuary',
+  'Spiritual retreat in the heart of the desert offering Sufi practices, desert meditation, and traditional Middle Eastern healing.',
+  'published'::venue_status,
+  'Jordan',
+  'Wadi Rum',
+  'Wadi Rum Protected Area, Jordan',
+  29.5803,
+  35.4192,
+  10,
+  18,
+  120,
+  220,
+  'per_night'::price_code,
+  6000,
+  6,
+  4,
+  'https://desertrose.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 17. Mountain Spirit Lodge
+SELECT '22222222-2222-2222-2222-222222222222',
+  vt.id,
+  'Mountain Spirit Lodge',
+  'High-altitude lodge offering Andean spiritual practices, mountain meditation, and traditional Peruvian healing ceremonies.',
+  'published'::venue_status,
+  'Peru',
+  'Cusco',
+  'Sacred Valley, Cusco, Peru',
+  -13.5167,
+  -71.9789,
+  12,
+  20,
+  180,
+  320,
+  'per_night'::price_code,
+  7000,
+  7,
+  5,
+  'https://mountainspirit.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 18. Ocean Spirit Center
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Ocean Spirit Center',
+  'Oceanfront center specializing in marine therapy, water meditation, and coastal wellness programs with certified marine therapists.',
+  'published'::venue_status,
+  'Australia',
+  'Byron Bay',
+  'Byron Bay, New South Wales',
+  -28.6474,
+  153.6020,
+  15,
+  25,
+  220,
+  380,
+  'per_night'::price_code,
+  9000,
+  8,
+  6,
+  'https://oceanspirit.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 19. Forest Wisdom Retreat
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Forest Wisdom Retreat',
+  'Ancient forest retreat offering shamanic practices, nature connection workshops, and traditional forest healing ceremonies.',
+  'published'::venue_status,
+  'Brazil',
+  'Chapada dos Veadeiros',
+  'Chapada dos Veadeiros, Goiás',
+  -14.2350,
+  -47.8113,
+  8,
+  15,
+  100,
+  180,
+  'per_night'::price_code,
+  5000,
+  4,
+  3,
+  'https://forestwisdom.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 20. Sky High Sanctuary
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Sky High Sanctuary',
+  'Mountain-top sanctuary offering high-altitude yoga, cloud meditation, and panoramic mountain views for ultimate spiritual elevation.',
+  'published'::venue_status,
+  'Switzerland',
+  'Zermatt',
+  'Zermatt, Valais, Switzerland',
+  46.0207,
+  7.7491,
+  6,
+  12,
+  400,
+  700,
+  'per_night'::price_code,
+  6000,
+  4,
+  3,
+  'https://skyhighsanctuary.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 21. Valley of Peace
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Valley of Peace',
+  'Peaceful valley retreat offering silent meditation, peace workshops, and conflict resolution programs in a serene natural setting.',
+  'published'::venue_status,
+  'India',
+  'Dharamshala',
+  'McLeod Ganj, Dharamshala, Himachal Pradesh',
+  32.2190,
+  76.3234,
+  20,
+  30,
+  80,
+  150,
+  'per_night'::price_code,
+  10000,
+  12,
+  8,
+  'https://valleyofpeace.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 22. Crystal Healing Center
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Crystal Healing Center',
+  'Specialized center offering crystal therapy, energy healing, and vibrational medicine in a crystal-rich environment.',
+  'published'::venue_status,
+  'Brazil',
+  'Minas Gerais',
+  'Cristalina, Minas Gerais',
+  -16.7677,
+  -47.6138,
+  10,
+  18,
+  150,
+  280,
+  'per_night'::price_code,
+  7000,
+  6,
+  4,
+  'https://crystalhealing.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 23. Sunrise Wellness Resort
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Sunrise Wellness Resort',
+  'Luxury wellness resort offering sunrise yoga, premium spa treatments, and gourmet wellness cuisine with ocean views.',
+  'published'::venue_status,
+  'Thailand',
+  'Koh Samui',
+  'Chaweng Beach, Koh Samui',
+  9.5120,
+  100.0136,
+  25,
+  40,
+  200,
+  400,
+  'per_night'::price_code,
+  15000,
+  15,
+  12,
+  'https://sunrisewellness.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 24. Sacred Mountain Lodge
+SELECT '22222222-2222-2222-2222-222222222222'::uuid,
+  vt.id,
+  'Sacred Mountain Lodge',
+  'Sacred mountain retreat offering spiritual pilgrimages, mountain worship ceremonies, and traditional indigenous healing practices.',
+  'draft'::venue_status,
+  'Nepal',
+  'Mount Kailash',
+  'Mount Kailash, Tibet',
+  31.0668,
+  81.3125,
+  15,
+  25,
+  120,
+  220,
+  'per_night'::price_code,
+  8000,
+  8,
+  6,
+  'https://sacredmountain.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge'
+UNION ALL
+-- 25. Eternal Spring Center
+SELECT '44444444-4444-4444-4444-444444444444'::uuid,
+  vt.id,
+  'Eternal Spring Center',
+  'Year-round spring retreat offering seasonal wellness programs, nature cycles workshops, and sustainable living practices.',
+  'rejected'::venue_status,
+  'New Zealand',
+  'Rotorua',
+  'Rotorua, Bay of Plenty',
+  -38.1368,
+  176.2497,
+  18,
+  28,
+  180,
+  320,
+  'per_night'::price_code,
+  11000,
+  9,
+  7,
+  'https://eternalspring.com',
+  'https://google.com'
+FROM venue_types vt
+WHERE vt.name = 'Mountain Lodge';
 -- Insert sample favorites (linking clients to venues dynamically by title)
 INSERT INTO favorites (user_id, venue_id, created_at)
 SELECT '11111111-1111-1111-1111-111111111111'::uuid,
@@ -1731,284 +1830,179 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat';
 -- Insert amenities for wellness retreats
-INSERT INTO amenities (name, "group", icon_url, description)
-VALUES -- Core amenities
+INSERT INTO amenities (name, slug, "group", icon)
+VALUES -- Practice & Wellness
   (
-    'WiFi',
-    'core',
-    'amenities/amenity-1.svg',
-    'High-speed wireless internet access'
+    'Yoga hall / shala',
+    'yoga-hall',
+    'Practice & Wellness',
+    '{"library": "lucide-react", "name": "person-standing"}'
   ),
   (
-    'Parking',
-    'core',
-    'amenities/amenity-2.svg',
-    'Free parking available on-site'
+    'Meditation space / hall',
+    'meditation-space',
+    'Practice & Wellness',
+    '{"library": "lucide-react", "name": "moon-star"}'
   ),
   (
-    'Air Conditioning',
-    'core',
-    'amenities/amenity-3.svg',
-    'Climate control in all rooms'
+    'Spa / massage room',
+    'spa-massage',
+    'Practice & Wellness',
+    '{"library": "lucide-react", "name": "spa"}'
   ),
   (
-    'Heating',
-    'core',
-    'amenities/amenity-4.svg',
-    'Central heating system'
+    'Event / Workshop space (AV/projector)',
+    'event-workshop',
+    'Practice & Wellness',
+    '{"library": "lucide-react", "name": "presentation"}'
   ),
   (
-    'Security',
-    'core',
-    'amenities/amenity-5.svg',
-    '24/7 security monitoring'
-  ),
-  -- General amenities
-  (
-    'Laundry Service',
-    'general',
-    'amenities/amenity-1.svg',
-    'Professional laundry and dry cleaning'
+    'Fitness / gym area',
+    'fitness-gym',
+    'Practice & Wellness',
+    '{"library": "lucide-react", "name": "dumbbell"}'
   ),
   (
-    'Housekeeping',
-    'general',
-    'amenities/amenity-2.svg',
-    'Daily housekeeping service'
-  ),
-  (
-    'Luggage Storage',
-    'general',
-    'amenities/amenity-3.svg',
-    'Secure luggage storage facilities'
-  ),
-  (
-    'Concierge',
-    'general',
-    'amenities/amenity-4.svg',
-    'Personal concierge service'
-  ),
-  (
-    'Gift Shop',
-    'general',
-    'amenities/amenity-5.svg',
-    'Wellness and souvenir shop'
+    'Sauna / steam / jacuzzi',
+    'sauna-steam-jacuzzi',
+    'Practice & Wellness',
+    '{"library": "lucide-react", "name": "flame"}'
   ),
   -- Food & Dining
   (
-    'Restaurant',
-    'food_dining',
-    'amenities/amenity-1.svg',
-    'On-site restaurant with healthy cuisine'
+    'Dining area',
+    'dining-area',
+    'Food & Dining',
+    '{"library": "lucide-react", "name": "utensils-crossed"}'
   ),
   (
-    'Bar/Lounge',
-    'food_dining',
-    'amenities/amenity-2.svg',
-    'Relaxing bar and lounge area'
+    'Kitchen (shared or professional)',
+    'kitchen',
+    'Food & Dining',
+    '{"library": "lucide-react", "name": "chef-hat"}'
   ),
   (
-    'Room Service',
-    'food_dining',
-    'amenities/amenity-3.svg',
-    '24/7 room service available'
+    'Vegetarian / vegan meals available',
+    'vegan-meals',
+    'Food & Dining',
+    '{"library": "lucide-react", "name": "leaf"}'
   ),
   (
-    'Coffee/Tea Station',
-    'food_dining',
-    'amenities/amenity-4.svg',
-    'Complimentary coffee and tea'
+    'Restaurant on site',
+    'restaurant-on-site',
+    'Food & Dining',
+    '{"library": "lucide-react", "name": "utensils"}'
   ),
   (
-    'Organic Garden',
-    'food_dining',
-    'amenities/amenity-5.svg',
-    'Fresh organic produce from our garden'
-  ),
-  -- Wellness amenities
-  (
-    'Yoga Studio',
-    'wellness',
-    'amenities/amenity-1.svg',
-    'Dedicated yoga and meditation space'
+    'Tea / Coffee station',
+    'tea-coffee-station',
+    'Food & Dining',
+    '{"library": "lucide-react", "name": "coffee"}'
   ),
   (
-    'Spa Center',
-    'wellness',
-    'amenities/amenity-2.svg',
-    'Full-service spa with treatments'
+    'Special diet meals (gluten-free/ayurvedic)',
+    'special-diet-meals',
+    'Food & Dining',
+    '{"library": "lucide-react", "name": "salad"}'
+  ),
+  -- Living & Comfort
+  (
+    'Private rooms',
+    'private-rooms',
+    'Living & Comfort',
+    '{"library": "lucide-react", "name": "bed-single"}'
   ),
   (
-    'Massage Therapy',
-    'wellness',
-    'amenities/amenity-3.svg',
-    'Professional massage services'
+    'Shared rooms / Dorms',
+    'shared-rooms',
+    'Living & Comfort',
+    '{"library": "lucide-react", "name": "users"}'
   ),
   (
-    'Sauna',
-    'wellness',
-    'amenities/amenity-4.svg',
-    'Traditional sauna for relaxation'
+    'En-suite bathrooms',
+    'en-suite-bathrooms',
+    'Living & Comfort',
+    '{"library": "lucide-react", "name": "shower-head"}'
   ),
   (
-    'Steam Room',
-    'wellness',
-    'amenities/amenity-5.svg',
-    'Steam room for detoxification'
+    'Wi-Fi / Internet',
+    'wifi',
+    'Living & Comfort',
+    '{"library": "lucide-react", "name": "wifi"}'
   ),
   (
-    'Meditation Room',
-    'wellness',
-    'amenities/amenity-1.svg',
-    'Quiet meditation space'
+    'Air conditioning',
+    'air-conditioning',
+    'Living & Comfort',
+    '{"library": "lucide-react", "name": "snowflake"}'
   ),
   (
-    'Fitness Center',
-    'wellness',
-    'amenities/amenity-2.svg',
-    'Well-equipped fitness facility'
+    'Heating (for cold regions)',
+    'heating',
+    'Living & Comfort',
+    '{"library": "lucide-react", "name": "flame"}'
+  ),
+  -- Extras & Nature
+  (
+    'Swimming pool',
+    'swimming-pool',
+    'Extras & Nature',
+    '{"library": "lucide-react", "name": "waves"}'
   ),
   (
-    'Swimming Pool',
-    'wellness',
-    'amenities/amenity-3.svg',
-    'Heated swimming pool'
+    'Outdoor space / garden',
+    'outdoor-space',
+    'Extras & Nature',
+    '{"library": "lucide-react", "name": "tree-palm"}'
   ),
   (
-    'Hot Tub',
-    'wellness',
-    'amenities/amenity-4.svg',
-    'Relaxing hot tub area'
-  ),
-  -- Outdoor amenities
-  (
-    'Garden',
-    'outdoor',
-    'amenities/amenity-4.svg',
-    'Beautiful meditation gardens'
+    'Parking on site',
+    'parking',
+    'Extras & Nature',
+    '{"library": "lucide-react", "name": "parking-square"}'
   ),
   (
-    'Terrace',
-    'outdoor',
-    'amenities/amenity-5.svg',
-    'Outdoor terrace with views'
+    'Airport transfer',
+    'airport-transfer',
+    'Extras & Nature',
+    '{"library": "lucide-react", "name": "plane"}'
   ),
   (
-    'Hiking Trails',
-    'outdoor',
-    'amenities/amenity-1.svg',
-    'Scenic hiking trails nearby'
+    'Eco-friendly',
+    'eco-friendly',
+    'Extras & Nature',
+    '{"library": "lucide-react", "name": "sprout"}'
   ),
   (
-    'Beach Access',
-    'outdoor',
-    'amenities/amenity-2.svg',
-    'Direct access to the beach'
+    'Activities (cooking class, tours, biking, etc.)',
+    'activities',
+    'Extras & Nature',
+    '{"library": "lucide-react", "name": "bike"}'
+  ),
+  -- Infrastructure & Policies
+  (
+    'Accessibility / wheelchair friendly',
+    'accessibility',
+    'Infrastructure & Policies',
+    '{"library": "lucide-react", "name": "accessibility"}'
   ),
   (
-    'Mountain Views',
-    'outdoor',
-    'amenities/amenity-3.svg',
-    'Breathtaking mountain vistas'
+    'Alcohol-free policy',
+    'alcohol-free',
+    'Infrastructure & Policies',
+    '{"library": "lucide-react", "name": "wine-off"}'
   ),
   (
-    'Sunset Deck',
-    'outdoor',
-    'amenities/amenity-3.svg',
-    'Perfect spot for sunset viewing'
+    'Pet friendly',
+    'pet-friendly',
+    'Infrastructure & Policies',
+    '{"library": "lucide-react", "name": "paw-print"}'
   ),
   (
-    'Fire Pit',
-    'outdoor',
-    'amenities/amenity-3.svg',
-    'Cozy fire pit for evening gatherings'
-  ),
-  -- Indoor amenities
-  (
-    'Library',
-    'indoor',
-    'amenities/amenity-3.svg',
-    'Wellness and spirituality library'
-  ),
-  (
-    'Lounge Area',
-    'indoor',
-    'amenities/amenity-3.svg',
-    'Comfortable indoor lounge'
-  ),
-  (
-    'Conference Room',
-    'indoor',
-    'amenities/amenity-3.svg',
-    'Meeting and workshop space'
-  ),
-  (
-    'Art Studio',
-    'indoor',
-    'amenities/amenity-3.svg',
-    'Creative art and craft studio'
-  ),
-  (
-    'Music Room',
-    'indoor',
-    'amenities/amenity-3.svg',
-    'Musical instruments and practice space'
-  ),
-  -- Tech amenities
-  (
-    'Smart TV',
-    'tech',
-    'amenities/amenity-3.svg',
-    'Smart TV with streaming services'
-  ),
-  (
-    'Bluetooth Speakers',
-    'tech',
-    'amenities/amenity-3.svg',
-    'Bluetooth speakers in rooms'
-  ),
-  (
-    'Charging Stations',
-    'tech',
-    'amenities/amenity-3.svg',
-    'USB and wireless charging stations'
-  ),
-  (
-    'Video Conferencing',
-    'tech',
-    'amenities/amenity-3.svg',
-    'Video conferencing equipment'
-  ),
-  -- Other amenities
-  (
-    'Pet Friendly',
-    'other',
-    'amenities/amenity-3.svg',
-    'Pet-friendly accommodation'
-  ),
-  (
-    'Wheelchair Accessible',
-    'other',
-    'amenities/amenity-3.svg',
-    'Full wheelchair accessibility'
-  ),
-  (
-    'Bicycle Rental',
-    'other',
-    'amenities/amenity-3.svg',
-    'Bicycle rental service'
-  ),
-  (
-    'Airport Transfer',
-    'other',
-    'amenities/amenity-3.svg',
-    'Airport pickup and drop-off service'
-  ),
-  (
-    'Guided Tours',
-    'other',
-    'amenities/amenity-3.svg',
-    'Local guided tour services'
+    'Child-friendly',
+    'child-friendly',
+    'Infrastructure & Policies',
+    '{"library": "lucide-react", "name": "baby"}'
   );
 -- Link amenities to venues (each venue gets 8-12 amenities)
 -- Serenity Hills Retreat
@@ -2019,16 +2013,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Serenity Hills Retreat'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Yoga Studio',
-    'Spa Center',
-    'Restaurant',
-    'Garden',
-    'Swimming Pool',
-    'Library',
-    'Terrace'
+    'Fitness / gym area',
+    'Tea / Coffee station',
+    'Swimming pool',
+    'Airport transfer',
+    'Vegetarian / vegan meals available',
+    'Shared rooms / Dorms',
+    'Special diet meals (gluten-free/ayurvedic)',
+    'Yoga hall / shala',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Parking on site'
   );
 -- Mountain View Sanctuary
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2038,17 +2032,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Mountain View Sanctuary'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Restaurant',
-    'Mountain Views',
-    'Hiking Trails',
-    'Library',
-    'Fire Pit',
-    'Organic Garden'
+    'Child-friendly',
+    'Eco-friendly',
+    'Pet friendly',
+    'Alcohol-free policy',
+    'Shared rooms / Dorms',
+    'Spa / massage room',
+    'Air conditioning',
+    'Fitness / gym area',
+    'Restaurant on site',
+    'Special diet meals (gluten-free/ayurvedic)'
   );
 -- Ocean Bliss Retreat
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2058,17 +2051,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Ocean Bliss Retreat'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Spa Center',
-    'Beach Access',
-    'Restaurant',
-    'Swimming Pool',
-    'Sunset Deck',
-    'Bar/Lounge',
-    'Terrace',
-    'Massage Therapy'
+    'Shared rooms / Dorms',
+    'Swimming pool',
+    'Kitchen (shared or professional)',
+    'Accessibility / wheelchair friendly',
+    'Vegetarian / vegan meals available',
+    'Special diet meals (gluten-free/ayurvedic)',
+    'Spa / massage room',
+    'Wi-Fi / Internet',
+    'Tea / Coffee station',
+    'Event / Workshop space (AV/projector)'
   );
 -- Alpine Wellness Lodge
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2078,18 +2070,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Alpine Wellness Lodge'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Spa Center',
-    'Fitness Center',
-    'Restaurant',
-    'Mountain Views',
-    'Hot Tub',
-    'Sauna',
-    'Steam Room',
-    'Conference Room',
-    'Bar/Lounge'
+    'Dining area',
+    'Alcohol-free policy',
+    'Eco-friendly',
+    'Meditation space / hall',
+    'Sauna / steam / jacuzzi',
+    'Yoga hall / shala',
+    'Vegetarian / vegan meals available',
+    'Event / Workshop space (AV/projector)',
+    'Air conditioning',
+    'Wi-Fi / Internet'
   );
 -- Sacred Valley Sanctuary
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2099,17 +2089,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Sacred Valley Sanctuary'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Mountain Views',
-    'Garden',
-    'Hiking Trails',
-    'Library',
-    'Fire Pit',
-    'Organic Garden'
+    'Parking on site',
+    'Wi-Fi / Internet',
+    'Spa / massage room',
+    'Accessibility / wheelchair friendly',
+    'Sauna / steam / jacuzzi',
+    'Private rooms',
+    'Shared rooms / Dorms',
+    'Dining area',
+    'Heating (for cold regions)',
+    'Eco-friendly'
   );
 -- Mindful Mountain Retreat
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2119,17 +2108,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Mindful Mountain Retreat'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Mountain Views',
-    'Garden',
-    'Hiking Trails',
-    'Library',
-    'Organic Garden',
-    'Fire Pit'
+    'Restaurant on site',
+    'Outdoor space / garden',
+    'Shared rooms / Dorms',
+    'Private rooms',
+    'Eco-friendly',
+    'Parking on site',
+    'Tea / Coffee station',
+    'Kitchen (shared or professional)',
+    'Air conditioning',
+    'Vegetarian / vegan meals available'
   );
 -- Coastal Zen Retreat
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2139,17 +2127,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Coastal Zen Retreat'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Yoga Studio',
-    'Meditation Room',
-    'Beach Access',
-    'Garden',
-    'Sunset Deck',
-    'Tea Station',
-    'Terrace',
-    'Library'
+    'Pet friendly',
+    'Spa / massage room',
+    'Air conditioning',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Wi-Fi / Internet',
+    'Vegetarian / vegan meals available',
+    'En-suite bathrooms',
+    'Fitness / gym area',
+    'Event / Workshop space (AV/projector)',
+    'Kitchen (shared or professional)'
   );
 -- Desert Oasis Center
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2159,17 +2146,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Desert Oasis Center'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Yoga Studio',
-    'Meditation Room',
-    'Garden',
-    'Terrace',
-    'Fire Pit',
-    'Stargazing Platform',
-    'Library',
-    'Organic Garden'
+    'Pet friendly',
+    'Tea / Coffee station',
+    'Meditation space / hall',
+    'Shared rooms / Dorms',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Wi-Fi / Internet',
+    'Vegetarian / vegan meals available',
+    'Airport transfer',
+    'Dining area',
+    'Child-friendly'
   );
 -- Forest Healing Lodge
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2179,17 +2165,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Forest Healing Lodge'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Garden',
-    'Hiking Trails',
-    'Fire Pit',
-    'Library',
-    'Organic Garden',
-    'Art Studio'
+    'Wi-Fi / Internet',
+    'Tea / Coffee station',
+    'Air conditioning',
+    'Swimming pool',
+    'Parking on site',
+    'Vegetarian / vegan meals available',
+    'Private rooms',
+    'Accessibility / wheelchair friendly',
+    'Event / Workshop space (AV/projector)',
+    'En-suite bathrooms'
   );
 -- Island Paradise Retreat
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2199,18 +2184,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Island Paradise Retreat'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Spa Center',
-    'Beach Access',
-    'Swimming Pool',
-    'Restaurant',
-    'Bar/Lounge',
-    'Terrace',
-    'Sunset Deck',
-    'Massage Therapy',
-    'Marine Activities'
+    'Wi-Fi / Internet',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Dining area',
+    'Vegetarian / vegan meals available',
+    'Parking on site',
+    'Outdoor space / garden',
+    'Fitness / gym area',
+    'Yoga hall / shala',
+    'Air conditioning',
+    'Airport transfer'
   );
 -- Himalayan Bliss Center
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2220,18 +2203,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Himalayan Bliss Center'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Mountain Views',
-    'Garden',
-    'Hiking Trails',
-    'Library',
-    'Fire Pit',
-    'Organic Garden',
-    'Tibetan Temple'
+    'Swimming pool',
+    'Meditation space / hall',
+    'Alcohol-free policy',
+    'Accessibility / wheelchair friendly',
+    'Eco-friendly',
+    'Sauna / steam / jacuzzi',
+    'Restaurant on site',
+    'Wi-Fi / Internet',
+    'Kitchen (shared or professional)',
+    'Shared rooms / Dorms'
   );
 -- Mediterranean Wellness Villa
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2241,18 +2222,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Mediterranean Wellness Villa'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Spa Center',
-    'Beach Access',
-    'Swimming Pool',
-    'Restaurant',
-    'Bar/Lounge',
-    'Terrace',
-    'Sunset Deck',
-    'Private Beach',
-    'Gourmet Kitchen'
+    'En-suite bathrooms',
+    'Fitness / gym area',
+    'Private rooms',
+    'Eco-friendly',
+    'Special diet meals (gluten-free/ayurvedic)',
+    'Event / Workshop space (AV/projector)',
+    'Tea / Coffee station',
+    'Airport transfer',
+    'Parking on site',
+    'Shared rooms / Dorms'
   );
 -- Zen Garden Retreat
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2262,17 +2241,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Zen Garden Retreat'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Garden',
-    'Tea House',
-    'Mountain Setting',
-    'Library',
-    'Zen Courtyard',
-    'Traditional Garden'
+    'Pet friendly',
+    'Spa / massage room',
+    'Heating (for cold regions)',
+    'Wi-Fi / Internet',
+    'Tea / Coffee station',
+    'Alcohol-free policy',
+    'Accessibility / wheelchair friendly',
+    'Air conditioning',
+    'Fitness / gym area',
+    'Parking on site'
   );
 -- Tropical Healing Center
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2282,18 +2260,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Tropical Healing Center'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Yoga Studio',
-    'Meditation Room',
-    'Garden',
-    'Beach Access',
-    'Organic Farm',
-    'Hiking Trails',
-    'Library',
-    'Healing Garden',
-    'Jungle Setting'
+    'En-suite bathrooms',
+    'Accessibility / wheelchair friendly',
+    'Dining area',
+    'Air conditioning',
+    'Private rooms',
+    'Yoga hall / shala',
+    'Heating (for cold regions)',
+    'Child-friendly',
+    'Fitness / gym area',
+    'Airport transfer'
   );
 -- Arctic Wellness Lodge
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2303,18 +2279,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Arctic Wellness Lodge'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Spa Center',
-    'Meditation Room',
-    'Northern Lights View',
-    'Ice Meditation Room',
-    'Sauna',
-    'Hot Tub',
-    'Library',
-    'Aurora Observatory',
-    'Arctic Landscape'
+    'Child-friendly',
+    'Meditation space / hall',
+    'Air conditioning',
+    'Heating (for cold regions)',
+    'Parking on site',
+    'Eco-friendly',
+    'Private rooms',
+    'Vegetarian / vegan meals available',
+    'Restaurant on site',
+    'Dining area'
   );
 -- Desert Rose Sanctuary
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2324,17 +2298,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Desert Rose Sanctuary'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Meditation Room',
-    'Garden',
-    'Desert Valley',
-    'Stargazing Platform',
-    'Fire Pit',
-    'Library',
-    'Desert Oasis',
-    'Sufi Meditation Hall'
+    'Child-friendly',
+    'Shared rooms / Dorms',
+    'Dining area',
+    'Heating (for cold regions)',
+    'Airport transfer',
+    'En-suite bathrooms',
+    'Eco-friendly',
+    'Restaurant on site',
+    'Kitchen (shared or professional)',
+    'Sauna / steam / jacuzzi'
   );
 -- Mountain Spirit Lodge
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2344,18 +2317,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Mountain Spirit Lodge'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Mountain Views',
-    'Garden',
-    'Hiking Trails',
-    'Library',
-    'Fire Pit',
-    'Andean Peak View',
-    'Peruvian Temple'
+    'Air conditioning',
+    'Spa / massage room',
+    'Pet friendly',
+    'Private rooms',
+    'Kitchen (shared or professional)',
+    'Restaurant on site',
+    'Child-friendly',
+    'Alcohol-free policy',
+    'Swimming pool',
+    'Dining area'
   );
 -- Ocean Spirit Center
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2365,18 +2336,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Ocean Spirit Center'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Spa Center',
-    'Beach Access',
-    'Swimming Pool',
-    'Marine Therapy Pool',
-    'Water Meditation',
-    'Coastal Wellness',
-    'Library',
-    'Oceanfront View',
-    'Marine Activities'
+    'Private rooms',
+    'Special diet meals (gluten-free/ayurvedic)',
+    'Outdoor space / garden',
+    'Wi-Fi / Internet',
+    'Event / Workshop space (AV/projector)',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Fitness / gym area',
+    'Yoga hall / shala',
+    'Airport transfer',
+    'Meditation space / hall'
   );
 -- Forest Wisdom Retreat
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2386,18 +2355,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Forest Wisdom Retreat'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Meditation Room',
-    'Garden',
-    'Hiking Trails',
-    'Ancient Forest',
-    'Shamanic Circle',
-    'Fire Pit',
-    'Library',
-    'Nature Connection',
-    'Forest Ceremony'
+    'Fitness / gym area',
+    'Spa / massage room',
+    'Event / Workshop space (AV/projector)',
+    'Dining area',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Vegetarian / vegan meals available',
+    'Outdoor space / garden',
+    'Eco-friendly',
+    'Child-friendly',
+    'Sauna / steam / jacuzzi'
   );
 -- Sky High Sanctuary
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2407,18 +2374,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Sky High Sanctuary'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Mountain Views',
-    'High Altitude Yoga',
-    'Cloud Meditation',
-    'Panoramic View',
-    'Library',
-    'Mountain Peak',
-    'Alpine Sanctuary'
+    'Accessibility / wheelchair friendly',
+    'Dining area',
+    'Sauna / steam / jacuzzi',
+    'Fitness / gym area',
+    'Special diet meals (gluten-free/ayurvedic)',
+    'Vegetarian / vegan meals available',
+    'Wi-Fi / Internet',
+    'Outdoor space / garden',
+    'Shared rooms / Dorms',
+    'Alcohol-free policy'
   );
 -- Valley of Peace
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2428,18 +2393,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Valley of Peace'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Meditation Room',
-    'Garden',
-    'Peaceful Valley',
-    'Silent Meditation Hall',
-    'Peace Workshop',
-    'Conflict Resolution',
-    'Library',
-    'Serene Setting',
-    'Valley Views'
+    'Outdoor space / garden',
+    'Alcohol-free policy',
+    'Private rooms',
+    'Child-friendly',
+    'Shared rooms / Dorms',
+    'Event / Workshop space (AV/projector)',
+    'Airport transfer',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Swimming pool',
+    'Eco-friendly'
   );
 -- Crystal Healing Center
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2449,18 +2412,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Crystal Healing Center'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Spa Center',
-    'Meditation Room',
-    'Crystal Garden',
-    'Energy Healing Room',
-    'Vibrational Medicine',
-    'Crystal Rich',
-    'Library',
-    'Healing Sanctuary',
-    'Crystal Therapy'
+    'Private rooms',
+    'Tea / Coffee station',
+    'Pet friendly',
+    'En-suite bathrooms',
+    'Event / Workshop space (AV/projector)',
+    'Air conditioning',
+    'Parking on site',
+    'Kitchen (shared or professional)',
+    'Vegetarian / vegan meals available',
+    'Wi-Fi / Internet'
   );
 -- Sunrise Wellness Resort
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2470,18 +2431,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Sunrise Wellness Resort'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Air Conditioning',
-    'Spa Center',
-    'Fitness Center',
-    'Swimming Pool',
-    'Restaurant',
-    'Bar/Lounge',
-    'Beach Access',
-    'Sunrise View',
-    'Premium Spa',
-    'Wellness Cuisine'
+    'Parking on site',
+    'Sauna / steam / jacuzzi',
+    'Kitchen (shared or professional)',
+    'Vegetarian / vegan meals available',
+    'Restaurant on site',
+    'Spa / massage room',
+    'Private rooms',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Accessibility / wheelchair friendly',
+    'Wi-Fi / Internet'
   );
 -- Sacred Mountain Lodge
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2491,18 +2450,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Sacred Mountain Lodge'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Meditation Room',
-    'Mountain Views',
-    'Sacred Peak',
-    'Spiritual Pilgrimage',
-    'Mountain Worship',
-    'Indigenous Healing',
-    'Library',
-    'Sacred Lodge',
-    'Hiking Trails'
+    'Alcohol-free policy',
+    'Wi-Fi / Internet',
+    'Activities (cooking class, tours, biking, etc.)',
+    'Outdoor space / garden',
+    'Tea / Coffee station',
+    'Accessibility / wheelchair friendly',
+    'Swimming pool',
+    'Fitness / gym area',
+    'Eco-friendly',
+    'Meditation space / hall'
   );
 -- Eternal Spring Center
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -2512,18 +2469,16 @@ FROM venues v,
   amenities a
 WHERE v.title = 'Eternal Spring Center'
   AND a.name IN (
-    'WiFi',
-    'Parking',
-    'Heating',
-    'Yoga Studio',
-    'Meditation Room',
-    'Garden',
-    'Spring Gardens',
-    'Seasonal Wellness',
-    'Nature Cycles',
-    'Sustainable Living',
-    'Library',
-    'Year-round Spring'
+    'Activities (cooking class, tours, biking, etc.)',
+    'Pet friendly',
+    'Restaurant on site',
+    'Sauna / steam / jacuzzi',
+    'Parking on site',
+    'Spa / massage room',
+    'Yoga hall / shala',
+    'Accessibility / wheelchair friendly',
+    'Shared rooms / Dorms',
+    'Air conditioning'
   );
 -- Insert cancellation policies for venues
 -- Each venue get only 1 cancellation policy with different timeframes
