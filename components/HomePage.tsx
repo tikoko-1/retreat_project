@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search, MapPin, Users, Calendar, CheckCircle, Clock, Shield, Globe, Star, TrendingUp, Heart, ArrowRight, Award, Zap, Target, Eye, DollarSign, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import SearchFilters, { FilterState } from "./SearchFilters";
+import SearchFilters from "./SearchFilters";
+import { FilterState } from "@/types";
 import RetreatCenterCard, { RetreatCenter } from "./RetreatCenterCard";
 import Link from "next/link";
 
@@ -253,41 +254,25 @@ export default function HomePage() {
     bedrooms: '',
     bathrooms: '',
     venueTypes: [],
-    foodOptions: [],
     cancellationPolicy: '',
     hasReviews: false,
     topRated: false,
   });
 
   const handleSearch = () => {
-    const params = new URLSearchParams();
-    
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
-        if (Array.isArray(value)) {
-          value.forEach(v => params.append(key, v));
-        } else {
-          params.set(key, value.toString());
-        }
-      }
-    });
-
-    const queryString = params.toString();
-    const catalogUrl = queryString ? `/catalog?${queryString}` : '/catalog';
-    router.push(catalogUrl);
+    router.push('/centers');
   };
 
   const handleRegionClick = (regionId: string) => {
-    const searchTerm = regionId.replace('-', ' ');
-    router.push(`/catalog?search=${encodeURIComponent(searchTerm)}`);
+    router.push('/centers');
   };
 
   const handleCountryClick = (country: string) => {
-    router.push(`/catalog?search=${encodeURIComponent(country)}`);
+    router.push('/centers');
   };
 
   const handleSelectRetreat = (id: string) => {
-    router.push(`/retreat/${id}`);
+    router.push(`/centers/${id}`);
   };
 
   const handleNavigateToHostPortal = () => {
@@ -308,23 +293,23 @@ export default function HomePage() {
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
           <div className="text-center mb-12">
             {/* Large bold headline */}
             <h1 className="text-5xl lg:text-7xl tracking-tight font-extralight text-white mb-6">
               500+ Verified Retreat Venues
             </h1>
-            
+
             {/* Subheadline */}
             <p className="text-xl lg:text-2xl text-white mb-12 max-w-4xl mx-auto leading-relaxed">
               From Bali to Costa Rica — trusted retreat venues worldwide.
             </p>
-            
+
             {/* Search bar directly below headline */}
             <div className="flex justify-center mb-12">
               <div className="w-full max-w-4xl">
-                <SearchFilters 
+                <SearchFilters
                   filters={filters}
                   onFiltersChange={setFilters}
                   resultCount={508}
@@ -347,7 +332,7 @@ export default function HomePage() {
               Discover amazing retreat destinations across nine diverse regions worldwide
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 gap-4">
             {regions.map((region) => (
               <button
@@ -361,13 +346,13 @@ export default function HomePage() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                
+
                 {/* Content positioned at bottom center */}
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
                   <h3 className="text-xl lg:text-2xl font-normal text-white mb-1">{region.name}</h3>
                   <p className="text-white/75 text-sm font-normal">{region.venueCount} venues</p>
                 </div>
-                
+
                 {/* Centered "Explore" text on hover */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 cursor-pointer hover:bg-black/90 hover:text-white transition-all duration-200">
@@ -392,7 +377,7 @@ export default function HomePage() {
               Browse our most sought-after retreat destinations with verified venues
             </p>
           </div>
-          
+
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-wrap justify-center gap-3">
               {popularCountries.map((country) => (
@@ -421,7 +406,7 @@ export default function HomePage() {
               Curated collection of the world's finest retreat destinations
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 min-[680px]:grid-cols-2 gap-6 mb-12">
             {featuredVenues.map((venue) => (
               <RetreatCenterCard
@@ -434,7 +419,7 @@ export default function HomePage() {
 
           <div className="text-center">
             <Link
-              href="/catalog"
+              href="/centers"
               className="bg-gray-900 text-white px-10 py-4 rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center gap-2 font-medium"
             >
               <span>View All Centers</span>
@@ -567,7 +552,7 @@ export default function HomePage() {
           <p className="text-xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed">
             Join thousands of retreat centers worldwide and connect with passionate retreat leaders.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
               onClick={handleNavigateToHostPortal}
@@ -576,7 +561,7 @@ export default function HomePage() {
               <span>Start Listing</span>
               <ArrowRight className="w-5 h-5" />
             </button>
-            
+
             <Link
               href="/guides"
               className="text-white/80 hover:text-white underline underline-offset-4 transition-colors font-medium"
