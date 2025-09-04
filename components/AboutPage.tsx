@@ -1,6 +1,18 @@
-'use client'
+"use client";
 
-import { Shield, Users, Award, Target, Zap, TrendingUp, ArrowRight, Compass, Heart, Star, Sparkles } from "lucide-react";
+import {
+  Shield,
+  Users,
+  Award,
+  Target,
+  Zap,
+  TrendingUp,
+  ArrowRight,
+  Compass,
+  Heart,
+  Star,
+  Sparkles,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
@@ -8,11 +20,11 @@ export default function AboutPage() {
   const router = useRouter();
 
   const handleNavigateToHostPortal = () => {
-    router.push('/dashboard');
+    router.push("/dashboard");
   };
 
   const handleNavigateToCatalog = () => {
-    router.push('/catalog');
+    router.push("/centers");
   };
 
   return (
@@ -23,15 +35,18 @@ export default function AboutPage() {
         <div className="relative max-w-6xl mx-auto px-6 lg:px-12 py-32 lg:py-40 text-center">
           <div className="space-y-12 lg:space-y-16">
             <h1 className="text-6xl lg:text-8xl xl:text-9xl tracking-[-0.02em] font-extralight leading-[0.9] text-black">
-              Retreat Industry<br />
+              Retreat Industry
+              <br />
               <span className="text-gray-500">Needs Fixing</span>
             </h1>
             <div className="max-w-3xl mx-auto space-y-8">
               <p className="text-2xl lg:text-3xl text-gray-600 font-light leading-relaxed">
-                We're building the world's most trusted platform for transformational experiences.
+                We're building the world's most trusted platform for
+                transformational experiences.
               </p>
               <p className="text-lg lg:text-xl text-gray-500 font-light max-w-2xl mx-auto">
-                No more hidden fees. No fake reviews. Just authentic connections.
+                No more hidden fees. No fake reviews. Just authentic
+                connections.
               </p>
             </div>
           </div>
@@ -61,7 +76,8 @@ export default function AboutPage() {
                   Transparency
                 </h3>
                 <p className="text-lg lg:text-xl text-gray-600 font-light leading-relaxed max-w-sm mx-auto">
-                  Real reviews, honest pricing, authentic experiences. No hidden fees.
+                  Real reviews, honest pricing, authentic experiences. No hidden
+                  fees.
                 </p>
               </div>
             </div>
@@ -76,7 +92,8 @@ export default function AboutPage() {
                   Community
                 </h3>
                 <p className="text-lg lg:text-xl text-gray-600 font-light leading-relaxed max-w-sm mx-auto">
-                  Connecting seekers with genuine teachers who prioritize transformation.
+                  Connecting seekers with genuine teachers who prioritize
+                  transformation.
                 </p>
               </div>
             </div>
@@ -91,7 +108,8 @@ export default function AboutPage() {
                   Excellence
                 </h3>
                 <p className="text-lg lg:text-xl text-gray-600 font-light leading-relaxed max-w-sm mx-auto">
-                  Curated selection of the world's finest retreat centers, vetted for quality.
+                  Curated selection of the world's finest retreat centers,
+                  vetted for quality.
                 </p>
               </div>
             </div>
@@ -131,7 +149,9 @@ export default function AboutPage() {
                     The Idea
                   </h3>
                   <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                    After a life-changing retreat experience, we realized the industry needed a trusted platform for authentic transformation.
+                    After a life-changing retreat experience, we realized the
+                    industry needed a trusted platform for authentic
+                    transformation.
                   </p>
                 </div>
               </div>
@@ -166,7 +186,8 @@ export default function AboutPage() {
                     Community Growth
                   </h3>
                   <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                    Our platform gained the trust of 2.6M+ seekers worldwide through curated recommendations and genuine reviews.
+                    Our platform gained the trust of 2.6M+ seekers worldwide
+                    through curated recommendations and genuine reviews.
                   </p>
                 </div>
               </div>
@@ -181,7 +202,8 @@ export default function AboutPage() {
                 Platform Launch
               </h3>
               <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed max-w-3xl mx-auto">
-                RetreatCenters.com launches as the definitive marketplace for vetted retreat centers and conscious facilitators.
+                RetreatCenters.com launches as the definitive marketplace for
+                vetted retreat centers and conscious facilitators.
               </p>
             </div>
           </div>
@@ -208,7 +230,8 @@ export default function AboutPage() {
                   Radical Honesty
                 </h3>
                 <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                  We believe in transparent communication, honest reviews, and authentic experiences without the marketing fluff.
+                  We believe in transparent communication, honest reviews, and
+                  authentic experiences without the marketing fluff.
                 </p>
               </div>
             </div>
@@ -223,7 +246,8 @@ export default function AboutPage() {
                   Quality Over Quantity
                 </h3>
                 <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                  Every retreat center in our network is carefully vetted. We'd rather have 100 exceptional centers than 1000 mediocre ones.
+                  Every retreat center in our network is carefully vetted. We'd
+                  rather have 100 exceptional centers than 1000 mediocre ones.
                 </p>
               </div>
             </div>
@@ -238,7 +262,8 @@ export default function AboutPage() {
                   Real Transformation
                 </h3>
                 <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                  We support experiences that create lasting change, not just Instagram moments or temporary escapes.
+                  We support experiences that create lasting change, not just
+                  Instagram moments or temporary escapes.
                 </p>
               </div>
             </div>
@@ -253,7 +278,8 @@ export default function AboutPage() {
                   Industry Disruption
                 </h3>
                 <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed">
-                  We're changing how people discover and book transformational experiences through technology and curation.
+                  We're changing how people discover and book transformational
+                  experiences through technology and curation.
                 </p>
               </div>
             </div>
@@ -278,23 +304,25 @@ export default function AboutPage() {
           <div className="space-y-16">
             <div className="space-y-8">
               <h2 className="text-5xl lg:text-7xl xl:text-8xl font-light tracking-[-0.02em] leading-[0.9] text-white">
-                Ready to Skip<br />
+                Ready to Skip
+                <br />
                 <span className="text-gray-400">the Bullshit?</span>
               </h2>
               <p className="text-2xl lg:text-3xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
-                Whether you're seeking transformation or offering it, we're here to make authentic connections happen.
+                Whether you're seeking transformation or offering it, we're here
+                to make authentic connections happen.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-              <button 
+              <button
                 onClick={handleNavigateToHostPortal}
                 className="bg-white text-black px-12 py-6 rounded-2xl hover:bg-gray-100 transition-all duration-300 text-xl font-medium inline-flex items-center justify-center gap-3 min-w-[280px]"
               >
                 List Your Center
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button 
+              <button
                 onClick={handleNavigateToCatalog}
                 className="border-2 border-white/20 bg-white/5 text-white px-12 py-6 rounded-2xl hover:bg-white/10 hover:border-white/30 transition-all duration-300 text-xl font-medium backdrop-blur-sm min-w-[280px]"
               >
