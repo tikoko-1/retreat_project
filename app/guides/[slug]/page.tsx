@@ -1,23 +1,25 @@
-import GuideDetailPage from '@/components/GuideDetailPage'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { notFound } from 'next/navigation'
+import GuideDetailPage from "@/components/GuideDetailPage";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { notFound } from "next/navigation";
 
 interface GuidePageProps {
-  params: {
-    slug: string
-  }
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
 export async function generateMetadata({ params }: GuidePageProps) {
+  const { slug } = await params;
   // In a real app, you would fetch guide data here
   return {
-    title: `Guide: ${params.slug} - Retreat Centers Platform`,
-    description: 'Expert guide for retreat organizers and yoga teachers.',
-  }
+    title: `Guide: ${slug} - Retreat Centers Platform`,
+    description: "Expert guide for retreat organizers and yoga teachers.",
+  };
 }
 
-export default function GuidePage({ params }: GuidePageProps) {
+export default async function GuidePage({ params }: GuidePageProps) {
+  const { slug } = await params;
   // In a real app, you would validate the slug exists
   // if (!guideExists(params.slug)) {
   //   notFound()
@@ -26,8 +28,8 @@ export default function GuidePage({ params }: GuidePageProps) {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <GuideDetailPage slug={params.slug} />
+      <GuideDetailPage slug={slug} />
       <Footer />
     </div>
-  )
+  );
 }

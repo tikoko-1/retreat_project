@@ -42,7 +42,7 @@ const statsCards = [
     title: "Pending inquiries",
     value: "8",
     change: "2 new today",
-    changeType: "neutral" as const,
+    changeType: "negative" as const,
     icon: MessageCircle
   }
 ];
