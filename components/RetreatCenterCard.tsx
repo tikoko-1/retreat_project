@@ -17,21 +17,9 @@ export default function RetreatCenterCard({
 
   // Determine status label
   const getStatusLabel = () => {
-    if (retreat.isNew)
+    if (retreat.label)
       return {
-        text: "New",
-        color:
-          "bg-white/90 backdrop-blur-sm text-gray-900 border border-white/50",
-      };
-    if (retreat.isVerified)
-      return {
-        text: "Verified",
-        color:
-          "bg-white/90 backdrop-blur-sm text-gray-900 border border-white/50",
-      };
-    if (retreat.avg_rating >= 4.8)
-      return {
-        text: "Popular",
+        text: retreat.label,
         color:
           "bg-white/90 backdrop-blur-sm text-gray-900 border border-white/50",
       };

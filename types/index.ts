@@ -18,8 +18,7 @@ export interface RetreatCenter {
   total_count: number;
   photos: string[];
   amenity_names: string[];
-  isVerified?: boolean;
-  isNew?: boolean;
+  label?: string;
   coordinates?: {
     lat: number;
     lng: number;

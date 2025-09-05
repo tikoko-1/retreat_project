@@ -202,7 +202,8 @@ INSERT INTO venues (
     bedrooms,
     bathrooms,
     website_url,
-    instagram_url
+    instagram_url,
+    label
   ) -- 1. Serenity Hills Retreat
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   vt.id,
@@ -223,7 +224,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   8,
   6,
   'https://serenityhills.com',
-  'https://google.com'
+  'https://google.com',
+  'New'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Resort'
 UNION ALL
@@ -247,7 +249,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   12,
   8,
   'https://mountainviewsanctuary.com',
-  'https://google.com'
+  'https://google.com',
+  'New'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -271,7 +274,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   6,
   4,
   'https://oceanblissretreat.com',
-  'https://google.com'
+  'https://google.com',
+  'New'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
@@ -295,7 +299,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   10,
   8,
   'https://alpinewellness.com',
-  'https://google.com'
+  'https://google.com',
+  'New'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -319,7 +324,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   5,
   3,
   'https://sacredvalleysanctuary.com',
-  'https://google.com'
+  'https://google.com',
+  'Popular'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -367,7 +373,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   4,
   3,
   'https://coastalzen.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
@@ -391,7 +398,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   6,
   4,
   'https://desertoasis.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -463,7 +471,8 @@ SELECT '44444444-4444-4444-4444-444444444444',
   8,
   6,
   'https://himalayanbliss.com',
-  'https://google.com'
+  'https://google.com',
+  'New'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -559,7 +568,8 @@ SELECT '44444444-4444-4444-4444-444444444444',
   5,
   4,
   'https://arcticwellness.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -583,7 +593,8 @@ SELECT '22222222-2222-2222-2222-222222222222',
   6,
   4,
   'https://desertrose.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -607,7 +618,8 @@ SELECT '22222222-2222-2222-2222-222222222222',
   7,
   5,
   'https://mountainspirit.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -631,7 +643,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   8,
   6,
   'https://oceanspirit.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -751,7 +764,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   15,
   12,
   'https://sunrisewellness.com',
-  'https://google.com'
+  'https://google.com',
+  'Popular'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -775,7 +789,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   8,
   6,
   'https://sacredmountain.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -799,7 +814,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   9,
   7,
   'https://eternalspring.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center';
 -- Insert sample favorites (linking clients to venues dynamically by title)

@@ -53,7 +53,7 @@ const featuredVenues: RetreatCenter[] = [
     ],
     bedrooms: 8,
     bathrooms: 6,
-    isVerified: true,
+    label: "Verified",
     description: "A serene retreat in the hills of Ubud, Indonesia.",
     city: "Ubud",
     address: "Jl. Raya Ubud, Indonesia",

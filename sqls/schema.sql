@@ -3,6 +3,7 @@
 -- =============================
 -- ENUMS
 CREATE TYPE venue_status AS ENUM ('draft', 'pending', 'published', 'rejected');
+CREATE TYPE venue_label AS ENUM ('New', 'Verified', 'Popular');
 CREATE TYPE price_code AS ENUM (
     'weekend',
     'per_night',
@@ -71,6 +72,7 @@ CREATE TABLE IF NOT EXISTS venues (
     bathrooms INT,
     website_url TEXT,
     instagram_url TEXT,
+    label venue_label,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
