@@ -349,7 +349,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   7,
   5,
   'https://mindfulmountain.com',
-  'https://google.com'
+  'https://google.com',
+  'Popular'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -423,7 +424,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   5,
   4,
   'https://foresthealing.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -447,7 +449,8 @@ SELECT '44444444-4444-4444-4444-444444444444',
   4,
   3,
   'https://islandparadise.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
@@ -496,7 +499,8 @@ SELECT '44444444-4444-4444-4444-444444444444',
   6,
   5,
   'https://mediterraneanwellness.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
@@ -520,7 +524,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   3,
   2,
   'https://zengardenretreat.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -544,7 +549,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   10,
   8,
   'https://tropicalhealing.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -668,7 +674,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   4,
   3,
   'https://forestwisdom.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -692,7 +699,8 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   4,
   3,
   'https://skyhighsanctuary.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -716,7 +724,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   12,
   8,
   'https://valleyofpeace.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
@@ -740,7 +749,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   6,
   4,
   'https://crystalhealing.com',
-  'https://google.com'
+  'https://google.com',
+  'Verified'::venue_label
 FROM venue_types vt
 WHERE vt.name = 'Retreat Center'
 UNION ALL
