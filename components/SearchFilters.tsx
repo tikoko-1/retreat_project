@@ -1,214 +1,278 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Users, DollarSign, SlidersHorizontal, MapPin, Star, Shield, Utensils, Home, Wifi, Car } from "lucide-react";
-import { TreePine, Heart, Waves, Dumbbell, ChefHat, Clock, Mic, Accessibility, Bed, Bath, Ruler, Coffee, Grape, Leaf, Pizza, BellRing, CreditCard, Award, CheckCircle, Camera } from "lucide-react";
+import * as React from "react";
+import {
+  Search,
+  Users,
+  SlidersHorizontal,
+  MapPin,
+  Star,
+  Shield,
+  Utensils,
+  Home,
+  X,
+  TreePine,
+  Bed,
+  Bath,
+  TreePalm,
+} from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "./ui/dialog";
-import { Slider } from "./ui/slider";
-import { Switch } from "./ui/switch";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { Checkbox } from "./ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import {
+  Dialog,
+  DialogContentWithoutCloseButton,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "./ui/dialog";
 import { Label } from "./ui/label";
+import { supabase } from "@/lib/supabase";
 
 export interface FilterState {
   search: string;
   guests: string;
-  priceRange: string;
   sortBy: string;
   amenities: string[];
-  // New filter fields
-  area: number[];
   bedrooms: string;
   bathrooms: string;
   venueTypes: string[];
-  foodOptions: string[];
-  cancellationPolicy: string;
-  hasReviews: boolean;
-  topRated: boolean;
 }
 
 interface SearchFiltersProps {
   filters: FilterState;
   onFiltersChange: (filters: FilterState) => void;
-  resultCount: number;
   onSearch?: () => void;
 }
 
-// Popular retreat locations for auto-suggest
-const popularLocations = [
-  // Countries
-  { name: 'Indonesia', type: 'country', popular: true },
-  { name: 'India', type: 'country', popular: true },
-  { name: 'Mexico', type: 'country', popular: true },
-  { name: 'United States', type: 'country', popular: true },
-  { name: 'Costa Rica', type: 'country', popular: true },
-  { name: 'Australia', type: 'country', popular: true },
-  { name: 'Peru', type: 'country', popular: true },
-  { name: 'Portugal', type: 'country', popular: true },
-  { name: 'Thailand', type: 'country', popular: true },
-  { name: 'Greece', type: 'country', popular: true },
-  { name: 'France', type: 'country', popular: true },
-  { name: 'Italy', type: 'country', popular: true },
-  { name: 'Spain', type: 'country', popular: true },
-  { name: 'Morocco', type: 'country', popular: true },
-  { name: 'Guatemala', type: 'country', popular: false },
-  { name: 'Nepal', type: 'country', popular: false },
-  { name: 'Sri Lanka', type: 'country', popular: false },
-  
-  // Cities
-  { name: 'Ubud, Indonesia', type: 'city', popular: true },
-  { name: 'Rishikesh, India', type: 'city', popular: true },
-  { name: 'Tulum, Mexico', type: 'city', popular: true },
-  { name: 'Sedona, United States', type: 'city', popular: true },
-  { name: 'Nosara, Costa Rica', type: 'city', popular: true },
-  { name: 'Byron Bay, Australia', type: 'city', popular: true },
-  { name: 'Sacred Valley, Peru', type: 'city', popular: true },
-  { name: 'Sintra, Portugal', type: 'city', popular: true },
-  { name: 'San Marcos, Guatemala', type: 'city', popular: false },
-  { name: 'Koh Samui, Thailand', type: 'city', popular: true },
-  { name: 'Mykonos, Greece', type: 'city', popular: true },
-  { name: 'Provence, France', type: 'city', popular: true },
-  { name: 'Tuscany, Italy', type: 'city', popular: true },
-  { name: 'Ibiza, Spain', type: 'city', popular: true },
-  { name: 'Marrakech, Morocco', type: 'city', popular: true },
-  { name: 'Paris, France', type: 'city', popular: false },
-  { name: 'London, United Kingdom', type: 'city', popular: false },
-  { name: 'New York, United States', type: 'city', popular: false },
-  { name: 'Los Angeles, United States', type: 'city', popular: false },
-  { name: 'Miami, United States', type: 'city', popular: false },
+// Popular retreat countries for auto-suggest
+const popularCountries = [
+  { name: "Indonesia (Bali)", popular: true },
+  { name: "Thailand", popular: true },
+  { name: "India", popular: true },
+  { name: "Sri Lanka", popular: true },
+  { name: "Nepal", popular: true },
+  { name: "Costa Rica", popular: true },
+  { name: "Mexico", popular: true },
+  { name: "United States", popular: true },
+  { name: "Canada", popular: true },
+  { name: "Portugal", popular: true },
+  { name: "Spain", popular: true },
+  { name: "Greece", popular: true },
+  { name: "Italy", popular: true },
+  { name: "France", popular: true },
+  { name: "Turkey", popular: true },
+  { name: "Morocco", popular: true },
+  { name: "Egypt", popular: true },
+  { name: "South Africa", popular: true },
+  { name: "Peru", popular: true },
+  { name: "Brazil", popular: true },
+  { name: "Colombia", popular: true },
+  { name: "Chile", popular: true },
+  { name: "Argentina", popular: true },
+  { name: "Australia", popular: true },
+  { name: "New Zealand", popular: true },
+  { name: "Japan", popular: true },
+  { name: "Vietnam", popular: true },
+  { name: "Cambodia", popular: true },
+  { name: "Philippines", popular: true },
+  { name: "Malaysia", popular: true },
 ];
 
 // Filter options
 const guestOptions = [
-  { value: '1-10', label: '1–10 guests' },
-  { value: '11-20', label: '11–20 guests' },
-  { value: '21-30', label: '21–30 guests' },
-  { value: '31-50', label: '31–50 guests' },
-  { value: '50+', label: '50+ guests' },
+  { value: "1-7", label: "1–7 guests" },
+  { value: "8-12", label: "8–12 guests" },
+  { value: "13-15", label: "13–15 guests" },
+  { value: "16-19", label: "16–19 guests" },
+  { value: "20-24", label: "20–24 guests" },
+  { value: "25-29", label: "25–29 guests" },
+  { value: "30-34", label: "30–34 guests" },
+  { value: "35-39", label: "35–39 guests" },
+  { value: "40-49", label: "40–49 guests" },
+  { value: "50-59", label: "50–59 guests" },
+  { value: "60-69", label: "60–69 guests" },
+  { value: "70-99", label: "70–99 guests" },
+  { value: "100+", label: "100+ guests" },
 ];
 
-const priceOptions = [
-  { value: '0-100', label: '$0–100' },
-  { value: '100-300', label: '$100–300' },
-  { value: '300-600', label: '$300–600' },
-  { value: '600-1000', label: '$600–1000' },
-  { value: '1000+', label: '$1000+' },
-];
+// Dynamic icon component for rendering Lucide icons
+function DynamicIcon({
+  iconName,
+  className,
+}: {
+  iconName: string;
+  className?: string;
+}) {
+  const pascalCaseName = iconName
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("");
+  const IconComponent = (LucideIcons as any)[pascalCaseName];
+  if (!IconComponent) {
+    return <Star className={className} />;
+  }
+  return <IconComponent className={className} />;
+}
 
-const bedroomOptions = [
-  { value: '1-5', label: '1–5 bedrooms' },
-  { value: '6-10', label: '6–10 bedrooms' },
-  { value: '11-20', label: '11–20 bedrooms' },
-  { value: '21-30', label: '21–30 bedrooms' },
-  { value: '30+', label: '30+ bedrooms' },
-];
-
-const bathroomOptions = [
-  { value: '1-3', label: '1–3 bathrooms' },
-  { value: '4-6', label: '4–6 bathrooms' },
-  { value: '7-10', label: '7–10 bathrooms' },
-  { value: '11-15', label: '11–15 bathrooms' },
-  { value: '15+', label: '15+ bathrooms' },
-];
-
-const venueTypeOptions = [
-  { value: 'resort', label: 'Resort', description: 'Full-service retreat resort' },
-  { value: 'villa', label: 'Private Villa', description: 'Exclusive private property' },
-  { value: 'hotel', label: 'Boutique Hotel', description: 'Wellness-focused hotel' },
-  { value: 'camp', label: 'Retreat Camp', description: 'Nature-based camp setting' },
-  { value: 'center', label: 'Wellness Center', description: 'Dedicated wellness facility' },
-  { value: 'monastery', label: 'Monastery/Ashram', description: 'Spiritual retreat space' },
-];
-
-const cancellationOptions = [
-  { value: 'flexible', label: 'Flexible (Free until 7 days)' },
-  { value: 'moderate', label: 'Moderate (Free until 14 days)' },
-  { value: 'strict', label: 'Strict (Free until 30 days)' },
-  { value: 'super-strict', label: 'Super Strict (50% refund only)' },
-];
-
-// Comprehensive amenity categories
-const amenityCategories = {
-  'Core Retreat Spaces': [
-    { id: 'yoga-hall', label: 'Yoga Hall', icon: TreePine },
-    { id: 'meditation-hall', label: 'Meditation Hall', icon: Heart },
-    { id: 'workshop-room', label: 'Workshop Room', icon: Users },
-    { id: 'conference-room', label: 'Conference Room', icon: Mic },
-    { id: 'breakout-rooms', label: 'Breakout Rooms', icon: Home },
-    { id: 'outdoor-pavilion', label: 'Outdoor Pavilion', icon: TreePine },
-    { id: 'therapy-rooms', label: 'Therapy Rooms', icon: Heart },
-    { id: 'dance-studio', label: 'Dance Studio', icon: Users },
-  ],
-  'Wellness & Recreation': [
-    { id: 'pool-heated', label: 'Heated Pool', icon: Waves },
-    { id: 'pool-infinity', label: 'Infinity Pool', icon: Waves },
-    { id: 'hot-tub', label: 'Hot Tub/Jacuzzi', icon: Waves },
-    { id: 'sauna-steam', label: 'Sauna/Steam', icon: Waves },
-    { id: 'spa-massage', label: 'Spa & Massage', icon: Heart },
-    { id: 'fitness-gym', label: 'Fitness Center', icon: Dumbbell },
-    { id: 'nature-trails', label: 'Nature Trails', icon: TreePine },
-    { id: 'beach-access', label: 'Beach Access', icon: Waves },
-    { id: 'tennis-court', label: 'Tennis Court', icon: Dumbbell },
-    { id: 'volleyball-court', label: 'Volleyball Court', icon: Dumbbell },
-  ],
-  'Infrastructure & Technology': [
-    { id: 'high-speed-wifi', label: 'High-speed Wi-Fi', icon: Wifi },
-    { id: 'professional-av', label: 'Professional AV', icon: Mic },
-    { id: 'sound-system', label: 'Sound System', icon: Mic },
-    { id: 'projector-screen', label: 'Projector & Screen', icon: Mic },
-    { id: 'air-conditioning', label: 'Air Conditioning', icon: Home },
-    { id: 'heating-system', label: 'Heating System', icon: Home },
-    { id: 'backup-generator', label: 'Backup Generator', icon: Home },
-    { id: 'water-filtration', label: 'Water Filtration', icon: Waves },
-  ],
-  'Logistics & Services': [
-    { id: 'airport-transfer', label: 'Airport Transfer', icon: Car },
-    { id: 'concierge-service', label: 'Concierge Service', icon: BellRing },
-    { id: 'housekeeping', label: 'Daily Housekeeping', icon: Home },
-    { id: 'laundry-service', label: 'Laundry Service', icon: Home },
-    { id: 'onsite-staff', label: 'On-site Staff 24/7', icon: Clock },
-    { id: 'parking', label: 'Free Parking', icon: Car },
-    { id: 'accessibility', label: 'Accessibility Features', icon: Accessibility },
-    { id: 'pet-friendly', label: 'Pet Friendly', icon: Heart },
-  ],
-};
-
-const foodCategories = {
-  'Dietary Options': [
-    { id: 'vegetarian', label: 'Vegetarian', icon: Leaf },
-    { id: 'vegan', label: 'Vegan', icon: Leaf },
-    { id: 'raw-food', label: 'Raw Food', icon: Leaf },
-    { id: 'gluten-free', label: 'Gluten-Free', icon: Leaf },
-    { id: 'organic', label: 'Organic', icon: Leaf },
-    { id: 'local-sourced', label: 'Locally Sourced', icon: Leaf },
-  ],
-  'Meal Services': [
-    { id: 'private-chef', label: 'Private Chef', icon: ChefHat },
-    { id: 'commercial-kitchen', label: 'Commercial Kitchen', icon: Utensils },
-    { id: 'catering-service', label: 'Catering Service', icon: Utensils },
-    { id: 'cooking-classes', label: 'Cooking Classes', icon: ChefHat },
-    { id: 'juice-bar', label: 'Juice Bar', icon: Coffee },
-    { id: 'tea-ceremony', label: 'Tea Ceremony', icon: Coffee },
-  ],
-};
-
-export default function SearchFilters({ filters, onFiltersChange, resultCount, onSearch }: SearchFiltersProps) {
+export default function SearchFilters({
+  filters,
+  onFiltersChange,
+  onSearch,
+}: SearchFiltersProps) {
   const [showModal, setShowModal] = useState(false);
   const [tempFilters, setTempFilters] = useState<FilterState>(filters);
-  
-  // Auto-suggest states
-  const [suggestions, setSuggestions] = useState<typeof popularLocations>([]);
+  const [suggestions, setSuggestions] = useState<
+    { name: string; popular: boolean }[]
+  >([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedSuggestionIndex, setSelectedSuggestionIndex] = useState(-1);
   const [inputFocused, setInputFocused] = useState(false);
-  
+  const [searchableCountries, setSearchableCountries] = useState<
+    { name: string; popular: boolean }[]
+  >([...popularCountries]);
+  const [venueTypeOptions, setVenueTypeOptions] = useState<
+    { name: string; icon: { name: string }; slug: string; id: string }[]
+  >([]);
+  const [amenityCategories, setAmenityCategories] = useState<{
+    "Practice & Wellness": {
+      id: string;
+      name: string;
+      slug: string;
+      icon: { name: string };
+    }[];
+    "Food & Dining": {
+      id: string;
+      name: string;
+      slug: string;
+      icon: { name: string };
+    }[];
+    "Living & Comfort": {
+      id: string;
+      name: string;
+      slug: string;
+      icon: { name: string };
+    }[];
+    "Extras & Nature": {
+      id: string;
+      name: string;
+      slug: string;
+      icon: { name: string };
+    }[];
+    "Infrastructure & Policies": {
+      id: string;
+      name: string;
+      slug: string;
+      icon: { name: string };
+    }[];
+  }>({
+    "Practice & Wellness": [
+      {
+        id: "",
+        name: "",
+        slug: "",
+        icon: { name: "" },
+      },
+    ],
+    "Food & Dining": [
+      {
+        id: "",
+        name: "",
+        slug: "",
+        icon: { name: "" },
+      },
+    ],
+    "Living & Comfort": [
+      {
+        id: "",
+        name: "",
+        slug: "",
+        icon: { name: "" },
+      },
+    ],
+    "Extras & Nature": [
+      {
+        id: "",
+        name: "",
+        slug: "",
+        icon: { name: "" },
+      },
+    ],
+    "Infrastructure & Policies": [
+      {
+        id: "",
+        name: "",
+        slug: "",
+        icon: { name: "" },
+      },
+    ],
+  });
+  const [tempCount, setTempCount] = useState(0);
+
   const searchInputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
 
   const updateFilters = (updates: Partial<FilterState>) => {
     onFiltersChange({ ...filters, ...updates });
   };
+
+  useEffect(() => {
+    const loadSearchableCountries = async () => {
+      const { data: possibleCountries } = await supabase
+        .from("venues")
+        .select("country")
+        .eq("status", "published");
+      if (possibleCountries) {
+        const uniqueCountries = Array.from(
+          new Set(
+            possibleCountries.map((possibleCountry) => possibleCountry.country)
+          )
+        ).filter(
+          (country) => !popularCountries.map((pc) => pc.name).includes(country)
+        );
+        setSearchableCountries([
+          ...popularCountries,
+          ...uniqueCountries.map((country) => ({
+            name: country,
+            popular: false,
+          })),
+        ]);
+      }
+    };
+
+    const loadVenueTypes = async () => {
+      const { data: possibleVenueTypes } = await supabase
+        .from("venue_types")
+        .select("*");
+      if (possibleVenueTypes) {
+        setVenueTypeOptions(possibleVenueTypes);
+      }
+    };
+    const loadAmenities = async () => {
+      const { data: allAmenities } = await supabase
+        .from("amenities")
+        .select("*");
+      if (allAmenities) {
+        const groupedAmenities = allAmenities.reduce((acc, amenity) => {
+          const group = amenity.group;
+          if (!acc[group]) {
+            acc[group] = [];
+          }
+          acc[group].push(amenity);
+          return acc;
+        }, {} as Record<string, any[]>);
+        setAmenityCategories(groupedAmenities);
+      }
+    };
+
+    Promise.all([loadSearchableCountries(), loadVenueTypes(), loadAmenities()]);
+  }, []);
 
   // Initialize temp filters when modal opens
   useEffect(() => {
@@ -221,16 +285,15 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
   useEffect(() => {
     const timer = setTimeout(() => {
       if (filters.search.length > 0) {
-        const filtered = popularLocations.filter(location =>
+        const filtered = searchableCountries.filter((location) =>
           location.name.toLowerCase().includes(filters.search.toLowerCase())
-        ).slice(0, 8);
-        
+        );
+
         setSuggestions(filtered);
         setShowSuggestions(filtered.length > 0 && inputFocused);
       } else {
-        const popularOnly = popularLocations.filter(loc => loc.popular).slice(0, 6);
-        setSuggestions(popularOnly);
-        setShowSuggestions(inputFocused && popularOnly.length > 0);
+        setSuggestions(searchableCountries);
+        setShowSuggestions(inputFocused && searchableCountries.length > 0);
       }
       setSelectedSuggestionIndex(-1);
     }, 150);
@@ -238,24 +301,76 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
     return () => clearTimeout(timer);
   }, [filters.search, inputFocused]);
 
+  useEffect(() => {
+    if (filters.search.trim().length > 0) {
+      const timer = setTimeout(async () => {
+        try {
+          const params = new URLSearchParams();
+          params.append("search", filters.search);
+          if (filters.guests) {
+            params.append("guests", filters.guests);
+          }
+          if (tempFilters.bedrooms) {
+            params.append("bedrooms", tempFilters.bedrooms);
+          }
+          if (tempFilters.bathrooms) {
+            params.append("bathrooms", tempFilters.bathrooms);
+          }
+          tempFilters.venueTypes.forEach((type) => {
+            params.append("venueTypes", type);
+          });
+          tempFilters.amenities.forEach((amenity) => {
+            params.append("amenities", amenity);
+          });
+          const response = await fetch(
+            `/api/centers/count?${params.toString()}`
+          );
+          const data = await response.json();
+          if (response.ok) {
+            setTempCount(data.count || 0);
+          } else {
+            console.error("Failed to fetch count:", data.error);
+            setTempCount(0);
+          }
+        } catch (error) {
+          console.error("Error fetching count:", error);
+          setTempCount(0);
+        }
+      }, 200);
+      return () => clearTimeout(timer);
+    } else {
+      setTempCount(0);
+    }
+  }, [
+    filters.search,
+    filters.guests,
+    tempFilters.bedrooms,
+    tempFilters.bathrooms,
+    tempFilters.venueTypes,
+    tempFilters.amenities,
+  ]);
+
   // Handle keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!showSuggestions) return;
 
     switch (e.key) {
-      case 'ArrowDown':
+      case "ArrowDown":
         e.preventDefault();
-        setSelectedSuggestionIndex(prev => 
+        setSelectedSuggestionIndex((prev) =>
           prev < suggestions.length - 1 ? prev + 1 : prev
         );
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         e.preventDefault();
-        setSelectedSuggestionIndex(prev => prev > 0 ? prev - 1 : -1);
+        setSelectedSuggestionIndex((prev) => (prev > 0 ? prev - 1 : -1));
         break;
-      case 'Enter':
+      case "Enter":
         e.preventDefault();
-        if (selectedSuggestionIndex >= 0 && suggestions[selectedSuggestionIndex]) {
+        if (
+          selectedSuggestionIndex >= 0 &&
+          suggestions[selectedSuggestionIndex]
+        ) {
           updateFilters({ search: suggestions[selectedSuggestionIndex].name });
           setShowSuggestions(false);
           setSelectedSuggestionIndex(-1);
@@ -268,7 +383,7 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
           searchInputRef.current?.blur();
         }
         break;
-      case 'Escape':
+      case "Escape":
         setShowSuggestions(false);
         setSelectedSuggestionIndex(-1);
         searchInputRef.current?.blur();
@@ -276,7 +391,10 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
     }
   };
 
-  const handleSuggestionClick = (suggestion: typeof popularLocations[0]) => {
+  const handleSuggestionClick = (suggestion: {
+    name: string;
+    popular: boolean;
+  }) => {
     updateFilters({ search: suggestion.name });
     setShowSuggestions(false);
     setSelectedSuggestionIndex(-1);
@@ -296,33 +414,24 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
   };
 
   const updateTempFilters = (updates: Partial<FilterState>) => {
-    setTempFilters(prev => ({ ...prev, ...updates }));
+    setTempFilters((prev) => ({ ...prev, ...updates }));
   };
 
   const toggleAmenity = (amenityId: string) => {
-    setTempFilters(prev => ({
+    setTempFilters((prev) => ({
       ...prev,
-      amenities: prev.amenities.includes(amenityId) 
-        ? prev.amenities.filter(id => id !== amenityId)
-        : [...prev.amenities, amenityId]
-    }));
-  };
-
-  const toggleFoodOption = (foodId: string) => {
-    setTempFilters(prev => ({
-      ...prev,
-      foodOptions: prev.foodOptions.includes(foodId) 
-        ? prev.foodOptions.filter(id => id !== foodId)
-        : [...prev.foodOptions, foodId]
+      amenities: prev.amenities.includes(amenityId)
+        ? prev.amenities.filter((id) => id !== amenityId)
+        : [...prev.amenities, amenityId],
     }));
   };
 
   const toggleVenueType = (venueTypeId: string) => {
-    setTempFilters(prev => ({
+    setTempFilters((prev) => ({
       ...prev,
-      venueTypes: prev.venueTypes.includes(venueTypeId) 
-        ? prev.venueTypes.filter(id => id !== venueTypeId)
-        : [...prev.venueTypes, venueTypeId]
+      venueTypes: prev.venueTypes.includes(venueTypeId)
+        ? prev.venueTypes.filter((id) => id !== venueTypeId)
+        : [...prev.venueTypes, venueTypeId],
     }));
   };
 
@@ -334,18 +443,12 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
   const clearAllFilters = () => {
     const clearedFilters: FilterState = {
       search: filters.search,
-      guests: '',
-      priceRange: '',
-      sortBy: 'relevance',
+      guests: filters.guests,
+      sortBy: filters.sortBy,
       amenities: [],
-      area: [100, 10000],
-      bedrooms: '',
-      bathrooms: '',
+      bedrooms: "",
+      bathrooms: "",
       venueTypes: [],
-      foodOptions: [],
-      cancellationPolicy: '',
-      hasReviews: false,
-      topRated: false,
     };
     setTempFilters(clearedFilters);
     onFiltersChange(clearedFilters);
@@ -357,9 +460,11 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
     setShowModal(true);
   };
 
-  const hasActiveFilters = filters.guests || filters.priceRange || filters.amenities.length > 0 || 
-    filters.bedrooms || filters.bathrooms || filters.venueTypes.length > 0 || filters.foodOptions.length > 0 ||
-    filters.cancellationPolicy || filters.hasReviews || filters.topRated;
+  const hasActiveFilters =
+    filters.amenities.length > 0 ||
+    filters.bedrooms ||
+    filters.bathrooms ||
+    filters.venueTypes.length > 0;
 
   return (
     <>
@@ -377,42 +482,74 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
             onKeyDown={handleKeyDown}
-            className="w-full h-12 pl-11 pr-4 bg-white border border-gray-200 rounded-md text-sm font-medium text-gray-900 placeholder:text-gray-500 placeholder:font-normal transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white focus:outline-none"
-            style={{ height: '48px', lineHeight: '1.5' }}
+            className="w-full h-12 pl-11 pr-4 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-900 placeholder:text-gray-500 placeholder:font-normal transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white focus:outline-none"
+            style={{ height: "48px", lineHeight: "1.5" }}
           />
-          
+
           {/* Auto-suggest Dropdown */}
           {showSuggestions && (
-            <div 
+            <div
               ref={suggestionsRef}
-              className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-50 max-h-80 overflow-y-auto"
+              className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto"
             >
               {suggestions.length > 0 ? (
                 <>
-                  {filters.search.length === 0 && (
-                    <div className="px-4 py-2 text-xs font-medium text-gray-500 border-b border-gray-100">
-                      Popular destinations
-                    </div>
-                  )}
-                  {suggestions.map((suggestion, index) => (
-                    <button
-                      key={`${suggestion.name}-${suggestion.type}`}
-                      onClick={() => handleSuggestionClick(suggestion)}
-                      className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${
-                        index === selectedSuggestionIndex ? 'bg-gray-50' : ''
-                      }`}
-                    >
-                      <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                      <div className="flex-1 min-w-0">
-                        <div className="text-sm font-medium text-gray-900">
-                          {suggestion.name}
-                        </div>
-                        <div className="text-xs text-gray-500 capitalize">
-                          {suggestion.type}
-                        </div>
+                  {filters.search.length === 0 &&
+                    searchableCountries.filter((sc) => sc.popular).length >
+                      0 && (
+                      <div className="px-4 py-2 text-xs font-medium text-gray-500 border-b border-gray-100">
+                        Popular destinations
                       </div>
-                    </button>
-                  ))}
+                    )}
+                  {suggestions
+                    .filter((suggestion) => suggestion.popular)
+                    .map((suggestion, index) => (
+                      <button
+                        key={`${suggestion.name}`}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${
+                          index === selectedSuggestionIndex ? "bg-gray-50" : ""
+                        }`}
+                      >
+                        <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-medium text-gray-900">
+                            {suggestion.name}
+                          </div>
+                          <div className="text-xs text-gray-500 capitalize">
+                            Country
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  {filters.search.length === 0 &&
+                    searchableCountries.filter((sc) => !sc.popular).length >
+                      0 && (
+                      <div className="px-4 py-2 text-xs font-medium text-gray-500 border-b border-gray-100">
+                        General destinations
+                      </div>
+                    )}
+                  {suggestions
+                    .filter((suggestion) => !suggestion.popular)
+                    .map((suggestion, index) => (
+                      <button
+                        key={`${suggestion.name}`}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${
+                          index === selectedSuggestionIndex ? "bg-gray-50" : ""
+                        }`}
+                      >
+                        <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-medium text-gray-900">
+                            {suggestion.name}
+                          </div>
+                          <div className="text-xs text-gray-500 capitalize">
+                            Country
+                          </div>
+                        </div>
+                      </button>
+                    ))}
                 </>
               ) : (
                 <div className="px-4 py-3 text-sm text-gray-500 text-center">
@@ -426,18 +563,26 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
         {/* Secondary filters - Row on mobile, inline on desktop */}
         <div className="flex items-center gap-3 w-full lg:w-auto">
           {/* Guests */}
-          <Select value={filters.guests} onValueChange={(value) => updateFilters({ guests: value })}>
-            <SelectTrigger 
-              className="flex-1 lg:w-40 bg-white border border-gray-200 rounded-md text-sm font-medium text-gray-900 transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white"
-              style={{ height: '48px', lineHeight: '1.5', minHeight: '48px', maxHeight: '48px' }}
+          <Select
+            value={filters.guests}
+            onValueChange={(value) => updateFilters({ guests: value })}
+          >
+            <SelectTrigger
+              className="flex-1 lg:w-40 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-900 transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white"
+              style={{
+                height: "48px",
+                lineHeight: "1.5",
+                minHeight: "48px",
+                maxHeight: "48px",
+              }}
             >
               <Users className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" />
               <SelectValue placeholder="Guests" />
             </SelectTrigger>
-            <SelectContent className="bg-white border border-gray-200 rounded-md shadow-lg">
+            <SelectContent className="bg-white border border-gray-200 rounded-lg shadow-lg">
               {guestOptions.map((option) => (
-                <SelectItem 
-                  key={option.value} 
+                <SelectItem
+                  key={option.value}
                   value={option.value}
                   className="text-sm font-medium text-gray-900 hover:bg-gray-50 focus:bg-gray-50 cursor-pointer px-4 py-2"
                 >
@@ -450,8 +595,15 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
           {/* More Filters */}
           <button
             onClick={openModal}
-            className={`flex-1 lg:flex-none px-4 bg-white border border-gray-200 rounded-md text-sm font-medium text-gray-900 transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white focus:outline-none flex items-center justify-center gap-2.5 whitespace-nowrap ${hasActiveFilters ? 'border-gray-900 bg-gray-50' : ''}`}
-            style={{ height: '48px', lineHeight: '1.5', minHeight: '48px', maxHeight: '48px' }}
+            className={`flex-1 lg:flex-none px-4 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-900 transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white focus:outline-none flex items-center justify-center gap-2.5 whitespace-nowrap ${
+              hasActiveFilters ? "border-gray-900 bg-gray-50" : ""
+            }`}
+            style={{
+              height: "48px",
+              lineHeight: "1.5",
+              minHeight: "48px",
+              maxHeight: "48px",
+            }}
           >
             <SlidersHorizontal className="w-4 h-4 text-gray-400 flex-shrink-0" />
             <span>More filters</span>
@@ -464,8 +616,13 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
           {onSearch && (
             <button
               onClick={onSearch}
-              className="flex-1 lg:flex-none px-6 bg-gray-600 text-white rounded-md text-sm font-medium transition-all duration-200 hover:bg-gray-700 focus:bg-gray-700 focus:ring-2 focus:ring-gray-600/10 focus:outline-none flex items-center justify-center gap-2 whitespace-nowrap"
-              style={{ height: '48px', lineHeight: '1.5', minHeight: '48px', maxHeight: '48px' }}
+              className="flex-1 lg:flex-none px-6 bg-gray-600 text-white rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-700 focus:bg-gray-700 focus:ring-2 focus:ring-gray-600/10 focus:outline-none flex items-center justify-center gap-2 whitespace-nowrap"
+              style={{
+                height: "48px",
+                lineHeight: "1.5",
+                minHeight: "48px",
+                maxHeight: "48px",
+              }}
             >
               <Search className="w-4 h-4 flex-shrink-0" />
               <span>Search</span>
@@ -476,18 +633,31 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
 
       {/* Extended Filters Modal */}
       <Dialog open={showModal} onOpenChange={setShowModal}>
-        <DialogContent className="max-w-4xl h-[85vh] p-0 flex flex-col rounded-lg border border-gray-200 shadow-xl">
+        <DialogContentWithoutCloseButton className="!max-w-none !w-[95vw] sm:!w-[85vw] md:!w-[70vw] lg:!w-[50vw] xl:!w-[32vw] h-[80vh] sm:h-[70vh] md:h-[65vh] lg:h-[57vh] p-0 flex flex-col rounded-xl border border-gray-200 shadow-xl">
           <div className="flex flex-col h-full">
             {/* Header */}
-            <DialogHeader className="px-6 py-5 border-b border-gray-100 bg-white">
-              <DialogTitle className="text-xl font-semibold text-gray-900">Advanced Filters</DialogTitle>
-              <DialogDescription className="text-sm text-gray-600 mt-1">
-                Refine your search with detailed criteria to find the perfect retreat venue.
-              </DialogDescription>
+            <DialogHeader className="px-6 py-5 border-b border-gray-100 bg-white relative rounded-t-xl !text-left">
+              <div className="flex items-center justify-between">
+                <div className="text-left">
+                  <DialogTitle className="text-2xl font-semibold text-gray-900 text-left">
+                    Advanced Filters
+                  </DialogTitle>
+                  <DialogDescription className="text-sm text-gray-600 mt-1 text-left">
+                    Refine your search with detailed criteria to find the
+                    perfect retreat venue.
+                  </DialogDescription>
+                </div>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="w-8 h-8 min-w-8 min-h-8 flex-shrink-0 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4 flex-shrink-0" />
+                </button>
+              </div>
             </DialogHeader>
-            
+
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6 bg-white" style={{ maxHeight: 'calc(85vh - 180px)' }}>
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-white rounded-t-none modal-content-height">
               <div className="space-y-8">
                 {/* Property Details */}
                 <div>
@@ -495,53 +665,42 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
                     <Home className="w-5 h-5 text-gray-600" />
                     Property Details
                   </h3>
-                  
-                  {/* Area Size Slider */}
-                  <div className="mb-8">
-                    <Label className="text-sm font-medium text-gray-700 mb-4 block">
-                      Total Area: {tempFilters.area?.[0] || 100} - {tempFilters.area?.[1] || 10000} sq ft
-                    </Label>
-                    <Slider
-                      value={tempFilters.area || [100, 10000]}
-                      onValueChange={(value) => updateTempFilters({ area: value })}
-                      max={20000}
-                      min={100}
-                      step={100}
-                      className="mb-3"
-                    />
-                    <div className="flex justify-between text-xs text-gray-500">
-                      <span>100 sq ft</span>
-                      <span>20,000 sq ft</span>
-                    </div>
-                  </div>
 
                   {/* Bedrooms & Bathrooms */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label className="text-sm font-medium text-gray-700 mb-3 block">Bedrooms</Label>
+                      <Label className="text-sm font-medium text-gray-700 mb-3 block">
+                        Bedrooms
+                      </Label>
                       <div className="relative">
                         <Bed className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                         <Input
                           type="number"
                           placeholder="Any"
                           value={tempFilters.bedrooms}
-                          onChange={(e) => updateTempFilters({ bedrooms: e.target.value })}
+                          onChange={(e) =>
+                            updateTempFilters({ bedrooms: e.target.value })
+                          }
                           className="pl-11 h-12"
                           min="0"
                           max="50"
                         />
                       </div>
                     </div>
-                    
+
                     <div>
-                      <Label className="text-sm font-medium text-gray-700 mb-3 block">Bathrooms</Label>
+                      <Label className="text-sm font-medium text-gray-700 mb-3 block">
+                        Bathrooms
+                      </Label>
                       <div className="relative">
                         <Bath className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                         <Input
                           type="number"
                           placeholder="Any"
                           value={tempFilters.bathrooms}
-                          onChange={(e) => updateTempFilters({ bathrooms: e.target.value })}
+                          onChange={(e) =>
+                            updateTempFilters({ bathrooms: e.target.value })
+                          }
                           className="pl-11 h-12"
                           min="0"
                           max="30"
@@ -557,91 +716,148 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
                     <TreePine className="w-5 h-5 text-gray-600" />
                     Venue Type
                   </h3>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {venueTypeOptions.map((type) => {
-                      const isSelected = tempFilters.venueTypes.includes(type.value);
+                      const isSelected = tempFilters.venueTypes.includes(
+                        type.id
+                      );
                       return (
-                        <div key={type.value} className="flex items-center space-x-3">
-                          <Checkbox
-                            id={type.value}
-                            checked={isSelected}
-                            onCheckedChange={() => toggleVenueType(type.value)}
+                        <button
+                          key={type.id}
+                          onClick={() => toggleVenueType(type.id)}
+                          className={`modal-filter-tag ${
+                            isSelected ? "active" : "inactive"
+                          }`}
+                        >
+                          <DynamicIcon
+                            iconName={type.icon.name}
+                            className="w-4 h-4"
                           />
-                          <Label htmlFor={type.value} className="text-sm font-medium text-gray-900 cursor-pointer">
-                            {type.label}
-                          </Label>
-                        </div>
+                          {type.name}
+                        </button>
                       );
                     })}
                   </div>
                 </div>
 
-                {/* Core Amenities */}
+                {/* Practice & Wellness */}
                 <div>
                   <h3 className="text-base font-semibold mb-4 text-gray-900 flex items-center gap-2">
                     <Star className="w-5 h-5 text-gray-600" />
-                    Core Amenities
+                    Practice & Wellness
                   </h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {amenityCategories['Core Retreat Spaces'].concat(amenityCategories['Wellness & Recreation']).map((amenity) => {
-                      const IconComponent = amenity.icon;
-                      const isSelected = tempFilters.amenities.includes(amenity.id);
+                  <div className="flex flex-wrap gap-2">
+                    {amenityCategories["Practice & Wellness"].map((amenity) => {
+                      const isSelected = tempFilters.amenities.includes(
+                        amenity.id
+                      );
                       return (
-                        <div key={amenity.id} className="flex items-center space-x-3">
-                          <Checkbox
-                            id={amenity.id}
-                            checked={isSelected}
-                            onCheckedChange={(checked) => {
-                              if (checked) {
-                                toggleAmenity(amenity.id);
-                              } else {
-                                toggleAmenity(amenity.id);
-                              }
-                            }}
+                        <button
+                          key={amenity.id}
+                          onClick={() => toggleAmenity(amenity.id)}
+                          className={`modal-filter-tag ${
+                            isSelected ? "active" : "inactive"
+                          }`}
+                        >
+                          <DynamicIcon
+                            iconName={amenity.icon.name}
+                            className="w-4 h-4"
                           />
-                          <Label htmlFor={amenity.id} className="flex items-center gap-2 text-sm cursor-pointer">
-                            <IconComponent className="w-4 h-4 text-gray-600" />
-                            {amenity.label}
-                          </Label>
-                        </div>
+                          {amenity.name}
+                        </button>
                       );
                     })}
                   </div>
                 </div>
 
-                {/* Food & Services */}
+                {/* Food & Dining */}
                 <div>
                   <h3 className="text-base font-semibold mb-4 text-gray-900 flex items-center gap-2">
                     <Utensils className="w-5 h-5 text-gray-600" />
-                    Food & Services
+                    Food & Dining
                   </h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {Object.values(foodCategories).flat().concat(amenityCategories['Logistics & Services']).map((item) => {
-                      const IconComponent = item.icon;
-                      const isFood = tempFilters.foodOptions.includes(item.id);
-                      const isAmenity = tempFilters.amenities.includes(item.id);
-                      const isSelected = isFood || isAmenity;
-                      
-                      const handleChange = (checked: boolean) => {
-                        if (Object.values(foodCategories).flat().some(food => food.id === item.id)) {
-                          toggleFoodOption(item.id);
-                        } else {
-                          toggleAmenity(item.id);
-                        }
-                      };
-                      
+                  <div className="flex flex-wrap gap-2">
+                    {amenityCategories["Food & Dining"].map((item) => {
+                      const isSelected = tempFilters.amenities.includes(
+                        item.id
+                      );
+
                       return (
-                        <div key={item.id} className="flex items-center space-x-3">
-                          <Checkbox
-                            id={item.id}
-                            checked={isSelected}
-                            onCheckedChange={handleChange}
+                        <button
+                          key={item.id}
+                          onClick={() => toggleAmenity(item.id)}
+                          className={`modal-filter-tag ${
+                            isSelected ? "active" : "inactive"
+                          }`}
+                        >
+                          <DynamicIcon
+                            iconName={item.icon.name}
+                            className="w-4 h-4"
                           />
-                          <Label htmlFor={item.id} className="flex items-center gap-2 text-sm cursor-pointer">
-                            <IconComponent className="w-4 h-4 text-gray-600" />
-                            {item.label}
-                          </Label>
-                        </div>
+                          {item.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Living & Comfort */}
+                <div>
+                  <h3 className="text-base font-semibold mb-4 text-gray-900 flex items-center gap-2">
+                    <Bed className="w-5 h-5 text-gray-600" />
+                    Living & Comfort
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {amenityCategories["Living & Comfort"].map((item) => {
+                      const isSelected = tempFilters.amenities.includes(
+                        item.id
+                      );
+
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => toggleAmenity(item.id)}
+                          className={`modal-filter-tag ${
+                            isSelected ? "active" : "inactive"
+                          }`}
+                        >
+                          <DynamicIcon
+                            iconName={item.icon.name}
+                            className="w-4 h-4"
+                          />
+                          {item.name}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Extras & Nature */}
+                <div>
+                  <h3 className="text-base font-semibold mb-4 text-gray-900 flex items-center gap-2">
+                    <TreePalm className="w-5 h-5 text-gray-600" />
+                    Extras & Nature
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {amenityCategories["Extras & Nature"].map((item) => {
+                      const isSelected = tempFilters.amenities.includes(
+                        item.id
+                      );
+
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => toggleAmenity(item.id)}
+                          className={`modal-filter-tag ${
+                            isSelected ? "active" : "inactive"
+                          }`}
+                        >
+                          <DynamicIcon
+                            iconName={item.icon.name}
+                            className="w-4 h-4"
+                          />
+                          {item.name}
+                        </button>
                       );
                     })}
                   </div>
@@ -653,103 +869,68 @@ export default function SearchFilters({ filters, onFiltersChange, resultCount, o
                     <Shield className="w-5 h-5 text-gray-600" />
                     Infrastructure & Policies
                   </h3>
-                  
-                  {/* Infrastructure Amenities */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-medium mb-3 text-gray-700">Infrastructure</h4>
-                    <div className="grid grid-cols-2 gap-3">
-                      {amenityCategories['Infrastructure & Technology'].map((amenity) => {
-                        const IconComponent = amenity.icon;
-                        const isSelected = tempFilters.amenities.includes(amenity.id);
-                        return (
-                          <div key={amenity.id} className="flex items-center space-x-3">
-                            <Checkbox
-                              id={amenity.id}
-                              checked={isSelected}
-                              onCheckedChange={() => toggleAmenity(amenity.id)}
-                            />
-                            <Label htmlFor={amenity.id} className="flex items-center gap-2 text-sm cursor-pointer">
-                              <IconComponent className="w-4 h-4 text-gray-600" />
-                              {amenity.label}
-                            </Label>
-                          </div>
+                  <div className="flex flex-wrap gap-2">
+                    {amenityCategories["Infrastructure & Policies"].map(
+                      (item) => {
+                        const isSelected = tempFilters.amenities.includes(
+                          item.id
                         );
-                      })}
-                    </div>
-                  </div>
-                  
-                  {/* Cancellation Policy */}
-                  <div className="mb-6">
-                    <Label className="text-sm font-medium text-gray-700 mb-3 block">Cancellation Policy</Label>
-                    <Select value={tempFilters.cancellationPolicy} onValueChange={(value) => updateTempFilters({ cancellationPolicy: value })}>
-                      <SelectTrigger className="h-12">
-                        <CreditCard className="w-4 h-4 mr-2 text-gray-400" />
-                        <SelectValue placeholder="Any policy" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {cancellationOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
-                            {option.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
 
-                  {/* Quality Toggles */}
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 border border-gray-200 rounded-md">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-gray-600" />
-                        <div>
-                          <div className="font-medium text-gray-900">Venues with Reviews</div>
-                          <div className="text-sm text-gray-500">Only show venues that have guest reviews</div>
-                        </div>
-                      </div>
-                      <Switch
-                        checked={tempFilters.hasReviews}
-                        onCheckedChange={(checked) => updateTempFilters({ hasReviews: checked })}
-                      />
-                    </div>
-
-                    <div className="flex items-center justify-between p-3 border border-gray-200 rounded-md">
-                      <div className="flex items-center gap-3">
-                        <Award className="w-5 h-5 text-gray-600" />
-                        <div>
-                          <div className="font-medium text-gray-900">Top Rated Only</div>
-                          <div className="text-sm text-gray-500">Show only venues with 4.5+ star rating</div>
-                        </div>
-                      </div>
-                      <Switch
-                        checked={tempFilters.topRated}
-                        onCheckedChange={(checked) => updateTempFilters({ topRated: checked })}
-                      />
-                    </div>
+                        return (
+                          <button
+                            key={item.id}
+                            onClick={() => toggleAmenity(item.id)}
+                            className={`modal-filter-tag ${
+                              isSelected ? "active" : "inactive"
+                            }`}
+                          >
+                            <DynamicIcon
+                              iconName={item.icon.name}
+                              className="w-4 h-4"
+                            />
+                            {item.name}
+                          </button>
+                        );
+                      }
+                    )}
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Footer */}
-            <div className="border-t border-gray-100 bg-white px-6 py-5">
-              <div className="flex justify-between items-center gap-4">
-                <Button 
-                  variant="ghost" 
+            <div className="px-6 py-4 border-t border-gray-100 bg-white rounded-b-xl">
+              <div className="flex items-center justify-between gap-4">
+                <button
                   onClick={clearAllFilters}
-                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all duration-200 h-12 px-6"
+                  className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
                 >
-                  Clear all filters
-                </Button>
-                <Button 
-                  onClick={applyFilters} 
-                  className="bg-gray-900 text-white hover:bg-gray-800 px-8 h-12 rounded-md font-medium transition-all duration-200 shadow-sm hover:shadow-md"
-                >
-                  Show {resultCount} venues
-                </Button>
+                  Clear all
+                </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setShowModal(false)}
+                    className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <Button
+                    onClick={applyFilters}
+                    className="px-6 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-800 transition-colors"
+                  >
+                    Show {filters.search.trim() === "" ? "" : tempCount}{" "}
+                    retreats
+                  </Button>
+                </div>
               </div>
+              {filters.search.trim() === "" && (
+                <span className="text-xs text-right block mt-2 text-gray-600">
+                  Select a location to see the count
+                </span>
+              )}
             </div>
           </div>
-        </DialogContent>
+        </DialogContentWithoutCloseButton>
       </Dialog>
     </>
   );

@@ -1,4 +1,4 @@
-export type ViewMode = 'home' | 'retreat-center' | 'dashboard' | 'catalog' | 'guides' | 'guide-detail' | 'blog' | 'blog-detail' | 'about';
+export type ViewMode = 'home' | 'retreat-center' | 'dashboard' | 'centers' | 'guides' | 'guide-detail' | 'blog' | 'blog-detail' | 'about';
 
 export interface NavigationHandlers {
   onNavigateToHome: () => void;
@@ -19,7 +19,7 @@ export function createNavigationHandlers(
 ): NavigationHandlers {
   return {
     onNavigateToHome: () => setCurrentView('home'),
-    onNavigateToCatalog: () => setCurrentView('catalog'),
+    onNavigateToCatalog: () => setCurrentView('centers'),
     onNavigateToHostPortal: () => setCurrentView('dashboard'),
     onNavigateToGuides: () => setCurrentView('guides'),
     onNavigateToBlog: () => setCurrentView('blog'),

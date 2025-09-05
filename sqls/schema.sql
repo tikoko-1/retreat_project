@@ -44,7 +44,8 @@ CREATE TABLE IF NOT EXISTS profiles (
 CREATE TABLE IF NOT EXISTS venue_types (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name TEXT NOT NULL,
-    description TEXT,
+    slug TEXT NOT NULL,
+    icon JSONB,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 -- VENUES

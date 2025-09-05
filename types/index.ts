@@ -1,18 +1,23 @@
 export interface RetreatCenter {
   id: string;
-  name: string;
-  location: string;
-  description?: string;
-  image: string;
-  rating: number;
-  reviewCount: number;
-  capacity: number;
-  priceRange: string;
-  amenities: string[];
-  highlights: string[];
+  title: string;
+  description: string;
+  country: string;
+  city: string;
+  address: string;
+  capacity_min: number;
+  capacity_max: number;
+  price_min: number;
+  price_max: number;
+  price_unit: string;
   bedrooms: number;
   bathrooms: number;
-  areaSqft?: number;
+  created_at: string;
+  avg_rating: number;
+  review_count: number;
+  total_count: number;
+  photos: string[];
+  amenity_names: string[];
   isVerified?: boolean;
   isNew?: boolean;
   coordinates?: {
@@ -70,16 +75,11 @@ export interface Guide {
 export interface FilterState {
   search: string;
   guests: string;
-  priceRange: string;
   sortBy: string;
   amenities: string[];
-  area: number[];
   bedrooms: string;
   bathrooms: string;
   venueTypes: string[];
-  cancellationPolicy: string;
-  hasReviews: boolean;
-  topRated: boolean;
 }
 
 export interface Region {

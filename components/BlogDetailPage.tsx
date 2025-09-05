@@ -165,11 +165,11 @@ The weeks leading up to your retreat are crucial:
               
               {/* Title */}
               <div className="space-y-3 lg:space-y-6">
-                <h1 className="text-3xl lg:text-4xl xl:text-6xl font-light tracking-tight leading-tight">
+                <h1 className="text-4xl lg:text-6xl tracking-tight font-extralight text-white">
                   {blogPost.title}
                 </h1>
                 
-                <p className="text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed max-w-3xl">
+                <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-3xl">
                   {blogPost.subtitle}
                 </p>
               </div>
@@ -391,56 +391,7 @@ The weeks leading up to your retreat are crucial:
         </div>
       </article>
 
-      {/* Dual CTA Section */}
-      <section className="py-24 lg:py-32 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* CTA 1 */}
-            <div className="bg-white rounded-3xl p-12">
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <h3 className="text-2xl lg:text-3xl tracking-tight">
-                    Find Your Perfect Venue
-                  </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    Explore our curated collection of premium retreat centers worldwide and discover the perfect setting for your transformational experience.
-                  </p>
-                </div>
-                
-                <Button
-                  onClick={onNavigateToCatalog}
-                  className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 text-lg rounded-xl inline-flex items-center gap-3"
-                >
-                  Explore Retreat Centers
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </div>
 
-            {/* CTA 2 */}
-            <div className="bg-gray-900 text-white rounded-3xl p-12">
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <h3 className="text-2xl lg:text-3xl tracking-tight">
-                    List Your Retreat Center
-                  </h3>
-                  <p className="text-lg text-white/80 leading-relaxed">
-                    Join thousands of wellness facilitators discovering exceptional venues. Connect with retreat organizers seeking the perfect space.
-                  </p>
-                </div>
-                
-                <Button
-                  onClick={onNavigateToHostPortal}
-                  className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg rounded-xl inline-flex items-center gap-3"
-                >
-                  Add Your Venue
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Related Articles */}
       <section className="py-24 lg:py-32">

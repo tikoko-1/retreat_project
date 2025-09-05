@@ -1,8 +1,9 @@
-"use client";
+"use client"
 
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowRight, Star, MapPin, Calendar, Users, Clock, ChevronLeft, ChevronRight, ExternalLink, Instagram, DollarSign } from "lucide-react";
 import { useState } from "react";
+import HostPortalCTA from "./HostPortalCTA";
 
 interface GuideDetailPageProps {
   slug: string;
@@ -395,23 +396,8 @@ export default function GuideDetailPage({ slug, onNavigateToHostPortal }: GuideD
             </div>
 
             {/* Call to Action */}
-            <div className="text-center space-y-6 py-16 border-t border-gray-100">
-              <div className="space-y-4">
-                <h2 className="text-2xl lg:text-3xl tracking-tight font-light">
-                  Ready to List Your Retreat Center?
-                </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                  Join our curated network of premium wellness destinations and connect with yoga professionals seeking transformational retreat experiences.
-                </p>
-              </div>
-              
-              <button 
-                onClick={onNavigateToHostPortal}
-                className="bg-gray-900 text-white px-8 py-4 rounded-xl hover:bg-gray-800 transition-colors font-medium tracking-tight inline-flex items-center gap-2"
-              >
-                Become a Host
-                <ArrowRight className="w-5 h-5" />
-              </button>
+            <div className="border-t border-gray-100">
+              <HostPortalCTA onNavigateToHostPortal={onNavigateToHostPortal} />
             </div>
           </div>
         </div>

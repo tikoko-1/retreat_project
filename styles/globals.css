@@ -230,6 +230,42 @@ html {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  
+  /* Modal filter tags - 1.5x larger than standard tags */
+  .modal-filter-tag {
+    @apply px-4 py-1.5 text-sm font-medium rounded-md border transition-colors duration-200 flex items-center gap-2;
+  }
+  
+  .modal-filter-tag.inactive {
+    @apply bg-gray-50 text-gray-700 border-gray-100 hover:bg-gray-100;
+  }
+  
+  .modal-filter-tag.active {
+    @apply bg-gray-900 text-white border-gray-900;
+  }
+
+  /* Modal content height responsive to viewport */
+  .modal-content-height {
+    max-height: calc(80vh - 140px);
+  }
+
+  @media (min-width: 640px) {
+    .modal-content-height {
+      max-height: calc(70vh - 140px);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .modal-content-height {
+      max-height: calc(65vh - 140px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .modal-content-height {
+      max-height: calc(57vh - 140px);
+    }
+  }
 
   .line-clamp-1 {
     overflow: hidden;

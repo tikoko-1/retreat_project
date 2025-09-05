@@ -52,7 +52,7 @@ The following legacy React/Vite files should be manually deleted:
 ├── layout.tsx          ✅ Root layout with globals.css
 ├── page.tsx           ✅ Home page (server component)
 ├── about/page.tsx     ✅ About page with metadata
-├── catalog/page.tsx   ✅ Catalog page (SSR with suspense)
+├── centers/page.tsx   ✅ Catalog page (SSR with suspense)
 ├── dashboard/page.tsx ✅ Dashboard (client component for interactivity)
 ├── blog/
 │   ├── page.tsx       ✅ Blog listing
@@ -72,6 +72,6 @@ The following legacy React/Vite files should be manually deleted:
 1. Run `npm install` to install @tailwindcss/postcss
 2. Manually delete the legacy files listed above
 3. Run `npm run build` to verify everything builds correctly
-4. Test all routes: `/`, `/catalog`, `/dashboard`, `/about`, etc.
+4. Test all routes: `/`, `/centers`, `/dashboard`, `/about`, etc.
 
 The project is now a clean Next.js 14+ App Router codebase with Tailwind v4!

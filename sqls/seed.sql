@@ -140,54 +140,46 @@ VALUES (
     ARRAY ['tulum', 'beach', 'wellness', 'mexico']
   );
 -- Insert venue types
-INSERT INTO venue_types (name, description)
+INSERT INTO venue_types (name, slug, icon)
 VALUES (
+    'Retreat Center',
+    'retreat-center',
+    '{"library": "lucide-react", "name": "home"}'
+  ),
+  (
+    'Ashram / Monastery',
+    'ashram-monastery',
+    '{"library": "lucide-react", "name": "landmark"}'
+  ),
+  (
+    'Eco-lodge / Retreat Camp',
+    'eco-lodge-retreat-camp',
+    '{"library": "lucide-react", "name": "tent"}'
+  ),
+  (
     'Resort',
-    'Large property with full services, suitable for retreats and groups.'
+    'resort',
+    '{"library": "lucide-react", "name": "hotel"}'
+  ),
+  (
+    'Villa / Private House',
+    'villa-private-house',
+    '{"library": "lucide-react", "name": "house"}'
   ),
   (
     'Boutique Hotel',
-    'Small, stylish hotel offering personalized services.'
-  ),
-  (
-    'Private Villa',
-    'Standalone private villa, often with pool and exclusive amenities.'
+    'boutique-hotel',
+    '{"library": "lucide-react", "name": "building-2"}'
   ),
   (
     'Wellness Center',
-    'Dedicated facility focused on wellness, yoga, meditation, spa.'
+    'wellness-center',
+    '{"library": "lucide-react", "name": "heart-pulse"}'
   ),
   (
-    'Retreat Camp',
-    'Nature-focused, eco-friendly lodges or retreat camps.'
-  ),
-  (
-    'Monastery',
-    'Spiritual centers, monasteries, or ashrams for retreats.'
-  ),
-  (
-    'Farmstay',
-    'Retreat venue integrated with working farms or eco-agriculture.'
-  ),
-  (
-    'Guesthouse',
-    'Smaller guesthouses or bed-and-breakfast style venues.'
-  ),
-  (
-    'Beachfront Venue',
-    'Venues located directly on or near the beach.'
-  ),
-  (
-    'Mountain Lodge',
-    'Retreat venues in mountains, cabins or lodges.'
-  ),
-  (
-    'Urban Loft',
-    'City-based spaces adapted for retreats or workshops.'
-  ),
-  (
-    'Conference Center',
-    'Professional facilities with large capacity and meeting rooms.'
+    'Guesthouse / BnB',
+    'guesthouse-bnb',
+    '{"library": "lucide-react", "name": "bed"}'
   );
 -- Insert venues (25 retreat centers) - Let Supabase generate UUIDs
 INSERT INTO venues (
@@ -257,7 +249,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://mountainviewsanctuary.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 3. Ocean Bliss Retreat
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -281,7 +273,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://oceanblissretreat.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Beachfront Venue'
+WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
 -- 4. Alpine Wellness Lodge
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -305,7 +297,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://alpinewellness.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 5. Sacred Valley Sanctuary
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -329,7 +321,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://sacredvalleysanctuary.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 6. Mindful Mountain Retreat
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -353,7 +345,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://mindfulmountain.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 7. Coastal Zen Retreat
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -377,7 +369,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://coastalzen.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Beachfront Venue'
+WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
 -- 8. Desert Oasis Center
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -401,7 +393,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://desertoasis.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 9. Forest Healing Lodge
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -425,7 +417,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://foresthealing.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 10. Island Paradise Retreat
 SELECT '44444444-4444-4444-4444-444444444444',
@@ -449,7 +441,7 @@ SELECT '44444444-4444-4444-4444-444444444444',
   'https://islandparadise.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Beachfront Venue'
+WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
 -- 11. Himalayan Bliss Center
 SELECT '44444444-4444-4444-4444-444444444444',
@@ -473,7 +465,7 @@ SELECT '44444444-4444-4444-4444-444444444444',
   'https://himalayanbliss.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 12. Mediterranean Wellness Villa
 SELECT '44444444-4444-4444-4444-444444444444',
@@ -497,7 +489,7 @@ SELECT '44444444-4444-4444-4444-444444444444',
   'https://mediterraneanwellness.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Beachfront Venue'
+WHERE vt.name = 'Ashram / Monastery'
 UNION ALL
 -- 13. Zen Garden Retreat
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -521,7 +513,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://zengardenretreat.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 14. Tropical Healing Center
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -545,7 +537,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://tropicalhealing.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 15. Arctic Wellness Lodge
 SELECT '44444444-4444-4444-4444-444444444444',
@@ -569,7 +561,7 @@ SELECT '44444444-4444-4444-4444-444444444444',
   'https://arcticwellness.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 16. Desert Rose Sanctuary
 SELECT '22222222-2222-2222-2222-222222222222',
@@ -593,7 +585,7 @@ SELECT '22222222-2222-2222-2222-222222222222',
   'https://desertrose.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 17. Mountain Spirit Lodge
 SELECT '22222222-2222-2222-2222-222222222222',
@@ -617,7 +609,7 @@ SELECT '22222222-2222-2222-2222-222222222222',
   'https://mountainspirit.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 18. Ocean Spirit Center
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -641,7 +633,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://oceanspirit.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 19. Forest Wisdom Retreat
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -665,7 +657,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://forestwisdom.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 20. Sky High Sanctuary
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -689,7 +681,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://skyhighsanctuary.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 21. Valley of Peace
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -713,7 +705,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://valleyofpeace.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 22. Crystal Healing Center
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -737,7 +729,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://crystalhealing.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 23. Sunrise Wellness Resort
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -761,7 +753,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://sunrisewellness.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 24. Sacred Mountain Lodge
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
@@ -785,7 +777,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   'https://sacredmountain.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge'
+WHERE vt.name = 'Retreat Center'
 UNION ALL
 -- 25. Eternal Spring Center
 SELECT '44444444-4444-4444-4444-444444444444'::uuid,
@@ -809,7 +801,7 @@ SELECT '44444444-4444-4444-4444-444444444444'::uuid,
   'https://eternalspring.com',
   'https://google.com'
 FROM venue_types vt
-WHERE vt.name = 'Mountain Lodge';
+WHERE vt.name = 'Retreat Center';
 -- Insert sample favorites (linking clients to venues dynamically by title)
 INSERT INTO favorites (user_id, venue_id, created_at)
 SELECT '11111111-1111-1111-1111-111111111111'::uuid,

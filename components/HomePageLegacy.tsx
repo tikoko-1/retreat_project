@@ -1,14 +1,18 @@
-'use client'
-
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Search, MapPin, Users, Calendar, CheckCircle, Clock, Shield, Globe, Star, TrendingUp, Heart, ArrowRight, Award, Zap, Target, Eye, DollarSign, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import SearchFilters, { FilterState } from "./SearchFilters";
 import RetreatCenterCard, { RetreatCenter } from "./RetreatCenterCard";
-import Link from "next/link";
+import HostPortalCTA from "./HostPortalCTA";
 
-// Extended featured venues data - 20 venues for 2-column grid
+interface HomePageLegacyProps {
+  onNavigateToCatalog: (filters?: Partial<FilterState>) => void;
+  onSelectRetreat: (id: string) => void;
+  onNavigateToHostPortal: () => void;
+  onNavigateToBlog: () => void;
+}
+
+// Extended featured venues data - 6 venues for 2-column grid
 const featuredVenues: RetreatCenter[] = [
   {
     id: '1',
@@ -241,8 +245,7 @@ const blogPosts = [
   },
 ];
 
-export default function HomePage() {
-  const router = useRouter();
+export default function HomePageLegacy({ onNavigateToCatalog, onSelectRetreat, onNavigateToHostPortal, onNavigateToBlog }: HomePageLegacyProps) {
   const [filters, setFilters] = useState<FilterState>({
     search: '',
     guests: '',
@@ -260,38 +263,15 @@ export default function HomePage() {
   });
 
   const handleSearch = () => {
-    const params = new URLSearchParams();
-    
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
-        if (Array.isArray(value)) {
-          value.forEach(v => params.append(key, v));
-        } else {
-          params.set(key, value.toString());
-        }
-      }
-    });
-
-    const queryString = params.toString();
-    const catalogUrl = queryString ? `/centers?${queryString}` : '/centers';
-    router.push(catalogUrl);
+    onNavigateToCatalog(filters);
   };
 
   const handleRegionClick = (regionId: string) => {
-    const searchTerm = regionId.replace('-', ' ');
-    router.push(`/centers?search=${encodeURIComponent(searchTerm)}`);
+    onNavigateToCatalog({ search: regionId.replace('-', ' ') });
   };
 
   const handleCountryClick = (country: string) => {
-    router.push(`/centers?search=${encodeURIComponent(country)}`);
-  };
-
-  const handleSelectRetreat = (id: string) => {
-    router.push(`/centers/${id}`);
-  };
-
-  const handleNavigateToHostPortal = () => {
-    router.push('/dashboard');
+    onNavigateToCatalog({ search: country });
   };
 
   return (
@@ -427,19 +407,19 @@ export default function HomePage() {
               <RetreatCenterCard
                 key={venue.id}
                 retreat={venue}
-                onSelect={handleSelectRetreat}
+                onSelect={onSelectRetreat}
               />
             ))}
           </div>
 
           <div className="text-center">
-            <Link
-              href="/centers"
+            <button
+              onClick={() => onNavigateToCatalog()}
               className="bg-gray-900 text-white px-10 py-4 rounded-lg hover:bg-gray-800 transition-colors inline-flex items-center gap-2 font-medium"
             >
               <span>View All Centers</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -513,79 +493,66 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {blogPosts.map((post) => (
-              <Link
+              <article
                 key={post.id}
-                href={`/blog/${post.id}`}
-                className="group block bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="group cursor-pointer flex flex-col h-full"
               >
-                <div className="aspect-video overflow-hidden">
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-6">
                   <ImageWithFallback
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-2.5 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-md border border-gray-100">
+
+                {/* Content */}
+                <div className="flex flex-col flex-grow">
+                  <div className="space-y-1 mb-4">
+                    <span className="text-xs text-gray-500 tracking-wide uppercase">
                       {post.category}
                     </span>
-                    <span className="text-xs text-gray-500">{post.readTime}</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-black transition-colors">
+
+                  <h3 className="text-2xl tracking-tight font-light group-hover:text-gray-700 transition-colors mb-4">
                     {post.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  
+                  <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
                     {post.excerpt}
                   </p>
-                  <p className="text-xs font-medium text-gray-700">
-                    By {post.author}
-                  </p>
+
+                  {/* Meta */}
+                  <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <div className="flex items-center space-x-2">
+                      <span>{post.author}</span>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <div className="flex items-center text-sm group-hover:text-gray-900 transition-colors">
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
 
           <div className="text-center">
-            <Link
-              href="/blog"
+            <button
+              onClick={onNavigateToBlog}
               className="bg-white border border-gray-300 text-gray-900 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors inline-flex items-center gap-2 font-medium"
             >
               <span>View All Resources</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
 
       {/* 7. CTA SECTION - Join Platform */}
-      <section className="py-16 lg:py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-4xl lg:text-5xl tracking-tight font-light mb-6">
-            Ready to List Your Retreat Center?
-          </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Join thousands of retreat centers worldwide and connect with passionate retreat leaders.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button
-              onClick={handleNavigateToHostPortal}
-              className="bg-white text-black px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-semibold flex items-center gap-2"
-            >
-              <span>Start Listing</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
-            
-            <Link
-              href="/guides"
-              className="text-white/80 hover:text-white underline underline-offset-4 transition-colors font-medium"
-            >
-              Learn How It Works
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HostPortalCTA onNavigateToHostPortal={onNavigateToHostPortal} />
     </div>
   );
 }

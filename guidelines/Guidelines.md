@@ -12,7 +12,7 @@ Hard requirements:
 3) **App Router structure only**:
    - `app/layout.tsx`
    - `app/page.tsx`
-   - feature pages, e.g. `app/catalog/page.tsx`, `app/about/page.tsx`, etc.
+   - feature pages, e.g. `app/centers/page.tsx`, `app/about/page.tsx`, etc.
    - API routes under `app/api/*/route.ts` (route handlers)
 4) **Styling**: Tailwind utilities only. Add:
    - `postcss.config.mjs` with `@tailwindcss/postcss`
@@ -26,7 +26,7 @@ Hard requirements:
    - Client interactivity only where needed: add `"use client"` at top of client components
    - Prefer server components for pages/lists; fetch data server-side
 7) **Data fetching**:
-   - For the catalog: implement server page (SSR) that passes initial data.
+   - For the centers: implement server page (SSR) that passes initial data.
    - Client components manage interactive filters/sort/search.
 8) **Remove all unused/legacy files** left from previous React/Vite setup:
    - delete `App.tsx` and any “Legacy” files unless they are migrated under `app/`

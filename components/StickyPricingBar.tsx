@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
 import { useState, useEffect } from "react";
 import { Star, MapPin, Users, Home, Bath } from "lucide-react";
 import { Button } from "./ui/button";
 
-export default function StickyPricingBar() {
-  const [isVisible, setIsVisible] = useState(false);
+interface StickyPricingBarProps {
+  onReserveClick?: () => void;
+}
 
-  function onReserveClick() {
-    console.log("Reserve clicked");
-  }
+export default function StickyPricingBar({ onReserveClick }: StickyPricingBarProps) {
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       // Find the pricing overview section
-      const pricingSection = document.querySelector("[data-pricing-section]");
+      const pricingSection = document.querySelector('[data-pricing-section]');
       if (pricingSection) {
         const rect = pricingSection.getBoundingClientRect();
         const isHidden = rect.bottom <= 0;
@@ -22,8 +22,8 @@ export default function StickyPricingBar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (!isVisible) return null;
@@ -43,9 +43,9 @@ export default function StickyPricingBar() {
               Rates vary by group size
             </div>
           </div>
-
+          
           {/* CTA Button */}
-          <Button
+          <Button 
             onClick={onReserveClick}
             className="bg-black text-white hover:bg-gray-800 px-4 py-2 text-sm font-medium"
           >
@@ -58,34 +58,30 @@ export default function StickyPricingBar() {
           <div className="flex items-center gap-4">
             {/* Name and Location */}
             <div>
-              <h3 className="font-medium text-gray-900">
-                The Sanctuary Bali Retreat Center
-              </h3>
+              <h3 className="font-medium text-gray-900">The Sanctuary Bali Retreat Center</h3>
               <div className="flex items-center gap-1 mt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-gray-500" />
                 <span className="text-sm text-gray-600">Ubud, Indonesia</span>
               </div>
             </div>
-
+            
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-
+            
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
                 <span className="font-semibold text-gray-900">$180–320</span>
-                <span className="text-gray-500 text-sm font-normal">
-                  / night
-                </span>
+                <span className="text-gray-500 text-sm font-normal">/ night</span>
               </div>
               <div className="text-xs text-gray-500">
                 Rates vary by group size
               </div>
             </div>
           </div>
-
+          
           {/* CTA Button */}
-          <Button
+          <Button 
             onClick={onReserveClick}
             className="bg-black text-white hover:bg-gray-800 px-6 py-2 text-sm font-medium"
           >
@@ -99,18 +95,16 @@ export default function StickyPricingBar() {
           <div className="flex items-center gap-4">
             {/* Name and Location */}
             <div>
-              <h3 className="font-medium text-gray-900">
-                The Sanctuary Bali Retreat Center
-              </h3>
+              <h3 className="font-medium text-gray-900">The Sanctuary Bali Retreat Center</h3>
               <div className="flex items-center gap-1 mt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-gray-500" />
                 <span className="text-sm text-gray-600">Ubud, Indonesia</span>
               </div>
             </div>
-
+            
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-
+            
             {/* Capacity and Rooms - Full version for large screens */}
             <div className="hidden xl:flex items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-1">
@@ -126,7 +120,7 @@ export default function StickyPricingBar() {
                 <span>8 bathrooms</span>
               </div>
             </div>
-
+            
             {/* Compact version for smaller screens */}
             <div className="xl:hidden flex items-center gap-3 text-sm text-gray-600">
               <div className="flex items-center gap-1">
@@ -138,36 +132,34 @@ export default function StickyPricingBar() {
                 <span>12 rooms</span>
               </div>
             </div>
-
+            
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-
+            
             {/* Rating and Reviews */}
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 fill-black text-black" />
               <span className="text-sm font-medium">4.9</span>
               <span className="text-sm text-gray-600">· 127 reviews</span>
             </div>
-
+            
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-
+            
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
                 <span className="font-semibold text-gray-900">$180–320</span>
-                <span className="text-gray-500 text-sm font-normal">
-                  / night
-                </span>
+                <span className="text-gray-500 text-sm font-normal">/ night</span>
               </div>
               <div className="text-xs text-gray-500">
                 Rates vary by group size
               </div>
             </div>
           </div>
-
+          
           {/* Right side - CTA Button */}
-          <Button
+          <Button 
             onClick={onReserveClick}
             className="bg-black text-white hover:bg-gray-800 px-6 py-2 text-sm font-medium"
           >
