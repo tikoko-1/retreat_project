@@ -128,6 +128,7 @@ CREATE TABLE IF NOT EXISTS cancellation_policies (
 CREATE TABLE IF NOT EXISTS inquiries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
+    user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
     user_email TEXT NOT NULL,
     user_name TEXT,
     message TEXT NOT NULL,
