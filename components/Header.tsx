@@ -24,6 +24,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogContentWithoutCloseButton,
 } from "./ui/dialog";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import HeaderSearchModal from "./HeaderSearchModal";
@@ -102,32 +103,32 @@ export default function Header() {
             {/* Navigation - Hidden on mobile */}
             <nav className="hidden lg:flex items-center gap-2">
               {pathname.startsWith("/centers") ? (
-                <span className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer">
+                <span className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer font-medium">
                   Centers
                 </span>
               ) : (
                 <Link
                   href="/centers?sortBy=relevance"
-                  className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
+                  className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer font-medium"
                 >
                   Centers
                 </Link>
               )}
               <Link
                 href="/guides"
-                className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
+                className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer font-medium"
               >
                 Guides
               </Link>
               <Link
                 href="/blog"
-                className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
+                className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer font-medium"
               >
                 Blog
               </Link>
               <Link
                 href="/about"
-                className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer"
+                className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer font-medium"
               >
                 About
               </Link>
@@ -463,24 +464,67 @@ export default function Header() {
 
       {/* Search Modal Overlay */}
       <Dialog open={showSearchModal} onOpenChange={setShowSearchModal}>
-        <DialogContent className="max-w-5xl max-h-[90vh] p-0 bg-white rounded-xl border border-gray-200 shadow-2xl overflow-y-auto">
-          <DialogHeader className="px-8 py-6 border-b border-gray-100 sticky top-0 bg-white z-10">
-            <DialogTitle className="text-2xl font-semibold text-gray-900">
-              Find Your Perfect Retreat Center
-            </DialogTitle>
-            <DialogDescription className="text-gray-600 mt-2">
-              Search from 10K+ retreat centers worldwide
-            </DialogDescription>
-          </DialogHeader>
+        <DialogContentWithoutCloseButton className="!max-w-none !w-[95vw] sm:!w-[85vw] md:!w-[70vw] lg:!w-[50vw] xl:!w-[32vw] h-[80vh] sm:h-[70vh] md:h-[65vh] lg:h-[57vh] p-0 flex flex-col rounded-xl border border-gray-200 shadow-xl">
+          <div className="flex flex-col h-full">
+            {/* Header */}
+            <DialogHeader className="px-6 py-5 border-b border-gray-100 bg-white relative rounded-t-xl !text-left">
+              <div className="flex items-center justify-between">
+                <div className="text-left">
+                  <DialogTitle className="text-2xl font-semibold text-gray-900 text-left">
+                    Find Your Perfect Retreat Center
+                  </DialogTitle>
+                  <DialogDescription className="text-sm text-gray-600 mt-1 text-left">
+                    Search from 10K+ retreat centers worldwide
+                  </DialogDescription>
+                </div>
+                <button
+                  onClick={() => setShowSearchModal(false)}
+                  className="w-8 h-8 min-w-8 min-h-8 flex-shrink-0 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+                >
+                  <X className="w-4 h-4 flex-shrink-0" />
+                </button>
+              </div>
+            </DialogHeader>
 
-          <div className="p-8">
-            <HeaderSearchModal
-              filters={searchFilters}
-              onFiltersChange={setSearchFilters}
-              onSearch={handleSearchFromModal}
-            />
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 bg-white rounded-t-none modal-content-height">
+              <HeaderSearchModal
+                filters={searchFilters}
+                onFiltersChange={setSearchFilters}
+                onSearch={handleSearchFromModal}
+              />
+            </div>
+
+            {/* Footer - Fixed at bottom */}
+            <div className="border-t border-gray-100 p-4 sm:p-6 bg-white rounded-b-xl">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => {
+                    setSearchFilters({
+                      search: "",
+                      guests: "",
+                      sortBy: "relevance",
+                      amenities: [],
+                      bedrooms: "",
+                      bathrooms: "",
+                      venueTypes: [],
+                    });
+                  }}
+                  className="flex-1 h-12 text-sm font-medium bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors flex items-center justify-center"
+                >
+                  Clear all
+                </button>
+                <button
+                  onClick={handleSearchFromModal}
+                  className="flex-1 h-12 text-sm font-medium bg-gray-900 hover:bg-gray-800 text-white flex items-center justify-center gap-2 rounded-lg transition-colors"
+                >
+                  <Search className="w-4 h-4" />
+                  Search retreat centers
+                </button>
+              </div>
+            </div>
           </div>
-        </DialogContent>
+        </DialogContentWithoutCloseButton>
       </Dialog>
     </>
   );
