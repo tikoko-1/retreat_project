@@ -506,33 +506,45 @@ export default function HomePage() {
               <Link
                 key={post.id}
                 href={`/blog/${post.id}`}
-                className="group block bg-white rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="group cursor-pointer flex flex-col h-full"
               >
-                <div className="aspect-video overflow-hidden">
+                {/* Image */}
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl mb-6">
                   <ImageWithFallback
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="px-2.5 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-md border border-gray-100">
+
+                {/* Content */}
+                <div className="flex flex-col flex-grow">
+                  <div className="space-y-1 mb-4">
+                    <span className="text-xs text-gray-500 tracking-wide uppercase">
                       {post.category}
                     </span>
-                    <span className="text-xs text-gray-500">
-                      {post.readTime}
-                    </span>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-black transition-colors">
+
+                  <h3 className="text-2xl tracking-tight font-light group-hover:text-gray-700 transition-colors mb-4">
                     {post.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+
+                  <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
                     {post.excerpt}
                   </p>
-                  <p className="text-xs font-medium text-gray-700">
-                    By {post.author}
-                  </p>
+
+                  {/* Meta */}
+                  <div className="flex items-center justify-between text-sm text-gray-500 pt-4 border-t border-gray-100">
+                    <div className="flex items-center space-x-2">
+                      <span>{post.author}</span>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <div className="flex items-center text-sm group-hover:text-gray-900 transition-colors">
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
                 </div>
               </Link>
             ))}
