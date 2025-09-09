@@ -27,6 +27,7 @@ import SearchFilters, { FilterState } from "./SearchFilters";
 import RetreatCenterCard from "./RetreatCenterCard";
 import Link from "next/link";
 import { RetreatCenter } from "@/types";
+import HostPortalCTA from "./HostPortalCTA";
 
 // Extended featured venues data - 20 venues for 2-column grid
 const featuredVenues: RetreatCenter[] = [
@@ -276,7 +277,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* 1. HERO SECTION */}
-      <section className="relative py-16 lg:py-24 min-h-[40vh] flex items-center overflow-hidden">
+      <section className="relative py-16 lg:py-24 min-h-[40vh] flex items-center">
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full">
           <ImageWithFallback
@@ -550,7 +551,7 @@ export default function HomePage() {
       </section>
 
       {/* 7. CTA SECTION - Join Platform */}
-      <section className="py-16 lg:py-24 bg-black text-white">
+      {/* <section className="py-16 lg:py-24 bg-black text-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
           <h2 className="text-4xl lg:text-5xl tracking-tight font-light mb-6">
             Ready to List Your Retreat Center?
@@ -577,7 +578,8 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
+      <HostPortalCTA />
     </div>
   );
 }
