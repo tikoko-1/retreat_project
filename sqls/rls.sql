@@ -12,6 +12,9 @@ ALTER TABLE favorites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE reviews ENABLE ROW LEVEL SECURITY;
 ALTER TABLE blog_articles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE guides ENABLE ROW LEVEL SECURITY;
+ALTER TABLE venue_pricing ENABLE ROW LEVEL SECURITY;
+ALTER TABLE site_copy ENABLE ROW LEVEL SECURITY;
+ALTER TABLE rooms ENABLE ROW LEVEL SECURITY;
 -- Drop existing policies if they exist (optional, for idempotency)
 DROP POLICY IF EXISTS "Enable read access for all users" ON profiles;
 DROP POLICY IF EXISTS "Enable insert for authenticated users" ON profiles;
@@ -38,6 +41,12 @@ DROP POLICY IF EXISTS "Enable client to read their own reviews" ON reviews;
 DROP POLICY IF EXISTS "Enable authenticated users to insert reviews" ON reviews;
 DROP POLICY IF EXISTS "Enable read access for all users" ON blog_articles;
 DROP POLICY IF EXISTS "Enable read access for all users" ON guides;
+DROP POLICY IF EXISTS "Enable read access for all users on venue_pricing of published venues" ON venue_pricing;
+DROP POLICY IF EXISTS "Enable owner to manage their venue pricing" ON venue_pricing;
+DROP POLICY IF EXISTS "Enable read access for all users" ON site_copy;
+DROP POLICY IF EXISTS "Enable admins to manage site_copy" ON site_copy;
+DROP POLICY IF EXISTS "Enable read access for all users on rooms of published venues" ON rooms;
+DROP POLICY IF EXISTS "Enable owner to manage their rooms" ON rooms;
 -- Policies for `profiles` table
 CREATE POLICY "Enable read access for all users" ON profiles FOR
 SELECT USING (true);
@@ -154,3 +163,39 @@ SELECT USING (true);
 -- Policies for `guides` table
 CREATE POLICY "Enable read access for all users" ON guides FOR
 SELECT USING (true);
+-- Policies for `venue_pricing` table
+CREATE POLICY "Enable read access for all users on venue_pricing of published venues" ON venue_pricing FOR
+SELECT USING (
+    (
+      SELECT status
+      FROM venues
+      WHERE id = venue_id
+    ) = 'published'
+  );
+CREATE POLICY "Enable owner to manage their venue pricing" ON venue_pricing FOR ALL USING (
+  (
+    SELECT owner_id
+    FROM venues
+    WHERE id = venue_id
+  ) = auth.uid()
+);
+-- Policies for `site_copy` table
+CREATE POLICY "Enable read access for all users" ON site_copy FOR
+SELECT USING (true);
+CREATE POLICY "Enable admins to manage site_copy" ON site_copy FOR ALL USING (auth.role() = 'admin');
+-- Policies for `rooms` table
+CREATE POLICY "Enable read access for all users on rooms of published venues" ON rooms FOR
+SELECT USING (
+    (
+      SELECT status
+      FROM venues
+      WHERE id = venue_id
+    ) = 'published'
+  );
+CREATE POLICY "Enable owner to manage their rooms" ON rooms FOR ALL USING (
+  (
+    SELECT owner_id
+    FROM venues
+    WHERE id = venue_id
+  ) = auth.uid()
+);
