@@ -5,7 +5,8 @@ insert into storage.buckets (id, name, public)
 values ('avatars', 'avatars', true),
   ('blog_covers', 'blog_covers', true),
   ('guide_covers', 'guide_covers', true),
-  ('venue_photos', 'venue_photos', true) on conflict (id) do nothing;
+  ('venue_photos', 'venue_photos', true),
+  ('room_photos', 'room_photos', true) on conflict (id) do nothing;
 -- ===========================
 -- RLS POLICIES FOR STORAGE
 -- ===========================
@@ -60,3 +61,15 @@ create policy "Hosts manage own venue photos" on storage.objects for all to auth
 drop policy if exists "Public can view venue photos" on storage.objects;
 create policy "Public can view venue photos" on storage.objects for
 select to public using (bucket_id = 'venue_photos');
+-- Room photos: host manages their own
+drop policy if exists "Hosts manage own room photos" on storage.objects;
+create policy "Hosts manage own room photos" on storage.objects for all to authenticated using (
+  bucket_id = 'room_photos'
+  and (storage.foldername(name)) [1] = auth.uid()::text
+) with check (
+  bucket_id = 'room_photos'
+  and (storage.foldername(name)) [1] = auth.uid()::text
+);
+drop policy if exists "Public can view room photos" on storage.objects;
+create policy "Public can view room photos" on storage.objects for
+select to public using (bucket_id = 'room_photos');
