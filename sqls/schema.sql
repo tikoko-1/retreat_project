@@ -64,15 +64,21 @@ CREATE TABLE IF NOT EXISTS venues (
     longitude DECIMAL(11, 8),
     capacity_min INT,
     capacity_max INT,
-    price_min NUMERIC,
-    price_max NUMERIC,
-    price_unit price_code NOT NULL DEFAULT 'per_night',
     area_sqft INT,
     bedrooms INT,
     bathrooms INT,
     website_url TEXT,
     instagram_url TEXT,
     label venue_label,
+    hero_subline TEXT,
+    location_about TEXT,
+    how_to_get_here JSONB,
+    -- [{ title, text, note }]
+    nearby_attractions JSONB,
+    -- [{ name, distance, unit, note }]
+    included_items TEXT [] default null,
+    excluded_items TEXT [] default null,
+    special_policies JSONB,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -113,14 +119,18 @@ CREATE TABLE IF NOT EXISTS cancellation_policies (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
     days_before INT NOT NULL,
-    refund_percent INT NOT NULL
+    -- cutoff, e.g. 90, 60, 30, 14, 0
+    refund_percent INT NOT NULL,
+    -- 100, 75, 50, 25, 0
+    note TEXT -- optional per-band description
 );
 -- INQUIRIES
 CREATE TABLE IF NOT EXISTS inquiries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
-    user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
-    message TEXT,
+    user_email TEXT NOT NULL,
+    user_name TEXT,
+    message TEXT NOT NULL,
     status inquiry_status NOT NULL DEFAULT 'new',
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -165,10 +175,53 @@ CREATE TABLE IF NOT EXISTS guides (
     read_time_minutes INT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+--VENUE_PRICING
+CREATE TABLE IF NOT EXISTS venue_pricing (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
+    amount NUMERIC NOT NULL,
+    -- 850
+    currency TEXT NOT NULL DEFAULT '$',
+    billing_unit TEXT NOT NULL,
+    -- 'per package' | 'per person/night' | 'per week' | free text
+    note TEXT,
+    -- '2–3 days • Up to 20 people'
+    sort_order INT NOT NULL DEFAULT 100,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+--Site_COPY
+CREATE TABLE IF NOT EXISTS site_copy (
+    key TEXT PRIMARY KEY,
+    blocks JSONB NOT NULL -- [{ title, text, icon }, ...]
+);
+--ROOMS
+CREATE TABLE IF NOT EXISTS rooms (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
+    name TEXT NOT NULL,
+    -- 'Garden Villa'
+    capacity_min INT,
+    capacity_max INT,
+    size_sqft INT,
+    price_min NUMERIC,
+    price_max NUMERIC,
+    currency TEXT DEFAULT '$',
+    amenities TEXT [],
+    -- room-level highlights
+    description TEXT,
+    photos TEXT [],
+    -- [urls]
+    billing_unit TEXT,
+    -- 'per package' | 'per person/night' | 'per week' | free text
+    note TEXT,
+    -- 'Rates vary by season and booking length'
+    sort_order INT NOT NULL DEFAULT 100,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
 -- INDEXES
 CREATE INDEX IF NOT EXISTS idx_venues_location ON venues(country, city);
 CREATE INDEX IF NOT EXISTS idx_venues_capacity ON venues(capacity_min, capacity_max);
-CREATE INDEX IF NOT EXISTS idx_venues_price ON venues(price_min, price_max);
 CREATE INDEX IF NOT EXISTS idx_inquiries_status ON inquiries(status);
 CREATE INDEX IF NOT EXISTS idx_reviews_venue ON reviews(venue_id);
 CREATE INDEX IF NOT EXISTS idx_blog_tags ON blog_articles USING gin (tags);
+CREATE INDEX IF NOT EXISTS idx_venue_pricing_venue ON venue_pricing(venue_id, sort_order);
