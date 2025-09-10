@@ -102,7 +102,7 @@ export default function Header() {
 
             {/* Navigation - Hidden on mobile */}
             <nav className="hidden lg:flex items-center gap-2">
-              {pathname.startsWith("/centers") ? (
+              {pathname === "/centers" ? (
                 <span className="text-gray-700 hover:text-black hover:bg-gray-100 transition-all duration-200 px-4 py-2 rounded-lg cursor-pointer font-medium">
                   Centers
                 </span>
@@ -207,7 +207,7 @@ export default function Header() {
                           </div>
                           <span className="font-semibold text-lg">Home</span>
                         </Link>
-                        {pathname.startsWith("/centers") ? (
+                        {pathname === "/centers" ? (
                           <div className="cursor-pointer flex items-center gap-5 w-full text-left text-gray-900 hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-50/50 active:scale-95 transition-all duration-200 px-5 py-5 rounded-2xl group">
                             <div className="w-10 h-10 rounded-xl bg-gray-100 group-hover:bg-white flex items-center justify-center transition-all duration-200">
                               <Building2 className="w-5 h-5 text-gray-600 group-hover:text-black transition-colors duration-200" />
