@@ -26,7 +26,6 @@ export async function GET(request: NextRequest) {
       console.error("Supabase error:", error);
       throw new Error("Failed to fetch venue count");
     }
-    console.log("Count:", count);
     return NextResponse.json({ count: count || 0 });
   } catch (error) {
     console.error("API error:", error);
