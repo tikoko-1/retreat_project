@@ -608,7 +608,7 @@ $$;
 -- =====================================================
 -- Function: get_reviews_by_venue_id
 -- =====================================================
-create or replace function public.get_reviews_by_venue_id(p_venue_id uuid, offset_count int default 0) returns jsonb language plpgsql as $$
+create or replace function public.get_reviews_by_venue_id(p_venue_id uuid, p_offset_count int default 0) returns jsonb language plpgsql as $$
 declare result jsonb;
 begin
 select coalesce(
@@ -625,22 +625,29 @@ select coalesce(
         'user',
         jsonb_build_object(
           'id',
-          p.id,
+          r.profile_id,
           'name',
-          p.name,
+          r.name,
           'avatar_url',
-          p.avatar_url
+          r.avatar_url
         )
       )
-      order by r.created_at desc
     ),
     '[]'::jsonb
   ) into result
-from reviews r
-  join profiles p on p.id = r.user_id
-where r.venue_id = p_venue_id
-order by r.created_at desc
-offset offset_count;
+from (
+    select r.id,
+      r.rating,
+      r.comment,
+      r.created_at,
+      p.id as profile_id,
+      p.name,
+      p.avatar_url
+    from reviews r
+      join profiles p on p.id = r.user_id
+    where r.venue_id = p_venue_id
+    order by r.created_at desc offset p_offset_count
+  ) r;
 return result;
 end;
 $$;
