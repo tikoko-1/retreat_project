@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-
-interface GalleryImage {
-  url: string;
-  title: string;
-  description?: string;
-}
+import { getSupabaseImageUrl } from "@/lib/utils";
+import { IVenuePhoto } from "@/types";
 
 interface GalleryModalProps {
   isOpen: boolean;
   onClose: () => void;
-  images: GalleryImage[];
+  images: IVenuePhoto[];
   initialIndex?: number;
 }
 
@@ -65,7 +61,7 @@ export default function GalleryModal({ isOpen, onClose, images, initialIndex = 0
       <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/50 to-transparent">
         <div className="flex items-center justify-between p-4 min-[640px]:p-6">
           <div className="text-white">
-            <h3 className="text-base min-[640px]:text-lg font-medium">{currentImage?.title}</h3>
+            <h3 className="text-base min-[640px]:text-lg font-medium">{currentImage.alt_text ?? ''}</h3>
             <p className="text-xs min-[640px]:text-sm text-white/80">
               {currentIndex + 1} of {images.length} photos
             </p>
@@ -83,11 +79,10 @@ export default function GalleryModal({ isOpen, onClose, images, initialIndex = 0
       <div className="flex items-center justify-center h-full px-0 py-0 min-[640px]:px-8 min-[640px]:py-8 lg:px-20 lg:py-20">
         <div className="relative w-full h-full min-[640px]:max-w-full min-[640px]:max-h-full">
           <ImageWithFallback
-            src={currentImage?.url}
-            alt={currentImage?.title || ''}
+            src={currentImage.url ? getSupabaseImageUrl(currentImage.url) : ''}
+            alt={currentImage.alt_text || ''}
             className="w-full h-full min-[640px]:max-w-full min-[640px]:max-h-full object-contain"
           />
-          
           {/* Navigation Arrows */}
           <button
             onClick={prevImage}
@@ -96,7 +91,7 @@ export default function GalleryModal({ isOpen, onClose, images, initialIndex = 0
           >
             <ChevronLeft className="w-5 h-5 min-[640px]:w-6 min-[640px]:h-6" />
           </button>
-          
+
           <button
             onClick={nextImage}
             className="absolute right-2 min-[640px]:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 min-[640px]:w-12 min-[640px]:h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors"
@@ -115,35 +110,33 @@ export default function GalleryModal({ isOpen, onClose, images, initialIndex = 0
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`flex-shrink-0 w-12 h-9 min-[640px]:w-16 min-[640px]:h-12 rounded-md min-[640px]:rounded-lg overflow-hidden border-2 transition-all ${
-                  index === currentIndex 
-                    ? 'border-white shadow-lg' 
-                    : 'border-transparent opacity-60 hover:opacity-80'
-                }`}
+                className={`flex-shrink-0 w-12 h-9 min-[640px]:w-16 min-[640px]:h-12 rounded-md min-[640px]:rounded-lg overflow-hidden border-2 transition-all ${index === currentIndex
+                  ? 'border-white shadow-lg'
+                  : 'border-transparent opacity-60 hover:opacity-80'
+                  }`}
               >
                 <ImageWithFallback
-                  src={image.url}
-                  alt={image.title}
+                  src={getSupabaseImageUrl(image.url)}
                   className="w-full h-full object-cover"
                 />
               </button>
             ))}
           </div>
-          
+
           {/* Description */}
-          {currentImage?.description && (
+          {/* {currentImage?.description && (
             <div className="text-center mt-3 min-[640px]:mt-4">
               <p className="text-white/90 text-xs min-[640px]:text-sm max-w-2xl mx-auto px-2">
                 {currentImage.description}
               </p>
             </div>
-          )}
+          )} */}
         </div>
       </div>
 
       {/* Background Click to Close */}
-      <div 
-        className="absolute inset-0 -z-10" 
+      <div
+        className="absolute inset-0 -z-10"
         onClick={onClose}
       />
     </div>

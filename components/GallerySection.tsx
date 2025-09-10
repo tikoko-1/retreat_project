@@ -1,17 +1,13 @@
 "use client"
 
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { getSupabaseImageUrl } from "@/lib/utils";
 import { useState } from "react";
 import GalleryModal from "./GalleryModal";
-
-interface GalleryImage {
-  url: string;
-  title: string;
-  description: string;
-}
+import { IVenuePhoto } from "@/types";
 
 interface GallerySectionProps {
-  galleryImages: GalleryImage[];
+  galleryImages: IVenuePhoto[];
 }
 
 export default function GallerySection({ galleryImages }: GallerySectionProps) {
@@ -32,39 +28,35 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
             <h2 className="text-3xl lg:text-5xl font-light">Explore the space</h2>
             <p className="text-gray-600">{galleryImages.length} photos</p>
           </div>
-          
-          {/* Mobile: Horizontal scroll with visible labels */}
+
           <div className="flex gap-6 overflow-x-auto pb-4 md:hidden pl-6 scrollbar-hide">
             {galleryImages.map((image, index) => (
-              <div 
+              <div
                 key={index}
-                className={`relative cursor-pointer overflow-hidden rounded-xl flex-shrink-0 w-72 ${
-                  index === galleryImages.length - 1 ? 'pr-6' : ''
-                }`}
+                className={`relative cursor-pointer overflow-hidden rounded-xl flex-shrink-0 w-72 ${index === galleryImages.length - 1 ? 'pr-6' : ''
+                  }`}
                 onClick={() => openModal(index)}
               >
                 <ImageWithFallback
-                  src={image.url}
-                  alt={image.title}
+                  src={getSupabaseImageUrl(image.url)}
+                  alt={image.alt_text}
                   className="w-full aspect-[4/3] object-cover rounded-xl"
                 />
-                
-                {/* Always visible overlay for mobile */}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-xl flex items-end p-4">
                   <div className="text-white">
-                    <h3 className="font-medium mb-1">{image.title}</h3>
-                    <p className="text-sm text-white/80">{image.description}</p>
+                    <h3 className="font-medium mb-1">{image.alt_text}</h3>
+                    <p className="text-sm text-white/80">{image.alt_text}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          
+
           <div className="px-6 lg:px-12">
-            {/* Desktop: 4-column grid with rectangular tiles */}
             <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
               {galleryImages.slice(0, 16).map((image, index) => (
-                <div 
+                <div
                   key={index}
                   className="relative group cursor-pointer overflow-hidden rounded-xl"
                   onMouseEnter={() => setHoveredImage(index)}
@@ -72,25 +64,21 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
                   onClick={() => openModal(index)}
                 >
                   <ImageWithFallback
-                    src={image.url}
-                    alt={image.title}
+                    src={getSupabaseImageUrl(image.url)}
+                    alt={image.alt_text}
                     className="w-full aspect-[4/3] object-cover rounded-xl transition-transform duration-300 group-hover:scale-105"
                   />
-                  
-                  {/* Overlay with description for desktop */}
-                  <div className={`absolute inset-0 bg-black/60 rounded-xl transition-opacity duration-300 flex items-end p-4 ${
-                    hoveredImage === index ? 'opacity-100' : 'opacity-0'
-                  }`}>
+
+                  <div className={`absolute inset-0 bg-black/60 rounded-xl transition-opacity duration-300 flex items-end p-4 ${hoveredImage === index ? 'opacity-100' : 'opacity-0'
+                    }`}>
                     <div className="text-white">
-                      <h3 className="font-medium mb-1">{image.title}</h3>
-                      <p className="text-sm text-white/80">{image.description}</p>
+                      <h3 className="font-medium mb-1">{image.alt_text}</h3>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Show all photos button */}
             {galleryImages.length > 16 && (
               <div className="text-center mt-8">
                 <button
@@ -105,7 +93,6 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
         </div>
       </section>
 
-      {/* Gallery Modal */}
       <GalleryModal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
