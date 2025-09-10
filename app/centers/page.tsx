@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import CatalogClientPage from "./CatalogClientPage";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import VenueCardSkeleton from "@/components/VenueCardSkeleton";
 
 // This runs on the server and provides initial data
 export default async function CatalogPage({
@@ -36,7 +37,7 @@ function CatalogSkeleton() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="py-6 border-b border-gray-50">
           <div className="flex items-center justify-between mb-3">
-            <div className="h-6 w-32 bg-gray-200 rounded animate-pulse"></div>
+            <div className="h-6 w-44 bg-gray-200 rounded animate-pulse"></div>
             <div className="h-10 w-44 bg-gray-200 rounded animate-pulse"></div>
           </div>
         </div>
@@ -44,10 +45,9 @@ function CatalogSkeleton() {
         <section className="py-8">
           <div className="grid grid-cols-1 min-[700px]:grid-cols-2 gap-6">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div
+              <VenueCardSkeleton
                 key={i}
-                className="bg-gray-200 rounded-lg h-96 animate-pulse"
-              ></div>
+              />
             ))}
           </div>
         </section>
