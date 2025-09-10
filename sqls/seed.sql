@@ -10979,10 +10979,10 @@ INSERT INTO site_copy (key, blocks)
 VALUES (
     'why_facilitators_love_us',
     '[
-      { "title": "Secure contracts & escrow", "text": "Protected payments and professional agreements", "icon": "" },
-      { "title": "Save 50+ hours of planning", "text": "Full-service support from booking to checkout", "icon": "" },
-      { "title": "Verified by real retreat leaders", "text": "Trusted by 200+ successful facilitators", "icon": "" },
-      { "title": "Repeat-ready bookings", "text": "Streamlined rebooking for returning groups", "icon": "" }
+      { "title": "Secure contracts & escrow", "text": "Protected payments and professional agreements" },
+      { "title": "Save 50+ hours of planning", "text": "Full-service support from booking to checkout" },
+      { "title": "Verified by real retreat leaders", "text": "Trusted by 200+ successful facilitators" },
+      { "title": "Repeat-ready bookings", "text": "Streamlined rebooking for returning groups" }
     ]'::jsonb
   ),
   (
@@ -10997,33 +10997,33 @@ VALUES (
   (
     'included',
     '[
-      {"title": "Professional retreat coordination"},
-      {"title": "All organic meals (breakfast, lunch, dinner)"},
-      {"title": "Use of yoga shala and meditation spaces"},
-      {"title": "Accommodation for up to 25 participants"},
-      {"title": "High-speed Wi-Fi throughout property"},
-      {"title": "Professional AV equipment and sound system"},
-      {"title": "24/7 on-site staff support"},
-      {"title": "Airport transfer coordination"},
-      {"title": "Complimentary bicycle rental"},
-      {"title": "Use of all common areas and terraces"},
-      {"title": "Photography assistance for group photos"}
+      { "title": "Professional retreat coordination" },
+      { "title": "All organic meals (breakfast, lunch, dinner)" },
+      { "title": "Use of yoga shala and meditation spaces" },
+      { "title": "Accommodation for up to 25 participants" },
+      { "title": "High-speed Wi-Fi throughout property" },
+      { "title": "Professional AV equipment and sound system" },
+      { "title": "24/7 on-site staff support" },
+      { "title": "Airport transfer coordination" },
+      { "title": "Complimentary bicycle rental" },
+      { "title": "Use of all common areas and terraces" },
+      { "title": "Photography assistance for group photos "}
     ]'::jsonb
   ),
   (
     'excluded',
     '[
-      {"title": "International flights to/from Bali"},
-      {"title": "Visa fees and travel insurance"},
-      {"title": "Personal spa treatments and massages"},
-      {"title": "Alcoholic beverages (available for purchase)"},
-      {"title": "Personal retreat facilitator or teacher"},
-      {"title": "Private chef services (available on request)"},
-      {"title": "Laundry services (available for fee)"},
-      {"title": "Travel to local attractions and temples"},
-      {"title": "Tips and gratuities for staff"},
-      {"title": "Personal travel guide services"},
-      {"title": "Extended accommodation beyond retreat dates"}
+      { "title": "International flights to/from Bali" },
+      { "title": "Visa fees and travel insurance" },
+      { "title": "Personal spa treatments and massages" },
+      { "title": "Alcoholic beverages (available for purchase)" },
+      { "title": "Personal retreat facilitator or teacher" },
+      { "title": "Private chef services (available on request)" },
+      { "title": "Laundry services (available for fee)" },
+      { "title": "Travel to local attractions and temples" },
+      { "title": "Tips and gratuities for staff" },
+      { "title": "Personal travel guide services" },
+      { "title": "Extended accommodation beyond retreat dates "}
     ]'::jsonb
   ) ON CONFLICT (key) DO
 UPDATE
