@@ -182,7 +182,7 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
                         </div>
                         <div>
                           <div className="text-xs text-gray-500 mb-1 uppercase tracking-wide">Type</div>
-                          <div className="font-medium text-gray-900">{retreat?.type?.name ?? 'Villa'}</div>
+                          <div className="font-medium text-gray-900">{retreat?.type?.name ?? ''}</div>
                         </div>
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
                         </div>
                         <div>
                           <div className="text-xs text-gray-500 mb-1 uppercase tracking-wide">Bedrooms</div>
-                          <div className="font-medium text-gray-900">{retreat?.bedrooms || 0}</div>
+                          <div className="font-medium text-gray-900">{retreat?.bedrooms ?? 0}</div>
                         </div>
                       </div>
                     </div>
@@ -215,7 +215,7 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
                         </div>
                         <div>
                           <div className="text-xs text-gray-500 mb-1 uppercase tracking-wide">Bathrooms</div>
-                          <div className="font-medium text-gray-900">{retreat?.bathrooms || 0}</div>
+                          <div className="font-medium text-gray-900">{retreat?.bathrooms ?? 0}</div>
                         </div>
                       </div>
                     </div>
