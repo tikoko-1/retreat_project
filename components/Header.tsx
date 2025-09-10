@@ -64,7 +64,9 @@ export default function Header() {
     });
 
     const queryString = params.toString();
-    const catalogUrl = queryString ? `/centers?${queryString}` : "/centers";
+    const catalogUrl = queryString
+      ? `/centers?${queryString}`
+      : "/centers?sortBy=relevance";
     router.push(catalogUrl);
   };
 

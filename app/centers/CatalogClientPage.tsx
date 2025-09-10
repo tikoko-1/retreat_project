@@ -53,6 +53,38 @@ export default function CatalogClientPage({
   const [isLoadingInitial, setIsLoadingInitial] = useState(true);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
+  // Sync applied filters with URL parameters on mount or when URL changes
+  useEffect(() => {
+    // Check if the current applied filters match the URL parameters
+    const urlFilters: FilterState = {
+      search: (initialSearchParams.search as string) || "",
+      guests: (initialSearchParams.guests as string) || "",
+      sortBy: (initialSearchParams.sortBy as string) || "relevance",
+      amenities: (initialSearchParams.amenities as string[]) || [],
+      bedrooms: (initialSearchParams.bedrooms as string) || "",
+      bathrooms: (initialSearchParams.bathrooms as string) || "",
+      venueTypes: (initialSearchParams.venueTypes as string[]) || [],
+    };
+
+    // Check if URL filters are different from applied filters
+    const filtersChanged =
+      urlFilters.search !== appliedFilters.search ||
+      urlFilters.guests !== appliedFilters.guests ||
+      urlFilters.sortBy !== appliedFilters.sortBy ||
+      urlFilters.bedrooms !== appliedFilters.bedrooms ||
+      urlFilters.bathrooms !== appliedFilters.bathrooms ||
+      JSON.stringify(urlFilters.amenities.sort()) !==
+        JSON.stringify(appliedFilters.amenities.sort()) ||
+      JSON.stringify(urlFilters.venueTypes.sort()) !==
+        JSON.stringify(appliedFilters.venueTypes.sort());
+
+    if (filtersChanged) {
+      // Update both filters and appliedFilters to match URL
+      setFilters(urlFilters);
+      setAppliedFilters(urlFilters);
+    }
+  }, [initialSearchParams]); // Only run on mount
+
   // Update URL when applied filters change (only when search is performed)
   useEffect(() => {
     const params = new URLSearchParams();
