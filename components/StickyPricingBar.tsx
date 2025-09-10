@@ -7,10 +7,10 @@ import { RetreatDetails } from "@/types";
 
 interface StickyPricingBarProps {
   onReserveClick?: () => void;
-  venue: RetreatDetails
+  retreat: RetreatDetails
 }
 
-export default function StickyPricingBar({ onReserveClick, venue }: StickyPricingBarProps) {
+export default function StickyPricingBar({ onReserveClick, retreat }: StickyPricingBarProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -38,8 +38,8 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
           {/* Pricing info */}
           <div>
             <div className="flex items-baseline gap-1">
-              <span className="font-semibold text-gray-900">${venue.price_min ?? 0}–${venue.price_max ?? 0}</span>
-              <span className="text-gray-500 text-sm font-normal">{venue.price_unit === "per_night" ? "/ night" : venue.price_unit === "per_person" ? "/ person" : venue.price_unit === "week" ? "/ week" : venue.price_unit === "weekend" ? "/ weekend" : venue.price_unit === "custom" ? "" : "/ night"}</span>
+              <span className="font-semibold text-gray-900">${retreat.price_min ?? 0}–${retreat.price_max ?? 0}</span>
+              <span className="text-gray-500 text-sm font-normal">{retreat.price_unit === "per_night" ? "/ night" : retreat.price_unit === "per_person" ? "/ person" : retreat.price_unit === "week" ? "/ week" : retreat.price_unit === "weekend" ? "/ weekend" : retreat.price_unit === "custom" ? "" : "/ night"}</span>
             </div>
             <div className="text-xs text-gray-500">
               Rates vary by group size
@@ -60,10 +60,10 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
           <div className="flex items-center gap-4">
             {/* Name and Location */}
             <div>
-              <h3 className="font-medium text-gray-900">{venue.title}</h3>
+              <h3 className="font-medium text-gray-900">{retreat.title}</h3>
               <div className="flex items-center gap-1 mt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-gray-500" />
-                <span className="text-sm text-gray-600">{venue.city}, {venue.country}</span>
+                <span className="text-sm text-gray-600">{retreat.city}, {retreat.country}</span>
               </div>
             </div>
 
@@ -73,8 +73,8 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="font-semibold text-gray-900">${venue.price_min ?? 0}–${venue.price_max ?? 0}</span>
-                <span className="text-gray-500 text-sm font-normal">{venue.price_unit === "per_night" ? "/ night" : venue.price_unit === "per_person" ? "/ person" : venue.price_unit === "week" ? "/ week" : venue.price_unit === "weekend" ? "/ weekend" : venue.price_unit === "custom" ? "" : "/ night"}</span>
+                <span className="font-semibold text-gray-900">${retreat.price_min ?? 0}–${retreat.price_max ?? 0}</span>
+                <span className="text-gray-500 text-sm font-normal">{retreat.price_unit === "per_night" ? "/ night" : retreat.price_unit === "per_person" ? "/ person" : retreat.price_unit === "week" ? "/ week" : retreat.price_unit === "weekend" ? "/ weekend" : retreat.price_unit === "custom" ? "" : "/ night"}</span>
               </div>
               <div className="text-xs text-gray-500">
                 Rates vary by group size
@@ -97,10 +97,10 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
           <div className="flex items-center gap-4">
             {/* Name and Location */}
             <div>
-              <h3 className="font-medium text-gray-900">{venue.title}</h3>
+              <h3 className="font-medium text-gray-900">{retreat.title}</h3>
               <div className="flex items-center gap-1 mt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-gray-500" />
-                <span className="text-sm text-gray-600">{venue.city}, {venue.country}</span>
+                <span className="text-sm text-gray-600">{retreat.city}, {retreat.country}</span>
               </div>
             </div>
 
@@ -111,15 +111,15 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
             <div className="hidden xl:flex items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
-                <span>Up to {venue.capacity_max ?? 0} guests</span>
+                <span>Up to {retreat.capacity_max ?? 0} guests</span>
               </div>
               <div className="flex items-center gap-1">
                 <Home className="w-4 h-4" />
-                <span>{venue.bedrooms ?? 0} bedrooms</span>
+                <span>{retreat.bedrooms ?? 0} bedrooms</span>
               </div>
               <div className="flex items-center gap-1">
                 <Bath className="w-4 h-4" />
-                <span>{venue.bathrooms ?? 0} bathrooms</span>
+                <span>{retreat.bathrooms ?? 0} bathrooms</span>
               </div>
             </div>
 
@@ -127,11 +127,11 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
             <div className="xl:hidden flex items-center gap-3 text-sm text-gray-600">
               <div className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
-                <span>{venue.capacity_max ?? 0} guests</span>
+                <span>{retreat.capacity_max ?? 0} guests</span>
               </div>
               <div className="flex items-center gap-1">
                 <Home className="w-4 h-4" />
-                <span>{venue.rooms?.length ?? 0} rooms</span>
+                <span>{retreat.rooms?.length ?? 0} rooms</span>
               </div>
             </div>
 
@@ -141,8 +141,8 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
             {/* Rating and Reviews */}
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 fill-black text-black" />
-              <span className="text-sm font-medium">{venue.review_stats.avg_rating.toFixed(1) ?? 0.0}</span>
-              <span className="text-sm text-gray-600">· {venue.review_stats.review_count ?? 0} reviews</span>
+              <span className="text-sm font-medium">{retreat.review_stats.avg_rating.toFixed(1) ?? 0.0}</span>
+              <span className="text-sm text-gray-600">· {retreat.review_stats.review_count ?? 0} reviews</span>
             </div>
 
             {/* Separator */}
@@ -151,8 +151,8 @@ export default function StickyPricingBar({ onReserveClick, venue }: StickyPricin
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="font-semibold text-gray-900">${venue.price_min ?? 0}–${venue.price_max ?? 0}</span>
-                <span className="text-gray-500 text-sm font-normal">{venue.price_unit === "per_night" ? "/ night" : venue.price_unit === "per_person" ? "/ person" : venue.price_unit === "week" ? "/ week" : venue.price_unit === "weekend" ? "/ weekend" : venue.price_unit === "custom" ? "" : "/ night"}</span>
+                <span className="font-semibold text-gray-900">${retreat.price_min ?? 0}–${retreat.price_max ?? 0}</span>
+                <span className="text-gray-500 text-sm font-normal">{retreat.price_unit === "per_night" ? "/ night" : retreat.price_unit === "per_person" ? "/ person" : retreat.price_unit === "week" ? "/ week" : retreat.price_unit === "weekend" ? "/ weekend" : retreat.price_unit === "custom" ? "" : "/ night"}</span>
               </div>
               <div className="text-xs text-gray-500">
                 Rates vary by group size
