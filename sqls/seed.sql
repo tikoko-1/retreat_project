@@ -4990,6 +4990,78 @@ SELECT v.id,
   5
 FROM venues v
 WHERE v.title = 'Pacific Healing Haven';
+-- 51. Zen Garden House
+INSERT INTO venue_photos (venue_id, url, alt_text, position)
+SELECT v.id,
+  'venue_photos/venue-6.avif',
+  'Zen Garden House - View 1',
+  1
+FROM venues v
+WHERE v.title = 'Zen Garden House'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-7.avif',
+  'Zen Garden House - View 2',
+  2
+FROM venues v
+WHERE v.title = 'Zen Garden House'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-8.avif',
+  'Zen Garden House - View 3',
+  3
+FROM venues v
+WHERE v.title = 'Zen Garden House'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-9.avif',
+  'Zen Garden House - View 4',
+  4
+FROM venues v
+WHERE v.title = 'Zen Garden House'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-10.avif',
+  'Zen Garden House - View 10',
+  5
+FROM venues v
+WHERE v.title = 'Zen Garden House';
+-- 52. Desert Soul Sanctuary
+INSERT INTO venue_photos (venue_id, url, alt_text, position)
+SELECT v.id,
+  'venue_photos/venue-6.avif',
+  'Desert Soul Sanctuary - View 1',
+  1
+FROM venues v
+WHERE v.title = 'Desert Soul Sanctuary'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-7.avif',
+  'Desert Soul Sanctuary - View 2',
+  2
+FROM venues v
+WHERE v.title = 'Desert Soul Sanctuary'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-8.avif',
+  'Desert Soul Sanctuary - View 3',
+  3
+FROM venues v
+WHERE v.title = 'Desert Soul Sanctuary'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-9.avif',
+  'Desert Soul Sanctuary - View 4',
+  4
+FROM venues v
+WHERE v.title = 'Desert Soul Sanctuary'
+UNION ALL
+SELECT v.id,
+  'venue_photos/venue-10.avif',
+  'Desert Soul Sanctuary - View 10',
+  5
+FROM venues v
+WHERE v.title = 'Desert Soul Sanctuary';
 -- Insert sample reviews (10 reviews linking users to venues)
 INSERT INTO reviews (venue_id, user_id, rating, comment)
 SELECT v.id,
