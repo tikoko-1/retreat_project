@@ -124,7 +124,7 @@ export default function RetreatCenterCard({
           <div className="flex items-center gap-1.5">
             <span className="text-gray-400 text-sm">★</span>
             <span className="font-medium text-gray-900">
-              {retreat.avg_rating}
+              {retreat.avg_rating.toFixed(1)}
             </span>
             <span className="text-gray-500 text-sm">·</span>
             <span className="text-gray-500 text-sm">
