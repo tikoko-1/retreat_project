@@ -45,8 +45,8 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-xl flex items-end p-4">
                   <div className="text-white">
-                    <h3 className="font-medium mb-1">{image.alt_text}</h3>
-                    <p className="text-sm text-white/80">{image.alt_text}</p>
+                    <h3 className="font-medium mb-1 text-sm">{image.alt_text}</h3>
+                    {/* <p className="text-sm text-white/80">{image.alt_text}</p> */}
                   </div>
                 </div>
               </div>
@@ -72,7 +72,7 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
                   <div className={`absolute inset-0 bg-black/60 rounded-xl transition-opacity duration-300 flex items-end p-4 ${hoveredImage === index ? 'opacity-100' : 'opacity-0'
                     }`}>
                     <div className="text-white">
-                      <h3 className="font-medium mb-1">{image.alt_text}</h3>
+                      <h3 className="font-medium mb-1 text-sm">{image.alt_text}</h3>
                     </div>
                   </div>
                 </div>
