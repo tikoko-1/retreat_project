@@ -3,12 +3,14 @@
 import { useState, useEffect } from "react";
 import { Star, MapPin, Users, Home, Bath } from "lucide-react";
 import { Button } from "./ui/button";
+import { RetreatDetails } from "@/types";
 
 interface StickyPricingBarProps {
   onReserveClick?: () => void;
+  venue: RetreatDetails
 }
 
-export default function StickyPricingBar({ onReserveClick }: StickyPricingBarProps) {
+export default function StickyPricingBar({ onReserveClick, venue }: StickyPricingBarProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -36,16 +38,16 @@ export default function StickyPricingBar({ onReserveClick }: StickyPricingBarPro
           {/* Pricing info */}
           <div>
             <div className="flex items-baseline gap-1">
-              <span className="font-semibold text-gray-900">$180–320</span>
-              <span className="text-gray-500 text-sm font-normal">/ night</span>
+              <span className="font-semibold text-gray-900">${venue.price_min ?? 0}–${venue.price_max ?? 0}</span>
+              <span className="text-gray-500 text-sm font-normal">{venue.price_unit === "per_night" ? "/ night" : venue.price_unit === "per_person" ? "/ person" : venue.price_unit === "week" ? "/ week" : venue.price_unit === "weekend" ? "/ weekend" : venue.price_unit === "custom" ? "" : "/ night"}</span>
             </div>
             <div className="text-xs text-gray-500">
               Rates vary by group size
             </div>
           </div>
-          
+
           {/* CTA Button */}
-          <Button 
+          <Button
             onClick={onReserveClick}
             className="bg-black text-white hover:bg-gray-800 px-4 py-2 text-sm font-medium"
           >
@@ -58,30 +60,30 @@ export default function StickyPricingBar({ onReserveClick }: StickyPricingBarPro
           <div className="flex items-center gap-4">
             {/* Name and Location */}
             <div>
-              <h3 className="font-medium text-gray-900">The Sanctuary Bali Retreat Center</h3>
+              <h3 className="font-medium text-gray-900">{venue.title}</h3>
               <div className="flex items-center gap-1 mt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-gray-500" />
-                <span className="text-sm text-gray-600">Ubud, Indonesia</span>
+                <span className="text-sm text-gray-600">{venue.city}, {venue.country}</span>
               </div>
             </div>
-            
+
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-            
+
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="font-semibold text-gray-900">$180–320</span>
-                <span className="text-gray-500 text-sm font-normal">/ night</span>
+                <span className="font-semibold text-gray-900">${venue.price_min ?? 0}–${venue.price_max ?? 0}</span>
+                <span className="text-gray-500 text-sm font-normal">{venue.price_unit === "per_night" ? "/ night" : venue.price_unit === "per_person" ? "/ person" : venue.price_unit === "week" ? "/ week" : venue.price_unit === "weekend" ? "/ weekend" : venue.price_unit === "custom" ? "" : "/ night"}</span>
               </div>
               <div className="text-xs text-gray-500">
                 Rates vary by group size
               </div>
             </div>
           </div>
-          
+
           {/* CTA Button */}
-          <Button 
+          <Button
             onClick={onReserveClick}
             className="bg-black text-white hover:bg-gray-800 px-6 py-2 text-sm font-medium"
           >
@@ -95,71 +97,71 @@ export default function StickyPricingBar({ onReserveClick }: StickyPricingBarPro
           <div className="flex items-center gap-4">
             {/* Name and Location */}
             <div>
-              <h3 className="font-medium text-gray-900">The Sanctuary Bali Retreat Center</h3>
+              <h3 className="font-medium text-gray-900">{venue.title}</h3>
               <div className="flex items-center gap-1 mt-0.5">
                 <MapPin className="w-3.5 h-3.5 text-gray-500" />
-                <span className="text-sm text-gray-600">Ubud, Indonesia</span>
+                <span className="text-sm text-gray-600">{venue.city}, {venue.country}</span>
               </div>
             </div>
-            
+
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-            
+
             {/* Capacity and Rooms - Full version for large screens */}
             <div className="hidden xl:flex items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
-                <span>Up to 25 guests</span>
+                <span>Up to {venue.capacity_max ?? 0} guests</span>
               </div>
               <div className="flex items-center gap-1">
                 <Home className="w-4 h-4" />
-                <span>12 bedrooms</span>
+                <span>{venue.bedrooms ?? 0} bedrooms</span>
               </div>
               <div className="flex items-center gap-1">
                 <Bath className="w-4 h-4" />
-                <span>8 bathrooms</span>
+                <span>{venue.bathrooms ?? 0} bathrooms</span>
               </div>
             </div>
-            
+
             {/* Compact version for smaller screens */}
             <div className="xl:hidden flex items-center gap-3 text-sm text-gray-600">
               <div className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
-                <span>25 guests</span>
+                <span>{venue.capacity_max ?? 0} guests</span>
               </div>
               <div className="flex items-center gap-1">
                 <Home className="w-4 h-4" />
-                <span>12 rooms</span>
+                <span>{venue.rooms?.length ?? 0} rooms</span>
               </div>
             </div>
-            
+
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-            
+
             {/* Rating and Reviews */}
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 fill-black text-black" />
-              <span className="text-sm font-medium">4.9</span>
-              <span className="text-sm text-gray-600">· 127 reviews</span>
+              <span className="text-sm font-medium">{venue.review_stats.avg_rating.toFixed(1) ?? 0.0}</span>
+              <span className="text-sm text-gray-600">· {venue.review_stats.review_count ?? 0} reviews</span>
             </div>
-            
+
             {/* Separator */}
             <div className="w-px h-10 bg-gray-200"></div>
-            
+
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="font-semibold text-gray-900">$180–320</span>
-                <span className="text-gray-500 text-sm font-normal">/ night</span>
+                <span className="font-semibold text-gray-900">${venue.price_min ?? 0}–${venue.price_max ?? 0}</span>
+                <span className="text-gray-500 text-sm font-normal">{venue.price_unit === "per_night" ? "/ night" : venue.price_unit === "per_person" ? "/ person" : venue.price_unit === "week" ? "/ week" : venue.price_unit === "weekend" ? "/ weekend" : venue.price_unit === "custom" ? "" : "/ night"}</span>
               </div>
               <div className="text-xs text-gray-500">
                 Rates vary by group size
               </div>
             </div>
           </div>
-          
+
           {/* Right side - CTA Button */}
-          <Button 
+          <Button
             onClick={onReserveClick}
             className="bg-black text-white hover:bg-gray-800 px-6 py-2 text-sm font-medium"
           >
