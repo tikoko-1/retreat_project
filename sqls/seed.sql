@@ -7037,7 +7037,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '¥',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7046,7 +7046,7 @@ UNION ALL
 SELECT v.id,
   250,
   '¥',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7055,7 +7055,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7064,7 +7064,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7073,7 +7073,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7092,7 +7092,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '¥',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7101,7 +7101,7 @@ UNION ALL
 SELECT v.id,
   250,
   '¥',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7110,7 +7110,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7119,7 +7119,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7128,7 +7128,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7147,7 +7147,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '¥',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7156,7 +7156,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7165,7 +7165,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7174,7 +7174,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7183,7 +7183,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7202,7 +7202,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '¥',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7211,7 +7211,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7220,7 +7220,7 @@ UNION ALL
 SELECT v.id,
   400,
   '¥',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7229,7 +7229,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7238,7 +7238,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7257,7 +7257,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7266,7 +7266,7 @@ UNION ALL
 SELECT v.id,
   250,
   '¥',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7275,7 +7275,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7284,7 +7284,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7293,7 +7293,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7312,7 +7312,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '¥',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7321,7 +7321,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7330,7 +7330,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7339,7 +7339,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7348,7 +7348,7 @@ UNION ALL
 SELECT v.id,
   900,
   '¥',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7367,7 +7367,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7376,7 +7376,7 @@ UNION ALL
 SELECT v.id,
   250,
   '¥',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7385,7 +7385,7 @@ UNION ALL
 SELECT v.id,
   400,
   '£',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7394,7 +7394,7 @@ UNION ALL
 SELECT v.id,
   600,
   '£',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7403,7 +7403,7 @@ UNION ALL
 SELECT v.id,
   900,
   '£',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7422,7 +7422,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7431,7 +7431,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7440,7 +7440,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7449,7 +7449,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7458,7 +7458,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7477,7 +7477,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7486,7 +7486,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7495,7 +7495,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7504,7 +7504,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7513,7 +7513,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7532,7 +7532,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7541,7 +7541,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7550,7 +7550,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7559,7 +7559,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7568,7 +7568,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7587,7 +7587,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7596,7 +7596,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7605,7 +7605,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7614,7 +7614,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7623,7 +7623,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7642,7 +7642,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7651,7 +7651,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7660,7 +7660,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7669,7 +7669,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7678,7 +7678,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7697,7 +7697,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7706,7 +7706,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7715,7 +7715,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7724,7 +7724,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7733,7 +7733,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7752,7 +7752,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7761,7 +7761,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7770,7 +7770,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7779,7 +7779,7 @@ UNION ALL
 SELECT v.id,
   600,
   '£',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7788,7 +7788,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7807,7 +7807,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '£',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7816,7 +7816,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7825,7 +7825,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7834,7 +7834,7 @@ UNION ALL
 SELECT v.id,
   600,
   '£',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7843,7 +7843,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7862,7 +7862,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7871,7 +7871,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7880,7 +7880,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7889,7 +7889,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7898,7 +7898,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7917,7 +7917,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '£',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7926,7 +7926,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7935,7 +7935,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7944,7 +7944,7 @@ UNION ALL
 SELECT v.id,
   600,
   '£',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -7953,7 +7953,7 @@ UNION ALL
 SELECT v.id,
   900,
   '£',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -7972,7 +7972,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -7981,7 +7981,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -7990,7 +7990,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -7999,7 +7999,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8008,7 +8008,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -8027,7 +8027,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -8036,7 +8036,7 @@ UNION ALL
 SELECT v.id,
   250,
   '£',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -8045,7 +8045,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -8054,7 +8054,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8063,7 +8063,7 @@ UNION ALL
 SELECT v.id,
   900,
   '£',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -8082,7 +8082,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '£',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -8091,7 +8091,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -8100,7 +8100,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -8109,7 +8109,7 @@ UNION ALL
 SELECT v.id,
   600,
   '£',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8118,7 +8118,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -8137,7 +8137,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -8146,7 +8146,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -8155,7 +8155,7 @@ UNION ALL
 SELECT v.id,
   400,
   '£',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -8164,7 +8164,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8173,7 +8173,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -8192,7 +8192,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -8201,7 +8201,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -8210,7 +8210,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -8219,7 +8219,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8228,7 +8228,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -8247,7 +8247,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -8256,7 +8256,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -8265,7 +8265,7 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -8274,7 +8274,7 @@ UNION ALL
 SELECT v.id,
   600,
   '£',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8283,7 +8283,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -8302,7 +8302,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '£',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -8311,7 +8311,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -8320,7 +8320,7 @@ UNION ALL
 SELECT v.id,
   400,
   '£',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -8329,7 +8329,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8338,7 +8338,7 @@ UNION ALL
 SELECT v.id,
   900,
   '$',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
@@ -8357,7 +8357,7 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '$',
-  'per_night',
+  'per night',
   'Basic Package: Shared room, breakfast included',
   1
 FROM venues v
@@ -8366,7 +8366,7 @@ UNION ALL
 SELECT v.id,
   250,
   '$',
-  'per_night',
+  'per night',
   'Standard Package: Private room, breakfast & dinner included',
   2
 FROM venues v
@@ -8375,7 +8375,7 @@ UNION ALL
 SELECT v.id,
   400,
   '£',
-  'per_night',
+  'per night',
   'Premium Package: Private suite, all meals & spa access included',
   3
 FROM venues v
@@ -8384,7 +8384,7 @@ UNION ALL
 SELECT v.id,
   600,
   '$',
-  'per_night',
+  'per night',
   'Luxury Package: Villa with gourmet meals, spa & yoga sessions',
   4
 FROM venues v
@@ -8393,7 +8393,7 @@ UNION ALL
 SELECT v.id,
   900,
   '£',
-  'per_night',
+  'per night',
   'Exclusive Package: Entire retreat booking with all amenities',
   5
 FROM venues v
