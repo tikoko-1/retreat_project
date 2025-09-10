@@ -60,10 +60,18 @@ export default function CatalogClientPage({
       search: (initialSearchParams.search as string) || "",
       guests: (initialSearchParams.guests as string) || "",
       sortBy: (initialSearchParams.sortBy as string) || "relevance",
-      amenities: (initialSearchParams.amenities as string[]) || [],
+      amenities: Array.isArray(initialSearchParams.amenities)
+        ? initialSearchParams.amenities
+        : initialSearchParams.amenities
+        ? [initialSearchParams.amenities as string]
+        : [],
       bedrooms: (initialSearchParams.bedrooms as string) || "",
       bathrooms: (initialSearchParams.bathrooms as string) || "",
-      venueTypes: (initialSearchParams.venueTypes as string[]) || [],
+      venueTypes: Array.isArray(initialSearchParams.venueTypes)
+        ? initialSearchParams.venueTypes
+        : initialSearchParams.venueTypes
+        ? [initialSearchParams.venueTypes as string]
+        : [],
     };
 
     // Check if URL filters are different from applied filters
