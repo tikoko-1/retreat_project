@@ -46,6 +46,9 @@ export interface IUser {
   email?: string;
   phone?: string;
   avatar_url?: string;
+  instagram_url?: string;
+  position?: string;
+  address?: string;
 }
 
 export interface IRoom {

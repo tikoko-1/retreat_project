@@ -559,7 +559,13 @@ SELECT jsonb_build_object(
                 'name',
                 pr.name,
                 'avatar_url',
-                pr.avatar_url
+                pr.avatar_url,
+                'instagram_url',
+                pr.instagram_url,
+                'position',
+                pr.position,
+                'address',
+                pr.address
               )
             )
             ORDER BY rr.created_at DESC
@@ -634,7 +640,13 @@ select coalesce(
           'name',
           r.name,
           'avatar_url',
-          r.avatar_url
+          r.avatar_url,
+          'instagram_url',
+          r.instagram_url,
+          'position',
+          r.position,
+          'address',
+          r.address
         )
       )
     ),

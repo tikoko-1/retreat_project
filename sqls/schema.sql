@@ -39,6 +39,9 @@ CREATE TABLE IF NOT EXISTS profiles (
     email TEXT UNIQUE,
     phone TEXT,
     bio TEXT,
+    instagram_url TEXT,
+    position TEXT,
+    address TEXT,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 -- VENUE TYPES

@@ -70,7 +70,7 @@ WITH new_users AS (
   RETURNING id,
     email
 )
-INSERT INTO profiles (id, role, name, email, bio, avatar_url, phone)
+INSERT INTO profiles (id, role, name, email, bio, avatar_url, phone, instagram_url, position, address)
 VALUES (
     '11111111-1111-1111-1111-111111111111',
     'client',
@@ -78,7 +78,10 @@ VALUES (
     'sarah@serenityhills.com',
     'Wellness retreat host with 10+ years experience',
     'avatars/avatar-1.jpg',
-    '+1234567890'
+    '+1234567890',
+    'https://www.instagram.com/sarahjohnson',
+    'Wellness retreat host',
+    '123 Main St, Anytown, USA'
   ),
   (
     '22222222-2222-2222-2222-222222222222',
@@ -87,7 +90,10 @@ VALUES (
     'raj@mountainview.com',
     'Yoga and meditation expert from Rishikesh',
     'avatars/avatar-2.jpg',
-    '+1234572990'
+    '+1234572990',
+    'https://www.instagram.com/rajpatel',
+    'Yoga and meditation expert',
+    '123 Main St, Anytown, USA'
   ),
   (
     '33333333-3333-3333-3333-333333333333',
@@ -96,7 +102,10 @@ VALUES (
     'maria@oceanbliss.com',
     'Beachfront retreat specialist in Tulum',
     'avatars/avatar-3.jpg',
-    '+1234572990'
+    '+1234572990',
+    'https://www.instagram.com/mariarodriguez',
+    'Beachfront retreat specialist',
+    '123 Main St, Anytown, USA'
   ),
   (
     '44444444-4444-4444-4444-444444444444',
@@ -105,7 +114,10 @@ VALUES (
     'pierre@alpinewellness.com',
     'Alpine wellness expert in Chamonix',
     'avatars/avatar-4.jpg',
-    '+1234792990'
+    '+1234792990',
+    'https://www.instagram.com/pierredubois',
+    'Alpine wellness expert',
+    '123 Main St, Anytown, USA'
   ),
   (
     '55555555-5555-5555-5555-555555555555',
@@ -115,6 +127,9 @@ VALUES (
     'Peruvian spiritual guide and retreat host',
     'avatars/avatar-5.jpg',
     '+17421672990'
+    null,
+    null,
+    null
   );
 -- Insert blog articles
 INSERT INTO blog_articles (author_id, title, content, cover_image, tags)
