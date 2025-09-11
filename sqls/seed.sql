@@ -2727,7 +2727,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat';
 -- 2. Mountain View Sanctuary
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mountain View Sanctuary - View 1',
@@ -2768,7 +2768,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary';
 -- 3. Ocean Bliss Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Ocean Bliss Retreat - View 1',
@@ -2809,7 +2809,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat';
 -- 4. Sahara Moon Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sahara Moon Lodge - View 1',
@@ -2850,7 +2850,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Sahara Moon Lodge';
 -- 5. Alpine Wellness Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Alpine Wellness Lodge - View 1',
@@ -2891,7 +2891,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge';
 -- 6. Sacred Valley Sanctuary
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sacred Valley Sanctuary - View 1',
@@ -2932,7 +2932,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary';
 -- 7. Mindful Mountain Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mindful Mountain Retreat - View 1',
@@ -2973,7 +2973,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat';
 -- 8. Coastal Zen Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Coastal Zen Retreat - View 1',
@@ -3014,7 +3014,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat';
 -- 9. Desert Oasis Center
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Desert Oasis Center - View 1',
@@ -3055,7 +3055,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Desert Oasis Center';
 -- 10. Forest Healing Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Forest Healing Lodge - View 1',
@@ -3096,7 +3096,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge';
 -- 11. Island Paradise Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Island Paradise Retreat - View 1',
@@ -3137,7 +3137,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat';
 -- 12. Himalayan Bliss Center
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Himalayan Bliss Center - View 1',
@@ -3178,7 +3178,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center';
 -- 13. Mediterranean Wellness Villa
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mediterranean Wellness Villa - View 1',
@@ -3219,7 +3219,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa';
 -- 14. Zen Garden Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Zen Garden Retreat - View 1',
@@ -3260,7 +3260,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat';
 -- 15. Tropical Healing Center
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Tropical Healing Center - View 1',
@@ -3301,7 +3301,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Tropical Healing Center';
 -- 16. Arctic Wellness Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Arctic Wellness Lodge - View 1',
@@ -3342,7 +3342,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge';
 -- 17. Desert Rose Sanctuary
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Desert Rose Sanctuary - View 1',
@@ -3383,7 +3383,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary';
 -- 18. Mountain Spirit Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mountain Spirit Lodge - View 1',
@@ -3424,7 +3424,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge';
 -- 19. Ocean Spirit Center
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Ocean Spirit Center - View 1',
@@ -3465,7 +3465,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center';
 -- 20. Forest Wisdom Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Forest Wisdom Retreat - View 1',
@@ -3666,7 +3666,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat';
 -- 21. Baltic Serenity Spa
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Baltic Serenity Spa - View 1',
@@ -3707,7 +3707,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Baltic Serenity Spa';
 -- 22. Sky High Sanctuary
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sky High Sanctuary - View 1',
@@ -3908,7 +3908,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary';
 -- 23. Valley of Peace
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Valley of Peace - View 1',
@@ -3949,7 +3949,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Valley of Peace';
 -- 24. Crystal Healing Center
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Crystal Healing Center - View 1',
@@ -3990,7 +3990,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Crystal Healing Center';
 -- 25. Sunrise Wellness Resort
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sunrise Wellness Resort - View 1',
@@ -4031,7 +4031,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort';
 -- 26. Alpine Zen Hut
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Alpine Zen Hut - View 1',
@@ -4072,7 +4072,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Alpine Zen Hut';
 -- 27. Sacred Mountain Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Sacred Mountain Lodge - View 1',
@@ -4113,7 +4113,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Sacred Mountain Lodge';
 -- 28. Eternal Spring Center
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Eternal Spring Center - View 1',
@@ -4154,7 +4154,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Eternal Spring Center';
 -- 29. Rainforest Harmony Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Rainforest Harmony Lodge - View 1',
@@ -4195,7 +4195,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Rainforest Harmony Lodge';
 -- 30. Nordic Aurora Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Nordic Aurora Retreat - View 1',
@@ -4236,7 +4236,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Nordic Aurora Retreat';
 -- 31. Savannah Spirit Camp
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Savannah Spirit Camp - View 1',
@@ -4277,7 +4277,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Savannah Spirit Camp';
 -- 32. Himalayan Zen Ashram
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Himalayan Zen Ashram - View 1',
@@ -4318,7 +4318,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Himalayan Zen Ashram';
 -- 33. Mediterranean Bliss Villa
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Mediterranean Bliss Villa - View 1',
@@ -4359,7 +4359,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Mediterranean Bliss Villa';
 -- 34. Andes Soul Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Andes Soul Retreat - View 1',
@@ -4520,7 +4520,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat';
 -- 35. Island Spirit Eco-Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Island Spirit Eco-Lodge - View 1',
@@ -4561,7 +4561,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Island Spirit Eco-Lodge';
 -- 36. Kyoto Zen House
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Kyoto Zen House - View 1',
@@ -4602,7 +4602,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Kyoto Zen House';
 -- 37. Caribbean Soul Villa
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Caribbean Soul Villa - View 1',
@@ -4643,7 +4643,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Caribbean Soul Villa';
 -- 38. Patagonia Nature Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Patagonia Nature Lodge - View 1',
@@ -4684,7 +4684,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Patagonia Nature Lodge';
 -- 39. Sahara Healing Dome
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Sahara Healing Dome - View 1',
@@ -4725,7 +4725,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Sahara Healing Dome';
 -- 40. Arctic Light Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Arctic Light Retreat - View 1',
@@ -4766,7 +4766,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Arctic Light Retreat';
 -- 41. Riviera Wellness Villa
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Riviera Wellness Villa - View 1',
@@ -4967,7 +4967,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa';
 -- 42. Himalayan River Ashram
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Himalayan River Ashram - View 1',
@@ -5008,7 +5008,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Himalayan River Ashram';
 -- 43. Amazon River Camp
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Amazon River Camp - View 1',
@@ -5049,7 +5049,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Amazon River Camp';
 -- 44. Tuscany Harmony Farm
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Tuscany Harmony Farm - View 1',
@@ -5090,7 +5090,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Tuscany Harmony Farm';
 -- 45. Pacific Zen Bungalow
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Pacific Zen Bungalow - View 1',
@@ -5131,7 +5131,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Pacific Zen Bungalow';
 -- 46. Alpine Spirit Chalet
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Alpine Spirit Chalet - View 1',
@@ -5172,7 +5172,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Alpine Spirit Chalet';
 -- 47. Savannah Zen Lodge
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Savannah Zen Lodge - View 1',
@@ -5213,7 +5213,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Savannah Zen Lodge';
 -- 48. Baltic Light Center
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Baltic Light Center - View 1',
@@ -5254,7 +5254,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Baltic Light Center';
 -- 49. Andes Crystal Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Andes Crystal Retreat - View 1',
@@ -5295,7 +5295,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Andes Crystal Retreat';
 -- 50. Pacific Healing Haven
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Pacific Healing Haven - View 1',
@@ -5336,7 +5336,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Pacific Healing Haven';
 -- 51. Zen Garden House
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Zen Garden House - View 1',
@@ -5377,7 +5377,7 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Zen Garden House';
 -- 52. Desert Soul Sanctuary
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Desert Soul Sanctuary - View 1',
