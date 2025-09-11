@@ -70,7 +70,18 @@ WITH new_users AS (
   RETURNING id,
     email
 )
-INSERT INTO profiles (id, role, name, email, bio, avatar_url, phone, instagram_url, position, address)
+INSERT INTO profiles (
+    id,
+    role,
+    name,
+    email,
+    bio,
+    avatar_url,
+    phone,
+    instagram_url,
+    position,
+    address
+  )
 VALUES (
     '11111111-1111-1111-1111-111111111111',
     'client',
@@ -81,7 +92,7 @@ VALUES (
     '+1234567890',
     'https://www.instagram.com/sarahjohnson',
     'Wellness retreat host',
-    '123 Main St, Anytown, USA'
+    'London, UK'
   ),
   (
     '22222222-2222-2222-2222-222222222222',
@@ -93,7 +104,7 @@ VALUES (
     '+1234572990',
     'https://www.instagram.com/rajpatel',
     'Yoga and meditation expert',
-    '123 Main St, Anytown, USA'
+    'London, UK'
   ),
   (
     '33333333-3333-3333-3333-333333333333',
@@ -105,7 +116,7 @@ VALUES (
     '+1234572990',
     'https://www.instagram.com/mariarodriguez',
     'Beachfront retreat specialist',
-    '123 Main St, Anytown, USA'
+    'London, UK'
   ),
   (
     '44444444-4444-4444-4444-444444444444',
@@ -117,7 +128,7 @@ VALUES (
     '+1234792990',
     'https://www.instagram.com/pierredubois',
     'Alpine wellness expert',
-    '123 Main St, Anytown, USA'
+    'London, UK'
   ),
   (
     '55555555-5555-5555-5555-555555555555',
@@ -126,7 +137,7 @@ VALUES (
     'elena@sacredvalley.com',
     'Peruvian spiritual guide and retreat host',
     'avatars/avatar-5.jpg',
-    '+17421672990'
+    '+17421672990',
     null,
     null,
     null
@@ -230,7 +241,7 @@ INSERT INTO venues (
 SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   vt.id,
   'Serenity Hills Retreat',
-  'Nestled in the lush jungles of Ubud, this retreat offers a perfect blend of modern comfort and traditional Balinese spirituality. Experience daily yoga sessions, meditation workshops, and organic farm-to-table dining.',
+  '<p>Our tranquil sanctuary in the heart of Ubud combines ancient Balinese traditions with modern wellness facilities. Designed specifically for facilitators, we provide professional-grade infrastructure while you focus on what matters most — your participants.</p><p>The 1,200 sq ft yoga shala features acoustics designed for sound healing, professional AV systems, and panoramic jungle views. Our 25 private suites combine traditional architecture with contemporary comfort, ensuring your group feels both grounded and luxurious.</p><p>With 25 years of hosting successful retreats, our dedicated team handles every logistical detail. From airport transfers to customized organic meals, we provide seamless support so you can focus entirely on delivering transformational experiences.</p>',
   'published'::venue_status,
   'Indonesia',
   'Ubud',
@@ -247,7 +258,7 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
   6,
   'https://serenityhills.com',
   'https://google.com',
-  'New'::venue_label,
+  'Verified'::venue_label,
   '<p>The Sanctuary is located in the heart of Ubud, Bali''s spiritual and cultural center. Nestled among lush rice terraces and tropical rainforest, our retreat offers the perfect balance of tranquility and accessibility.</p><p>The retreat is located in the heart of Ubud, Bali''s spiritual and cultural center. Nestled among lush rice terraces and tropical rainforest, our retreat offers the perfect balance of tranquility and accessibility.</p>',
   '[
     { "title": "From Airport (DPS)", "text": "Take a short drive from the airport to reach the retreat. The retreat is located in the heart of Ubud, surrounded by lush greenery and traditional Balinese temples.", "note": "$35-45 USD • We can arrange pickup" },
@@ -267,8 +278,8 @@ SELECT '22222222-2222-2222-2222-222222222222'::uuid,
     { "title": "Rescheduling Policy", "text": "Bookings may be rescheduled up to 30 days before the retreat start date, subject to availability.", "icon": {"library": "lucide-react", "name": "refresh-cw"} },
     { "title": "Group Size", "text": "Minimum 10 participants are required. Maximum group size is 25 participants.", "icon": {"library": "lucide-react", "name": "clock"} }
   ]'::jsonb,
-  '{"Professional retreat coordination","All organic meals","Accommodation","Yoga shala","Wi-Fi"}'::text [],
-  '{"International flights","Visa","Spa treatments","Alcohol"}'::text []
+  null,
+  null
 FROM venue_types vt
 WHERE vt.name = 'Resort'
 UNION ALL
@@ -2331,37 +2342,23 @@ INSERT INTO food_dining (
     description
   )
 SELECT v.id,
-  'Vegetarian',
-  ARRAY ['Vegetarian','Vegan','Gluten-free'],
-  'Healthy plant-based meals with locally sourced ingredients.'
-FROM venues v
-WHERE v.title = 'Serenity Hills Retreat'
-UNION ALL
-SELECT v.id,
-  'Vegan',
-  ARRAY ['Vegan','Raw','Organic'],
+  'Breakfast',
+  ARRAY ['Tropical fruit bowl with coconut yogurt','Balinese rice porridge with ginger','Fresh pressed green juice', 'Herbal tea selection'],
   'Delicious vegan meals made from organic produce.'
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
-  'Gluten-Free',
-  ARRAY ['Gluten-free','Dairy-free'],
+  'Lunch',
+  ARRAY ['Gado-gado with organic vegetables','Quinoa Buddha bowl', 'Fresh spring rolls', 'Coconut water and detox water'],
   'Gluten-free options for sensitive diets.'
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
-  'Ayurvedic',
-  ARRAY ['Ayurvedic','Vegetarian'],
+  'Dinner',
+  ARRAY ['Grilled fish with sambal matah','Tempeh rendang with brown rice', 'Steamed vegetables with turmeric', 'Traditional herbal drinks'],
   'Balanced ayurvedic-inspired meals supporting wellness.'
-FROM venues v
-WHERE v.title = 'Serenity Hills Retreat'
-UNION ALL
-SELECT v.id,
-  'International',
-  ARRAY ['Vegetarian','Non-Vegetarian'],
-  'A mix of international and local cuisine.'
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
@@ -2504,13 +2501,6 @@ SELECT v.id,
   'International cuisine with forest-inspired flavors.'
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
-UNION ALL
-SELECT v.id,
-  'Vegetarian',
-  ARRAY ['Vegetarian', 'Vegan', 'Gluten-free'],
-  'Healthy plant-based meals with locally sourced ingredients.'
-FROM venues v
-WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
   'Organic',
@@ -5861,42 +5851,42 @@ VALUES -- Practice & Wellness
     'yoga-hall',
     'Practice & Wellness',
     '{"library": "lucide-react", "name": "person-standing"}',
-    'A space for yoga practice and meditation.'
+    '1,200 sq ft with acoustic design\nPanoramic jungle views'
   ),
   (
     'Meditation space / hall',
     'meditation-space',
     'Practice & Wellness',
     '{"library": "lucide-react", "name": "moon-star"}',
-    'A space for meditation and relaxation.'
+    'Vegan/vegetarian options\nCustomized dietary accommodations'
   ),
   (
     'Spa / massage room',
     'spa-massage',
     'Practice & Wellness',
     '{"library": "lucide-react", "name": "spa"}',
-    'A space for spa and massage.'
+    'Sound system & projectors\nWorkshop-ready equipment'
   ),
   (
     'Event / Workshop space (AV/projector)',
     'event-workshop',
     'Practice & Wellness',
     '{"library": "lucide-react", "name": "presentation"}',
-    'A space for events and workshops.'
+    'Reliable throughout property\nPerfect for virtual sessions'
   ),
   (
     'Fitness / gym area',
     'fitness-gym',
     'Practice & Wellness',
     '{"library": "lucide-react", "name": "dumbbell"}',
-    'A space for fitness and gym.'
+    'Dedicated staff team\nGated property with medical support'
   ),
   (
     'Sauna / steam / jacuzzi',
     'sauna-steam-jacuzzi',
     'Practice & Wellness',
     '{"library": "lucide-react", "name": "flame"}',
-    'A space for sauna, steam, and jacuzzi.'
+    '5 min to Ubud center\nEasy airport access (75 min)jacuzzi.'
   ),
   -- Food & Dining
   (
@@ -5904,42 +5894,42 @@ VALUES -- Practice & Wellness
     'dining-area',
     'Food & Dining',
     '{"library": "lucide-react", "name": "utensils-crossed"}',
-    'A space for dining and food.'
+    '25m heated saltwater pool\Panoramic jungle views with lounging deck'
   ),
   (
     'Kitchen (shared or professional)',
     'kitchen',
     'Food & Dining',
     '{"library": "lucide-react", "name": "chef-hat"}',
-    'A space for kitchen and food.'
+    'Traditional Balinese treatments\Authentic massages and healing therapies'
   ),
   (
     'Vegetarian / vegan meals available',
     'vegan-meals',
     'Food & Dining',
     '{"library": "lucide-react", "name": "leaf"}',
-    'A space for vegetarian and vegan meals.'
+    'Personalized meal preparation\Accommodates all dietary requirements'
   ),
   (
     'Restaurant on site',
     'restaurant-on-site',
     'Food & Dining',
     '{"library": "lucide-react", "name": "utensils"}',
-    'A space for restaurant and food.'
+    '100% renewable solar energy\Sustainable practices throughout property'
   ),
   (
     'Tea / Coffee station',
     'tea-coffee-station',
     'Food & Dining',
     '{"library": "lucide-react", "name": "coffee"}',
-    'A space for tea and coffee.'
+    'Curated spiritual and wellness texts\Quiet reading space with garden views'
   ),
   (
     'Special diet meals (gluten-free/ayurvedic)',
     'special-diet-meals',
     'Food & Dining',
     '{"library": "lucide-react", "name": "salad"}',
-    'A space for special diet meals.'
+    'Customized dietary accommodations\Organic produce from local farms'
   ),
   -- Living & Comfort
   (
@@ -5947,42 +5937,42 @@ VALUES -- Practice & Wellness
     'private-rooms',
     'Living & Comfort',
     '{"library": "lucide-react", "name": "bed-single"}',
-    'A space for private rooms.'
+    'Traditional Balinese architecture\Private balconies with jungle views'
   ),
   (
     'Shared rooms / Dorms',
     'shared-rooms',
     'Living & Comfort',
     '{"library": "lucide-react", "name": "users"}',
-    'A space for shared rooms and dorms.'
+    'Shared living area with kitchen\Shared bathrooms with hot water'
   ),
   (
     'En-suite bathrooms',
     'en-suite-bathrooms',
     'Living & Comfort',
     '{"library": "lucide-react", "name": "shower-head"}',
-    'A space for en-suite bathrooms.'
+    'Ensuite bathrooms with modern fixtures\Private bathrooms with hot water'
   ),
   (
     'Wi-Fi / Internet',
     'wifi',
     'Living & Comfort',
     '{"library": "lucide-react", "name": "wifi"}',
-    'A space for wifi and internet.'
+    'Premium cocktails and local wines\Sunset terrace with craft beverages'
   ),
   (
     'Air conditioning',
     'air-conditioning',
     'Living & Comfort',
     '{"library": "lucide-react", "name": "snowflake"}',
-    'A space for air conditioning.'
+    'Modern gym equipment\Floor-to-ceiling jungle views'
   ),
   (
     'Heating (for cold regions)',
     'heating',
     'Living & Comfort',
     '{"library": "lucide-react", "name": "flame"}',
-    'A space for heating.'
+    'Secure covered parking spaces\24/7 gated property access'
   ),
   -- Extras & Nature
   (
@@ -5990,42 +5980,42 @@ VALUES -- Practice & Wellness
     'swimming-pool',
     'Extras & Nature',
     '{"library": "lucide-react", "name": "waves"}',
-    'A space for swimming pool.'
+    '25m heated saltwater pool\Panoramic jungle views with lounging deck'
   ),
   (
     'Outdoor space / garden',
     'outdoor-space',
     'Extras & Nature',
     '{"library": "lucide-react", "name": "tree-palm"}',
-    'A space for outdoor space and garden.'
+    'Traditional Balinese gardens\Flower-filled terraces with sunset views'
   ),
   (
     'Parking on site',
     'parking',
     'Extras & Nature',
     '{"library": "lucide-react", "name": "parking-square"}',
-    'A space for parking on site.'
+    'Secure covered parking spaces\24/7 gated property access'
   ),
   (
     'Airport transfer',
     'airport-transfer',
     'Extras & Nature',
     '{"library": "lucide-react", "name": "plane"}',
-    'A space for airport transfer.'
+    'Airport transfer assistance\Round-trip pickup and drop-off'
   ),
   (
     'Eco-friendly',
     'eco-friendly',
     'Extras & Nature',
     '{"library": "lucide-react", "name": "sprout"}',
-    'A space for eco-friendly.'
+    '100% renewable solar energy\Sustainable practices throughout property'
   ),
   (
     'Activities (cooking class, tours, biking, etc.)',
     'activities',
     'Extras & Nature',
     '{"library": "lucide-react", "name": "bike"}',
-    'A space for activities.'
+    'Daily guided tours and cultural experiences\Bike rental service'
   ),
   -- Infrastructure & Policies
   (
@@ -6033,28 +6023,28 @@ VALUES -- Practice & Wellness
     'accessibility',
     'Infrastructure & Policies',
     '{"library": "lucide-react", "name": "accessibility"}',
-    'A space for accessibility.'
+    '1,200 sq ft with acoustic design\nPanoramic jungle views'
   ),
   (
     'Alcohol-free policy',
     'alcohol-free',
     'Infrastructure & Policies',
     '{"library": "lucide-react", "name": "wine-off"}',
-    'A space for alcohol-free policy.'
+    'Complimentary high-quality bicycles\Perfect for exploring Ubuds rice terraces'
   ),
   (
     'Pet friendly',
     'pet-friendly',
     'Infrastructure & Policies',
     '{"library": "lucide-react", "name": "paw-print"}',
-    'A space for pet friendly.'
+    'Pet-friendly policy\Dog-friendly accommodations'
   ),
   (
     'Child-friendly',
     'child-friendly',
     'Infrastructure & Policies',
     '{"library": "lucide-react", "name": "baby"}',
-    'A space for child friendly.'
+    'Organic cotton linens\nHypoallergenic pillows and mattresses'
   );
 -- Link amenities to venues (each venue gets 8-12 amenities)
 -- Serenity Hills Retreat
@@ -6067,14 +6057,32 @@ WHERE v.title = 'Serenity Hills Retreat'
   AND a.name IN (
     'Yoga hall / shala',
     'Meditation space / hall',
+    'Spa / massage room',
+    'Event / Workshop space (AV/projector)',
     'Fitness / gym area',
     'Sauna / steam / jacuzzi',
     'Dining area',
+    'Kitchen (shared or professional)',
     'Vegetarian / vegan meals available',
+    'Restaurant on site',
+    'Tea / Coffee station',
+    'Special diet meals (gluten-free/ayurvedic)',
+    'Private rooms',
+    'Shared rooms / Dorms',
+    'En-suite bathrooms',
+    'Wi-Fi / Internet',
+    'Air conditioning',
+    'Heating (for cold regions)',
     'Swimming pool',
+    'Outdoor space / garden',
+    'Parking on site',
     'Airport transfer',
     'Eco-friendly',
-    'Activities (cooking class, tours, biking, etc.)'
+    'Activities (cooking class, tours, biking, etc.)',
+    'Accessibility / wheelchair friendly',
+    'Alcohol-free policy',
+    'Pet friendly',
+    'Child-friendly'
   );
 -- Mountain View Sanctuary
 INSERT INTO venue_amenities (venue_id, amenity_id)
@@ -7435,8 +7443,8 @@ INSERT INTO venue_pricing (
 SELECT v.id,
   150,
   '¥',
-  'per night',
-  'Basic Package: Shared room, breakfast included',
+  'weekend package',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -7444,8 +7452,8 @@ UNION ALL
 SELECT v.id,
   250,
   '¥',
-  'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'week retreat',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -7453,8 +7461,8 @@ UNION ALL
 SELECT v.id,
   400,
   '$',
-  'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'per person/night',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -7491,7 +7499,7 @@ SELECT v.id,
   150,
   '¥',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
@@ -7500,7 +7508,7 @@ SELECT v.id,
   250,
   '¥',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
@@ -7509,7 +7517,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
@@ -7546,7 +7554,7 @@ SELECT v.id,
   150,
   '¥',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
@@ -7555,7 +7563,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
@@ -7564,7 +7572,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
@@ -7601,7 +7609,7 @@ SELECT v.id,
   150,
   '¥',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
@@ -7610,7 +7618,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
@@ -7619,7 +7627,7 @@ SELECT v.id,
   400,
   '¥',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
@@ -7656,7 +7664,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
@@ -7665,7 +7673,7 @@ SELECT v.id,
   250,
   '¥',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
@@ -7674,7 +7682,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
@@ -7711,7 +7719,7 @@ SELECT v.id,
   150,
   '¥',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
@@ -7720,7 +7728,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
@@ -7729,7 +7737,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
@@ -7766,7 +7774,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
@@ -7775,7 +7783,7 @@ SELECT v.id,
   250,
   '¥',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
@@ -7784,7 +7792,7 @@ SELECT v.id,
   400,
   '£',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
@@ -7821,7 +7829,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Desert Oasis Center'
@@ -7830,7 +7838,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Desert Oasis Center'
@@ -7839,7 +7847,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Desert Oasis Center'
@@ -7876,7 +7884,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
@@ -7885,7 +7893,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
@@ -7894,7 +7902,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
@@ -7931,7 +7939,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat'
@@ -7940,7 +7948,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat'
@@ -7949,7 +7957,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat'
@@ -7986,7 +7994,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center'
@@ -7995,7 +8003,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center'
@@ -8004,7 +8012,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center'
@@ -8041,7 +8049,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa'
@@ -8050,7 +8058,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa'
@@ -8059,7 +8067,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa'
@@ -8096,7 +8104,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat'
@@ -8105,7 +8113,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat'
@@ -8114,7 +8122,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat'
@@ -8151,7 +8159,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Tropical Healing Center'
@@ -8160,7 +8168,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Tropical Healing Center'
@@ -8169,7 +8177,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Tropical Healing Center'
@@ -8206,7 +8214,7 @@ SELECT v.id,
   150,
   '£',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge'
@@ -8215,7 +8223,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge'
@@ -8224,7 +8232,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge'
@@ -8261,7 +8269,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary'
@@ -8270,7 +8278,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary'
@@ -8279,7 +8287,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary'
@@ -8316,7 +8324,7 @@ SELECT v.id,
   150,
   '£',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Kyoto Zen House'
@@ -8325,7 +8333,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Kyoto Zen House'
@@ -8334,7 +8342,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Kyoto Zen House'
@@ -8371,7 +8379,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge'
@@ -8380,7 +8388,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge'
@@ -8389,7 +8397,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge'
@@ -8426,7 +8434,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
@@ -8435,7 +8443,7 @@ SELECT v.id,
   250,
   '£',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
@@ -8444,7 +8452,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
@@ -8481,7 +8489,7 @@ SELECT v.id,
   150,
   '£',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -8490,7 +8498,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -8499,7 +8507,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -8536,7 +8544,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -8545,7 +8553,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -8554,7 +8562,7 @@ SELECT v.id,
   400,
   '£',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -8591,7 +8599,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Valley of Peace'
@@ -8600,7 +8608,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Valley of Peace'
@@ -8609,7 +8617,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Valley of Peace'
@@ -8646,7 +8654,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
@@ -8655,7 +8663,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
@@ -8664,7 +8672,7 @@ SELECT v.id,
   400,
   '$',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
@@ -8701,7 +8709,7 @@ SELECT v.id,
   150,
   '£',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort'
@@ -8710,7 +8718,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort'
@@ -8719,7 +8727,7 @@ SELECT v.id,
   400,
   '£',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort'
@@ -8756,7 +8764,7 @@ SELECT v.id,
   150,
   '$',
   'per night',
-  'Basic Package: Shared room, breakfast included',
+  'Flexible group pricing',
   1
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -8765,7 +8773,7 @@ SELECT v.id,
   250,
   '$',
   'per night',
-  'Standard Package: Private room, breakfast & dinner included',
+  'Flexible group pricing',
   2
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -8774,7 +8782,7 @@ SELECT v.id,
   400,
   '£',
   'per night',
-  'Premium Package: Private suite, all meals & spa access included',
+  'Flexible group pricing',
   3
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -8817,15 +8825,15 @@ INSERT INTO rooms (
     sort_order
   )
 SELECT v.id,
-  'Standard Room',
+  'Garden Villa',
   1,
   2,
   250,
   100,
   150,
   '$',
-  '{"WiFi","Balcony"}'::text [],
-  'Cozy standard room with double bed.',
+  '{"Private terrace", "Garden view", "King bed", "Ensuite bathroom", "Air conditioning", "Mini fridge"}'::text [],
+  'Spacious villa with private garden terrace and jungle views. Features traditional Balinese architecture with modern amenities.',
   '{"room-photos/room-1.avif","room-photos/room-2.avif","room-photos/room-3.avif"}'::text [],
   'per_night',
   'Rates vary by season and booking length',
@@ -8834,15 +8842,15 @@ FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
-  'Deluxe Room',
+  'Deluxe Suite',
   1,
   3,
   350,
   180,
   250,
   '$',
-  '{"WiFi","Balcony","Air Conditioning"}'::text [],
-  'Spacious deluxe room with balcony and seating area.',
+  '{"Private terrace", "Garden view", "King bed", "Ensuite bathroom", "Air conditioning", "Mini fridge"}'::text [],
+  'Elegant suite with infinity pool views and premium furnishings. Perfect for couples seeking luxury and tranquility.',
   '{"room-photos/room-4.avif","room-photos/room-5.avif","room-photos/room-6.avif"}'::text [],
   'per_night',
   'Rates vary by season and booking length',
@@ -8851,15 +8859,15 @@ FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
-  'Suite',
+  'Yoga Retreat Room',
   1,
   4,
   500,
   300,
   450,
   '€',
-  '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
-  'Luxury suite with living area and private jacuzzi.',
+  '{"Pool view","Balcony","Queen bed","Rainfall shower", "Smart TV", "Air conditioning"}'::text [],
+  'Minimalist design focused on peace and meditation. Includes dedicated yoga space and meditation corner.',
   '{"room-photos/room-7.avif","room-photos/room-8.avif","room-photos/room-9.avif"}'::text [],
   'per_night',
   'Rates vary by season and booking length',
@@ -8868,15 +8876,15 @@ FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
-  'Family Room',
+  'Family Pavilion',
   2,
   5,
   600,
   250,
   350,
   '$',
-  '{"WiFi","Balcony","Kitchenette"}'::text [],
-  'Family-friendly room with kitchenette and multiple beds.',
+  '{"Private terrace", "Garden view", "King bed", "Ensuite bathroom", "Air conditioning", "Mini fridge"}'::text [],
+  'Two-bedroom pavilion ideal for families or small groups. Includes shared living area and private outdoor space.',
   '{"room-photos/room-10.avif","room-photos/room-11.avif","room-photos/room-12.avif"}'::text [],
   'per_night',
   'Rates vary by season and booking length',
@@ -8885,15 +8893,32 @@ FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
-  'Eco Lodge',
+  'Jungle Bungalow',
   1,
   2,
   400,
   200,
   300,
   '€',
-  '{"WiFi","Nature View","Private Deck"}'::text [],
-  'Rustic eco-lodge cabin surrounded by nature.',
+  '{"Private terrace", "Garden view", "King bed", "Ensuite bathroom", "Air conditioning", "Mini fridge"}'::text [],
+  'Intimate bungalow nestled deep in the jungle canopy. Features open-air design and natural ventilation.',
+  '{"room-photos/room-13.avif","room-photos/room-14.avif","room-photos/room-15.avif"}'::text [],
+  'per_night',
+  'Rates vary by season and booking length',
+  5
+FROM venues v
+WHERE v.title = 'Serenity Hills Retreat'
+UNION ALL
+SELECT v.id,
+  'Master Suite',
+  1,
+  2,
+  400,
+  200,
+  300,
+  '€',
+  '{"Private terrace", "Garden view", "King bed", "Ensuite bathroom", "Air conditioning", "Mini fridge"}'::text [],
+  'Our most luxurious accommodation with panoramic views and premium spa amenities. Includes private butler service.',
   '{"room-photos/room-13.avif","room-photos/room-14.avif","room-photos/room-15.avif"}'::text [],
   'per_night',
   'Rates vary by season and booking length',

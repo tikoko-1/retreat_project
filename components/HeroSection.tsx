@@ -239,11 +239,7 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
                 )}
 
                 {/* Detailed Description */}
-                <div className="grid gap-8 text-gray-700 leading-relaxed">
-                  <div
-                    className="text-lg"
-                    dangerouslySetInnerHTML={{ __html: retreat?.description ?? '' }}
-                  />
+                <div className="grid gap-8 text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: retreat?.description ?? '' }}>
                 </div>
 
                 {/* Download PDF brochure */}
