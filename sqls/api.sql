@@ -601,7 +601,8 @@ SELECT jsonb_build_object(
 FROM venues v
   JOIN venue_types vt ON vt.id = v.type_id
   JOIN profiles p ON p.id = v.owner_id
-WHERE v.id = p_venue_id;
+WHERE v.id = p_venue_id
+  AND v.status = 'published';
 RETURN result;
 END;
 $$;
