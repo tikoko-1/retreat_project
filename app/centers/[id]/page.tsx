@@ -1,4 +1,7 @@
+"use client";
+
 import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyPricingBar from "@/components/StickyPricingBar";
@@ -12,8 +15,7 @@ import IncludedSection from "@/components/IncludedSection";
 import CancellationSection from "@/components/CancellationSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CallToActionSection from "@/components/CallToActionSection";
-import { heroImages, allGalleryImages } from "@/components/constants/images";
-import { useState } from "react";
+import { RetreatDetails } from "@/types";
 
 interface RetreatPageProps {
   params: Promise<{
@@ -21,36 +23,69 @@ interface RetreatPageProps {
   }>;
 }
 
-export async function generateMetadata({ params }: RetreatPageProps) {
-  const { id } = await params;
-  // In a real app, you would fetch retreat data here
-  return {
-    title: `Retreat Center - ${id}`,
-    description:
-      "Premium retreat center for yoga teachers and wellness professionals.",
-  };
-}
+export default function RetreatPage({ params }: RetreatPageProps) {
+  const [retreat, setRetreat] = useState<RetreatDetails>();
 
-export default async function RetreatPage({ params }: RetreatPageProps) {
-  const { id } = await params;
-  // In a real app, you would validate the retreat exists
-  // const retreat = await getRetreat(params.id)
-  // if (!retreat) {
-  //   notFound()
-  // }
+  useEffect(() => {
+    const fetchRetreat = async () => {
+      try {
+        const { id } = await params;
+        const response = await fetch(`/api/centers/${id}`, {
+          cache: 'no-store'
+        });
+        if (!response.ok) {
+          notFound();
+        }
+        const data = await response.json();
+        if (!data.success) {
+          notFound();
+        }
+        setRetreat(data.retreat);
+      } catch (err) {
+        console.error('Error fetching retreat:', err);
+        notFound();
+      }
+    };
+
+    fetchRetreat();
+  }, [params]);
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <StickyPricingBar />
-      <HeroSection heroImages={heroImages} />
-      <LocationSection />
-      <GallerySection galleryImages={allGalleryImages} />
-      <FeaturesSection />
-      <RoomsSection />
-      <FoodSection />
-      <IncludedSection />
-      <CancellationSection />
-      <TestimonialsSection />
+      {retreat && <>
+        <StickyPricingBar retreat={retreat} />
+        <HeroSection
+          retreat={retreat}
+        />
+        <LocationSection
+          latitude={retreat?.latitude}
+          longitude={retreat?.longitude}
+          address={retreat?.address}
+          city={retreat?.city}
+          country={retreat?.country}
+          locationAbout={retreat?.location_about}
+          howToGetHere={retreat?.how_to_get_here}
+          nearbyAttractions={retreat?.nearby_attractions}
+        />
+        {retreat.photos && retreat.photos.length > 0 && (
+          <GallerySection galleryImages={retreat.photos} />
+        )}
+        {retreat.amenities && retreat.amenities.length > 0 && (
+          <FeaturesSection amenities={retreat.amenities} />
+        )}
+        {retreat.rooms && retreat.rooms.length > 0 && (
+          <RoomsSection rooms={retreat.rooms} />
+        )}
+        <FoodSection amenities={retreat.amenities || []} foodDining={retreat.food_dining || []} />
+        <IncludedSection includedItems={retreat.included_items} excludedItems={retreat.excluded_items} />
+        {retreat.cancellation_policies && retreat.cancellation_policies.length > 0 && (
+          <CancellationSection cancellationPolicies={retreat.cancellation_policies} />
+        )}
+        {retreat.reviews && retreat.reviews.length > 0 && (
+          <TestimonialsSection reviews={retreat.reviews} review_stats={retreat.review_stats} retreat={retreat.id} />
+        )}
+      </>}
       <CallToActionSection />
       <Footer />
     </div>

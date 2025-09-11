@@ -659,7 +659,10 @@ from (
       r.created_at,
       p.id as profile_id,
       p.name,
-      p.avatar_url
+      p.avatar_url,
+      p.instagram_url,
+      p.position,
+      p.address
     from reviews r
       join profiles p on p.id = r.user_id
     where r.venue_id = p_venue_id
