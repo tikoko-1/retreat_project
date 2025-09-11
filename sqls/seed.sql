@@ -8812,7 +8812,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-1.avif","room-photos/room-2.avif","room-photos/room-3.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -8829,7 +8829,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-4.avif","room-photos/room-5.avif","room-photos/room-6.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -8846,7 +8846,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-7.avif","room-photos/room-8.avif","room-photos/room-9.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -8863,7 +8863,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-10.avif","room-photos/room-11.avif","room-photos/room-12.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -8880,7 +8880,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-13.avif","room-photos/room-14.avif","room-photos/room-15.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -8915,7 +8915,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-16.avif","room-photos/room-17.avif","room-photos/room-18.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -8932,7 +8932,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-19.avif","room-photos/room-20.avif","room-photos/room-21.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -8949,7 +8949,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-22.avif","room-photos/room-23.avif","room-photos/room-24.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -8966,7 +8966,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-25.avif","room-photos/room-1.avif","room-photos/room-2.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -8983,7 +8983,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-3.avif","room-photos/room-4.avif","room-photos/room-5.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9018,7 +9018,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-6.avif","room-photos/room-7.avif","room-photos/room-8.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9035,7 +9035,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-9.avif","room-photos/room-10.avif","room-photos/room-11.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9052,7 +9052,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-12.avif","room-photos/room-13.avif","room-photos/room-14.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9069,7 +9069,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-15.avif","room-photos/room-16.avif","room-photos/room-17.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9086,7 +9086,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-18.avif","room-photos/room-19.avif","room-photos/room-20.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9121,7 +9121,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-21.avif","room-photos/room-22.avif","room-photos/room-23.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9138,7 +9138,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-24.avif","room-photos/room-25.avif","room-photos/room-1.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9155,7 +9155,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-2.avif","room-photos/room-3.avif","room-photos/room-4.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9172,7 +9172,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-5.avif","room-photos/room-6.avif","room-photos/room-7.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9189,7 +9189,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-8.avif","room-photos/room-9.avif","room-photos/room-10.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9224,7 +9224,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-11.avif","room-photos/room-12.avif","room-photos/room-13.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9241,7 +9241,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-14.avif","room-photos/room-15.avif","room-photos/room-16.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9258,7 +9258,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-17.avif","room-photos/room-18.avif","room-photos/room-19.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9275,7 +9275,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-20.avif","room-photos/room-21.avif","room-photos/room-22.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9292,7 +9292,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-23.avif","room-photos/room-24.avif","room-photos/room-25.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9327,7 +9327,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-1.avif","room-photos/room-2.avif","room-photos/room-3.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9344,7 +9344,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-4.avif","room-photos/room-5.avif","room-photos/room-6.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9361,7 +9361,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-7.avif","room-photos/room-8.avif","room-photos/room-9.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9378,7 +9378,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-10.avif","room-photos/room-11.avif","room-photos/room-12.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9395,7 +9395,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-13.avif","room-photos/room-14.avif","room-photos/room-15.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9430,7 +9430,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-16.avif","room-photos/room-17.avif","room-photos/room-18.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9447,7 +9447,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-19.avif","room-photos/room-20.avif","room-photos/room-21.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9464,7 +9464,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-22.avif","room-photos/room-23.avif","room-photos/room-24.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9481,7 +9481,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-25.avif","room-photos/room-1.avif","room-photos/room-2.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9498,7 +9498,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-3.avif","room-photos/room-4.avif","room-photos/room-5.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9533,7 +9533,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-6.avif","room-photos/room-7.avif","room-photos/room-8.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9550,7 +9550,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-9.avif","room-photos/room-10.avif","room-photos/room-11.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9567,7 +9567,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-12.avif","room-photos/room-13.avif","room-photos/room-14.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9584,7 +9584,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-15.avif","room-photos/room-16.avif","room-photos/room-17.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9601,7 +9601,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-18.avif","room-photos/room-19.avif","room-photos/room-20.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9636,7 +9636,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-21.avif","room-photos/room-22.avif","room-photos/room-23.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9653,7 +9653,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-24.avif","room-photos/room-25.avif","room-photos/room-1.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9670,7 +9670,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-2.avif","room-photos/room-3.avif","room-photos/room-4.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9687,7 +9687,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-5.avif","room-photos/room-6.avif","room-photos/room-7.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9704,7 +9704,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-8.avif","room-photos/room-9.avif","room-photos/room-10.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9739,7 +9739,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-11.avif","room-photos/room-12.avif","room-photos/room-13.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9756,7 +9756,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-14.avif","room-photos/room-15.avif","room-photos/room-16.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9773,7 +9773,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-17.avif","room-photos/room-18.avif","room-photos/room-19.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9790,7 +9790,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-20.avif","room-photos/room-21.avif","room-photos/room-22.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9807,7 +9807,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-23.avif","room-photos/room-24.avif","room-photos/room-25.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9842,7 +9842,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-1.avif","room-photos/room-2.avif","room-photos/room-3.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9859,7 +9859,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-4.avif","room-photos/room-5.avif","room-photos/room-6.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9876,7 +9876,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-7.avif","room-photos/room-8.avif","room-photos/room-9.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9893,7 +9893,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-10.avif","room-photos/room-11.avif","room-photos/room-12.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -9910,7 +9910,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-13.avif","room-photos/room-14.avif","room-photos/room-15.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -9945,7 +9945,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-16.avif","room-photos/room-17.avif","room-photos/room-18.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -9962,7 +9962,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-19.avif","room-photos/room-20.avif","room-photos/room-21.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -9979,7 +9979,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-22.avif","room-photos/room-23.avif","room-photos/room-24.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -9996,7 +9996,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-25.avif","room-photos/room-1.avif","room-photos/room-2.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10013,7 +10013,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-3.avif","room-photos/room-4.avif","room-photos/room-5.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10048,7 +10048,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-6.avif","room-photos/room-7.avif","room-photos/room-8.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10065,7 +10065,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-9.avif","room-photos/room-10.avif","room-photos/room-11.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10082,7 +10082,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-12.avif","room-photos/room-13.avif","room-photos/room-14.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10099,7 +10099,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-15.avif","room-photos/room-16.avif","room-photos/room-17.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10116,7 +10116,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-18.avif","room-photos/room-19.avif","room-photos/room-20.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10151,7 +10151,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-21.avif","room-photos/room-22.avif","room-photos/room-23.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10168,7 +10168,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-24.avif","room-photos/room-25.avif","room-photos/room-1.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10185,7 +10185,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-2.avif","room-photos/room-3.avif","room-photos/room-4.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10202,7 +10202,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-5.avif","room-photos/room-6.avif","room-photos/room-7.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10219,7 +10219,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-8.avif","room-photos/room-9.avif","room-photos/room-10.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10254,7 +10254,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-11.avif","room-photos/room-12.avif","room-photos/room-13.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10271,7 +10271,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-14.avif","room-photos/room-15.avif","room-photos/room-16.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10288,7 +10288,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-17.avif","room-photos/room-18.avif","room-photos/room-19.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10305,7 +10305,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-20.avif","room-photos/room-21.avif","room-photos/room-22.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10322,7 +10322,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-23.avif","room-photos/room-24.avif","room-photos/room-25.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10357,7 +10357,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-1.avif","room-photos/room-2.avif","room-photos/room-3.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10374,7 +10374,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-4.avif","room-photos/room-5.avif","room-photos/room-6.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10391,7 +10391,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-7.avif","room-photos/room-8.avif","room-photos/room-9.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10408,7 +10408,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-10.avif","room-photos/room-11.avif","room-photos/room-12.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10425,7 +10425,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-13.avif","room-photos/room-14.avif","room-photos/room-15.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10460,7 +10460,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-16.avif","room-photos/room-17.avif","room-photos/room-18.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10477,7 +10477,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-19.avif","room-photos/room-20.avif","room-photos/room-21.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10494,7 +10494,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-22.avif","room-photos/room-23.avif","room-photos/room-24.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10511,7 +10511,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-25.avif","room-photos/room-1.avif","room-photos/room-2.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10528,7 +10528,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-3.avif","room-photos/room-4.avif","room-photos/room-5.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10563,7 +10563,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-6.avif","room-photos/room-7.avif","room-photos/room-8.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10580,7 +10580,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-9.avif","room-photos/room-10.avif","room-photos/room-11.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10597,7 +10597,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-12.avif","room-photos/room-13.avif","room-photos/room-14.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10614,7 +10614,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-15.avif","room-photos/room-16.avif","room-photos/room-17.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10631,7 +10631,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-18.avif","room-photos/room-19.avif","room-photos/room-20.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10666,7 +10666,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-21.avif","room-photos/room-22.avif","room-photos/room-23.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10683,7 +10683,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-24.avif","room-photos/room-25.avif","room-photos/room-1.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10700,7 +10700,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-2.avif","room-photos/room-3.avif","room-photos/room-4.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10717,7 +10717,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-5.avif","room-photos/room-6.avif","room-photos/room-7.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10734,7 +10734,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-8.avif","room-photos/room-9.avif","room-photos/room-10.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10769,7 +10769,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-11.avif","room-photos/room-12.avif","room-photos/room-13.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10786,7 +10786,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-14.avif","room-photos/room-15.avif","room-photos/room-16.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10803,7 +10803,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-17.avif","room-photos/room-18.avif","room-photos/room-19.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10820,7 +10820,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-20.avif","room-photos/room-21.avif","room-photos/room-22.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10837,7 +10837,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-23.avif","room-photos/room-24.avif","room-photos/room-25.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10872,7 +10872,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-1.avif","room-photos/room-2.avif","room-photos/room-3.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10889,7 +10889,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-4.avif","room-photos/room-5.avif","room-photos/room-6.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -10906,7 +10906,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-7.avif","room-photos/room-8.avif","room-photos/room-9.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -10923,7 +10923,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-10.avif","room-photos/room-11.avif","room-photos/room-12.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -10940,7 +10940,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-13.avif","room-photos/room-14.avif","room-photos/room-15.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -10975,7 +10975,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-16.avif","room-photos/room-17.avif","room-photos/room-18.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -10992,7 +10992,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-19.avif","room-photos/room-20.avif","room-photos/room-21.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -11009,7 +11009,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-22.avif","room-photos/room-23.avif","room-photos/room-24.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -11026,7 +11026,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-25.avif","room-photos/room-1.avif","room-photos/room-2.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -11043,7 +11043,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-3.avif","room-photos/room-4.avif","room-photos/room-5.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -11078,7 +11078,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-6.avif","room-photos/room-7.avif","room-photos/room-8.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -11095,7 +11095,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-9.avif","room-photos/room-10.avif","room-photos/room-11.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -11112,7 +11112,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-12.avif","room-photos/room-13.avif","room-photos/room-14.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -11129,7 +11129,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-15.avif","room-photos/room-16.avif","room-photos/room-17.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -11146,7 +11146,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-18.avif","room-photos/room-19.avif","room-photos/room-20.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -11181,7 +11181,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-21.avif","room-photos/room-22.avif","room-photos/room-23.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -11198,7 +11198,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-24.avif","room-photos/room-25.avif","room-photos/room-1.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -11215,7 +11215,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-2.avif","room-photos/room-3.avif","room-photos/room-4.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -11232,7 +11232,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-5.avif","room-photos/room-6.avif","room-photos/room-7.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -11249,7 +11249,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-8.avif","room-photos/room-9.avif","room-photos/room-10.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
@@ -11284,7 +11284,7 @@ SELECT v.id,
   '{"WiFi","Balcony"}'::text [],
   'Cozy standard room with double bed.',
   '{"room-photos/room-11.avif","room-photos/room-12.avif","room-photos/room-13.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   1
 FROM venues v
@@ -11301,7 +11301,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Air Conditioning"}'::text [],
   'Spacious deluxe room with balcony and seating area.',
   '{"room-photos/room-14.avif","room-photos/room-15.avif","room-photos/room-16.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   2
 FROM venues v
@@ -11318,7 +11318,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Mini Bar","Jacuzzi"}'::text [],
   'Luxury suite with living area and private jacuzzi.',
   '{"room-photos/room-17.avif","room-photos/room-18.avif","room-photos/room-19.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   3
 FROM venues v
@@ -11335,7 +11335,7 @@ SELECT v.id,
   '{"WiFi","Balcony","Kitchenette"}'::text [],
   'Family-friendly room with kitchenette and multiple beds.',
   '{"room-photos/room-20.avif","room-photos/room-21.avif","room-photos/room-22.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   4
 FROM venues v
@@ -11352,7 +11352,7 @@ SELECT v.id,
   '{"WiFi","Nature View","Private Deck"}'::text [],
   'Rustic eco-lodge cabin surrounded by nature.',
   '{"room-photos/room-23.avif","room-photos/room-24.avif","room-photos/room-25.avif"}'::text [],
-  'per_person/night',
+  'per_night',
   'Rates vary by season and booking length',
   5
 FROM venues v
