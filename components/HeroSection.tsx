@@ -138,15 +138,15 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
                         const partialFill = isPartial ? (rating % 1) * 100 : 0;
 
                         return (
-                          <div key={star} className="relative w-6 h-6">
-                            <Star className="w-6 h-6 text-gray-300 absolute" />
+                          <div key={star} className="relative w-4 h-4">
+                            <Star className="w-4 h-4 text-gray-300 absolute" />
                             {/* Filled portion */}
                             {isFull && (
-                              <Star className="w-6 h-6 fill-black text-black absolute" />
+                              <Star className="w-4 h-4 fill-black text-black absolute" />
                             )}
                             {isPartial && (
                               <div className="absolute overflow-hidden" style={{ width: `${partialFill}%` }}>
-                                <Star className="w-6 h-6 fill-black text-black" />
+                                <Star className="w-4 h-4 fill-black text-black" />
                               </div>
                             )}
                           </div>
