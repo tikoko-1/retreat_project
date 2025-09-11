@@ -401,6 +401,8 @@ SELECT jsonb_build_object(
               a."group",
               'slug',
               a.slug,
+              'description',
+              a.description,
               'icon',
               a.icon
             )

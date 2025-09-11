@@ -95,6 +95,7 @@ export interface IAmenity {
   name: string;
   group: EAmenityGroup;
   slug: string;
+  description?: string;
   icon?: IIcon;
 }
 

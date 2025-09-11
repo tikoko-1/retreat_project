@@ -5839,179 +5839,207 @@ SELECT v.id,
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat';
 -- Insert amenities for wellness retreats
-INSERT INTO amenities (name, slug, "group", icon)
+INSERT INTO amenities (name, slug, "group", icon, description)
 VALUES -- Practice & Wellness
   (
     'Yoga hall / shala',
     'yoga-hall',
     'Practice & Wellness',
-    '{"library": "lucide-react", "name": "person-standing"}'
+    '{"library": "lucide-react", "name": "person-standing"}',
+    'A space for yoga practice and meditation.'
   ),
   (
     'Meditation space / hall',
     'meditation-space',
     'Practice & Wellness',
-    '{"library": "lucide-react", "name": "moon-star"}'
+    '{"library": "lucide-react", "name": "moon-star"}',
+    'A space for meditation and relaxation.'
   ),
   (
     'Spa / massage room',
     'spa-massage',
     'Practice & Wellness',
-    '{"library": "lucide-react", "name": "spa"}'
+    '{"library": "lucide-react", "name": "spa"}',
+    'A space for spa and massage.'
   ),
   (
     'Event / Workshop space (AV/projector)',
     'event-workshop',
     'Practice & Wellness',
-    '{"library": "lucide-react", "name": "presentation"}'
+    '{"library": "lucide-react", "name": "presentation"}',
+    'A space for events and workshops.'
   ),
   (
     'Fitness / gym area',
     'fitness-gym',
     'Practice & Wellness',
-    '{"library": "lucide-react", "name": "dumbbell"}'
+    '{"library": "lucide-react", "name": "dumbbell"}',
+    'A space for fitness and gym.'
   ),
   (
     'Sauna / steam / jacuzzi',
     'sauna-steam-jacuzzi',
     'Practice & Wellness',
-    '{"library": "lucide-react", "name": "flame"}'
+    '{"library": "lucide-react", "name": "flame"}',
+    'A space for sauna, steam, and jacuzzi.'
   ),
   -- Food & Dining
   (
     'Dining area',
     'dining-area',
     'Food & Dining',
-    '{"library": "lucide-react", "name": "utensils-crossed"}'
+    '{"library": "lucide-react", "name": "utensils-crossed"}',
+    'A space for dining and food.'
   ),
   (
     'Kitchen (shared or professional)',
     'kitchen',
     'Food & Dining',
-    '{"library": "lucide-react", "name": "chef-hat"}'
+    '{"library": "lucide-react", "name": "chef-hat"}',
+    'A space for kitchen and food.'
   ),
   (
     'Vegetarian / vegan meals available',
     'vegan-meals',
     'Food & Dining',
-    '{"library": "lucide-react", "name": "leaf"}'
+    '{"library": "lucide-react", "name": "leaf"}',
+    'A space for vegetarian and vegan meals.'
   ),
   (
     'Restaurant on site',
     'restaurant-on-site',
     'Food & Dining',
-    '{"library": "lucide-react", "name": "utensils"}'
+    '{"library": "lucide-react", "name": "utensils"}',
+    'A space for restaurant and food.'
   ),
   (
     'Tea / Coffee station',
     'tea-coffee-station',
     'Food & Dining',
-    '{"library": "lucide-react", "name": "coffee"}'
+    '{"library": "lucide-react", "name": "coffee"}',
+    'A space for tea and coffee.'
   ),
   (
     'Special diet meals (gluten-free/ayurvedic)',
     'special-diet-meals',
     'Food & Dining',
-    '{"library": "lucide-react", "name": "salad"}'
+    '{"library": "lucide-react", "name": "salad"}',
+    'A space for special diet meals.'
   ),
   -- Living & Comfort
   (
     'Private rooms',
     'private-rooms',
     'Living & Comfort',
-    '{"library": "lucide-react", "name": "bed-single"}'
+    '{"library": "lucide-react", "name": "bed-single"}',
+    'A space for private rooms.'
   ),
   (
     'Shared rooms / Dorms',
     'shared-rooms',
     'Living & Comfort',
-    '{"library": "lucide-react", "name": "users"}'
+    '{"library": "lucide-react", "name": "users"}',
+    'A space for shared rooms and dorms.'
   ),
   (
     'En-suite bathrooms',
     'en-suite-bathrooms',
     'Living & Comfort',
-    '{"library": "lucide-react", "name": "shower-head"}'
+    '{"library": "lucide-react", "name": "shower-head"}',
+    'A space for en-suite bathrooms.'
   ),
   (
     'Wi-Fi / Internet',
     'wifi',
     'Living & Comfort',
-    '{"library": "lucide-react", "name": "wifi"}'
+    '{"library": "lucide-react", "name": "wifi"}',
+    'A space for wifi and internet.'
   ),
   (
     'Air conditioning',
     'air-conditioning',
     'Living & Comfort',
-    '{"library": "lucide-react", "name": "snowflake"}'
+    '{"library": "lucide-react", "name": "snowflake"}',
+    'A space for air conditioning.'
   ),
   (
     'Heating (for cold regions)',
     'heating',
     'Living & Comfort',
-    '{"library": "lucide-react", "name": "flame"}'
+    '{"library": "lucide-react", "name": "flame"}',
+    'A space for heating.'
   ),
   -- Extras & Nature
   (
     'Swimming pool',
     'swimming-pool',
     'Extras & Nature',
-    '{"library": "lucide-react", "name": "waves"}'
+    '{"library": "lucide-react", "name": "waves"}',
+    'A space for swimming pool.'
   ),
   (
     'Outdoor space / garden',
     'outdoor-space',
     'Extras & Nature',
-    '{"library": "lucide-react", "name": "tree-palm"}'
+    '{"library": "lucide-react", "name": "tree-palm"}',
+    'A space for outdoor space and garden.'
   ),
   (
     'Parking on site',
     'parking',
     'Extras & Nature',
-    '{"library": "lucide-react", "name": "parking-square"}'
+    '{"library": "lucide-react", "name": "parking-square"}',
+    'A space for parking on site.'
   ),
   (
     'Airport transfer',
     'airport-transfer',
     'Extras & Nature',
-    '{"library": "lucide-react", "name": "plane"}'
+    '{"library": "lucide-react", "name": "plane"}',
+    'A space for airport transfer.'
   ),
   (
     'Eco-friendly',
     'eco-friendly',
     'Extras & Nature',
-    '{"library": "lucide-react", "name": "sprout"}'
+    '{"library": "lucide-react", "name": "sprout"}',
+    'A space for eco-friendly.'
   ),
   (
     'Activities (cooking class, tours, biking, etc.)',
     'activities',
     'Extras & Nature',
-    '{"library": "lucide-react", "name": "bike"}'
+    '{"library": "lucide-react", "name": "bike"}',
+    'A space for activities.'
   ),
   -- Infrastructure & Policies
   (
     'Accessibility / wheelchair friendly',
     'accessibility',
     'Infrastructure & Policies',
-    '{"library": "lucide-react", "name": "accessibility"}'
+    '{"library": "lucide-react", "name": "accessibility"}',
+    'A space for accessibility.'
   ),
   (
     'Alcohol-free policy',
     'alcohol-free',
     'Infrastructure & Policies',
-    '{"library": "lucide-react", "name": "wine-off"}'
+    '{"library": "lucide-react", "name": "wine-off"}',
+    'A space for alcohol-free policy.'
   ),
   (
     'Pet friendly',
     'pet-friendly',
     'Infrastructure & Policies',
-    '{"library": "lucide-react", "name": "paw-print"}'
+    '{"library": "lucide-react", "name": "paw-print"}',
+    'A space for pet friendly.'
   ),
   (
     'Child-friendly',
     'child-friendly',
     'Infrastructure & Policies',
-    '{"library": "lucide-react", "name": "baby"}'
+    '{"library": "lucide-react", "name": "baby"}',
+    'A space for child friendly.'
   );
 -- Link amenities to venues (each venue gets 8-12 amenities)
 -- Serenity Hills Retreat

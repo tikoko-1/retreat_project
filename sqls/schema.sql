@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS amenities (
     name TEXT NOT NULL,
     "group" amenity_group NOT NULL,
     slug TEXT NOT NULL,
+    description TEXT,
     icon JSONB
 );
 -- VENUE -> AMENITIES
