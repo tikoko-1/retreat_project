@@ -31,7 +31,7 @@ export default function RetreatPage({ params }: RetreatPageProps) {
       try {
         const { id } = await params;
         const response = await fetch(`/api/centers/${id}`, {
-          cache: 'no-store'
+          cache: "no-store",
         });
         if (!response.ok) {
           notFound();
@@ -42,7 +42,7 @@ export default function RetreatPage({ params }: RetreatPageProps) {
         }
         setRetreat(data.retreat);
       } catch (err) {
-        console.error('Error fetching retreat:', err);
+        console.error("Error fetching retreat:", err);
         notFound();
       }
     };
@@ -53,39 +53,52 @@ export default function RetreatPage({ params }: RetreatPageProps) {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      {retreat && <>
-        <StickyPricingBar retreat={retreat} />
-        <HeroSection
-          retreat={retreat}
-        />
-        <LocationSection
-          latitude={retreat?.latitude}
-          longitude={retreat?.longitude}
-          address={retreat?.address}
-          city={retreat?.city}
-          country={retreat?.country}
-          locationAbout={retreat?.location_about}
-          howToGetHere={retreat?.how_to_get_here}
-          nearbyAttractions={retreat?.nearby_attractions}
-        />
-        {retreat.photos && retreat.photos.length > 0 && (
-          <GallerySection galleryImages={retreat.photos} />
-        )}
-        {retreat.amenities && retreat.amenities.length > 0 && (
-          <FeaturesSection amenities={retreat.amenities} />
-        )}
-        {retreat.rooms && retreat.rooms.length > 0 && (
-          <RoomsSection rooms={retreat.rooms} />
-        )}
-        <FoodSection amenities={retreat.amenities || []} foodDining={retreat.food_dining || []} />
-        <IncludedSection includedItems={retreat.included_items} excludedItems={retreat.excluded_items} />
-        {retreat.cancellation_policies && retreat.cancellation_policies.length > 0 && (
-          <CancellationSection cancellationPolicies={retreat.cancellation_policies} />
-        )}
-        {retreat.reviews && retreat.reviews.length > 0 && (
-          <TestimonialsSection reviews={retreat.reviews} review_stats={retreat.review_stats} retreat={retreat.id} />
-        )}
-      </>}
+      {retreat && (
+        <>
+          <StickyPricingBar retreat={retreat} />
+          <HeroSection retreat={retreat} />
+          <LocationSection
+            latitude={retreat?.latitude}
+            longitude={retreat?.longitude}
+            address={retreat?.address}
+            city={retreat?.city}
+            country={retreat?.country}
+            locationAbout={retreat?.location_about}
+            howToGetHere={retreat?.how_to_get_here}
+            nearbyAttractions={retreat?.nearby_attractions}
+          />
+          {retreat.photos && retreat.photos.length > 0 && (
+            <GallerySection galleryImages={retreat.photos} />
+          )}
+          {retreat.amenities && retreat.amenities.length > 0 && (
+            <FeaturesSection amenities={retreat.amenities} />
+          )}
+          {retreat.rooms && retreat.rooms.length > 0 && (
+            <RoomsSection rooms={retreat.rooms} />
+          )}
+          <FoodSection
+            amenities={retreat.amenities || []}
+            foodDining={retreat.food_dining || []}
+          />
+          <IncludedSection
+            includedItems={retreat.included_items}
+            excludedItems={retreat.excluded_items}
+          />
+          {retreat.cancellation_policies &&
+            retreat.cancellation_policies.length > 0 && (
+              <CancellationSection
+                cancellationPolicies={retreat.cancellation_policies}
+              />
+            )}
+          {retreat.reviews && retreat.reviews.length > 0 && (
+            <TestimonialsSection
+              initReviews={retreat.reviews}
+              review_stats={retreat.review_stats}
+              retreatId={retreat.id}
+            />
+          )}
+        </>
+      )}
       <CallToActionSection />
       <Footer />
     </div>
