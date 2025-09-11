@@ -73,7 +73,7 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
                     }`}>
                     <div className="text-white">
                       <h3 className="font-medium mb-1 text-sm">{image.alt_text}</h3>
-                      <p class="text-sm text-white/80">{image.description}</p>
+                      <p className="text-sm text-white/80">{image.description}</p>
                     </div>
                   </div>
                 </div>

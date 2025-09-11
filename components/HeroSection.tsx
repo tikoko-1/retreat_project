@@ -24,8 +24,6 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
   const [selectedIndex, setSelectedIndex] = useState(0);
   const { siteCopy: siteConfig } = useSiteCopy();
 
-  console.log(siteConfig);
-
   const openModal = (index: number) => {
     setSelectedIndex(index);
     setShowModal(true);
@@ -227,8 +225,8 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
                   <div className="bg-gray-50 rounded-xl p-8">
                     <h3 className="text-xl font-medium mb-6">Why Facilitators Love Us</h3>
                     <div className="grid sm:grid-cols-2 gap-6">
-                      {siteConfig['why_facilitators_love_us'].map((block: SiteCopyBlock) => (
-                        <div className="flex items-start gap-3">
+                      {siteConfig['why_facilitators_love_us'].map((block: SiteCopyBlock, index: number) => (
+                        <div className="flex items-start gap-3" key={index}>
                           <div className="w-2 h-2 bg-black rounded-full mt-2"></div>
                           <div>
                             <div className="font-medium">{block.title}</div>
