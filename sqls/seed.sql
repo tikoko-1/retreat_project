@@ -2526,10 +2526,11 @@ FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary';
 -- Insert sample photos for venues (5 per venue)
 -- 1. Serenity Hills Retreat
-INSERT INTO venue_photos (venue_id, url, alt_text, position)
+INSERT INTO venue_photos (venue_id, url, alt_text, description, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Serenity Hills Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2537,6 +2538,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Serenity Hills Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2544,6 +2546,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Serenity Hills Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2551,6 +2554,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Serenity Hills Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2558,6 +2562,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Serenity Hills Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2565,6 +2570,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Serenity Hills Retreat - View 6',
+  'Luxurious tropical wellness facilities with natural materials',
   6
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2572,6 +2578,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Serenity Hills Retreat - View 7',
+  'Luxurious tropical wellness facilities with natural materials',
   7
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2579,6 +2586,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Serenity Hills Retreat - View 8',
+  'Luxurious tropical wellness facilities with natural materials',
   8
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2586,6 +2594,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Serenity Hills Retreat - View 9',
+  'Luxurious tropical wellness facilities with natural materials',
   9
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2593,6 +2602,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Serenity Hills Retreat - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   10
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2600,6 +2610,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-11.avif',
   'Serenity Hills Retreat - View 11',
+  'Luxurious tropical wellness facilities with natural materials',
   11
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2607,6 +2618,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-12.avif',
   'Serenity Hills Retreat - View 12',
+  'Luxurious tropical wellness facilities with natural materials',
   12
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2614,6 +2626,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-13.avif',
   'Serenity Hills Retreat - View 13',
+  'Luxurious tropical wellness facilities with natural materials',
   13
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2621,6 +2634,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-14.avif',
   'Serenity Hills Retreat - View 14',
+  'Luxurious tropical wellness facilities with natural materials',
   14
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2628,6 +2642,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-15.avif',
   'Serenity Hills Retreat - View 15',
+  'Luxurious tropical wellness facilities with natural materials',
   15
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2635,6 +2650,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-16.avif',
   'Serenity Hills Retreat - View 16',
+  'Luxurious tropical wellness facilities with natural materials',
   16
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2642,6 +2658,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-17.avif',
   'Serenity Hills Retreat - View 17',
+  'Luxurious tropical wellness facilities with natural materials',
   17
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2649,6 +2666,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-18.avif',
   'Serenity Hills Retreat - View 18',
+  'Luxurious tropical wellness facilities with natural materials',
   18
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2656,6 +2674,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-19.avif',
   'Serenity Hills Retreat - View 19',
+  'Luxurious tropical wellness facilities with natural materials',
   19
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2663,6 +2682,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-20.avif',
   'Serenity Hills Retreat - View 20',
+  'Luxurious tropical wellness facilities with natural materials',
   20
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2670,6 +2690,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-21.avif',
   'Serenity Hills Retreat - View 21',
+  'Luxurious tropical wellness facilities with natural materials',
   21
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2677,6 +2698,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-22.avif',
   'Serenity Hills Retreat - View 22',
+  'Luxurious tropical wellness facilities with natural materials',
   22
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2684,6 +2706,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-23.avif',
   'Serenity Hills Retreat - View 23',
+  'Luxurious tropical wellness facilities with natural materials',
   23
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2691,6 +2714,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-24.avif',
   'Serenity Hills Retreat - View 24',
+  'Luxurious tropical wellness facilities with natural materials',
   24
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
@@ -2698,6 +2722,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-25.avif',
   'Serenity Hills Retreat - View 25',
+  'Luxurious tropical wellness facilities with natural materials',
   25
 FROM venues v
 WHERE v.title = 'Serenity Hills Retreat';
@@ -2706,6 +2731,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mountain View Sanctuary - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
@@ -2713,6 +2739,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Mountain View Sanctuary - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
@@ -2720,6 +2747,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Mountain View Sanctuary - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
@@ -2727,6 +2755,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Mountain View Sanctuary - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
@@ -2734,6 +2763,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Mountain View Sanctuary - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Mountain View Sanctuary';
@@ -2742,6 +2772,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Ocean Bliss Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
@@ -2749,6 +2780,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Ocean Bliss Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
@@ -2756,6 +2788,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Ocean Bliss Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
@@ -2763,6 +2796,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Ocean Bliss Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
@@ -2770,6 +2804,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Ocean Bliss Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat';
@@ -2778,6 +2813,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sahara Moon Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Sahara Moon Lodge'
@@ -2785,6 +2821,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Sahara Moon Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Sahara Moon Lodge'
@@ -2792,6 +2829,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Sahara Moon Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Sahara Moon Lodge'
@@ -2799,6 +2837,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Sahara Moon Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Sahara Moon Lodge'
@@ -2806,6 +2845,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Sahara Moon Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Sahara Moon Lodge';
@@ -2814,6 +2854,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Alpine Wellness Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
@@ -2821,6 +2862,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Alpine Wellness Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
@@ -2828,6 +2870,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Alpine Wellness Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
@@ -2835,6 +2878,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Alpine Wellness Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
@@ -2842,6 +2886,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Alpine Wellness Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge';
@@ -2850,6 +2895,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sacred Valley Sanctuary - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
@@ -2857,6 +2903,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Sacred Valley Sanctuary - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
@@ -2864,6 +2911,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Sacred Valley Sanctuary - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
@@ -2871,6 +2919,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Sacred Valley Sanctuary - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
@@ -2878,6 +2927,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Sacred Valley Sanctuary - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary';
@@ -2886,6 +2936,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mindful Mountain Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
@@ -2893,6 +2944,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Mindful Mountain Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
@@ -2900,6 +2952,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Mindful Mountain Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
@@ -2907,6 +2960,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Mindful Mountain Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
@@ -2914,6 +2968,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Mindful Mountain Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat';
@@ -2922,6 +2977,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Coastal Zen Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
@@ -2929,6 +2985,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Coastal Zen Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
@@ -2936,6 +2993,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Coastal Zen Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
@@ -2943,6 +3001,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Coastal Zen Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
@@ -2950,6 +3009,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Coastal Zen Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Coastal Zen Retreat';
@@ -2958,6 +3018,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Desert Oasis Center - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Desert Oasis Center'
@@ -2965,6 +3026,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Desert Oasis Center - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Desert Oasis Center'
@@ -2972,6 +3034,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Desert Oasis Center - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Desert Oasis Center'
@@ -2979,6 +3042,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Desert Oasis Center - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Desert Oasis Center'
@@ -2986,6 +3050,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Desert Oasis Center - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Desert Oasis Center';
@@ -2994,6 +3059,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Forest Healing Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
@@ -3001,6 +3067,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Forest Healing Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
@@ -3008,6 +3075,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Forest Healing Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
@@ -3015,6 +3083,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Forest Healing Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
@@ -3022,6 +3091,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Forest Healing Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Forest Healing Lodge';
@@ -3030,6 +3100,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Island Paradise Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat'
@@ -3037,6 +3108,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Island Paradise Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat'
@@ -3044,6 +3116,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Island Paradise Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat'
@@ -3051,6 +3124,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Island Paradise Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat'
@@ -3058,6 +3132,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Island Paradise Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat';
@@ -3066,6 +3141,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Himalayan Bliss Center - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center'
@@ -3073,6 +3149,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Himalayan Bliss Center - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center'
@@ -3080,6 +3157,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Himalayan Bliss Center - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center'
@@ -3087,6 +3165,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Himalayan Bliss Center - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center'
@@ -3094,6 +3173,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Himalayan Bliss Center - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Himalayan Bliss Center';
@@ -3102,6 +3182,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mediterranean Wellness Villa - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa'
@@ -3109,6 +3190,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Mediterranean Wellness Villa - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa'
@@ -3116,6 +3198,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Mediterranean Wellness Villa - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa'
@@ -3123,6 +3206,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Mediterranean Wellness Villa - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa'
@@ -3130,6 +3214,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Mediterranean Wellness Villa - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Mediterranean Wellness Villa';
@@ -3138,6 +3223,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Zen Garden Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat'
@@ -3145,6 +3231,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Zen Garden Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat'
@@ -3152,6 +3239,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Zen Garden Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat'
@@ -3159,6 +3247,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Zen Garden Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat'
@@ -3166,6 +3255,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Zen Garden Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Zen Garden Retreat';
@@ -3174,6 +3264,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Tropical Healing Center - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Tropical Healing Center'
@@ -3181,6 +3272,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Tropical Healing Center - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Tropical Healing Center'
@@ -3188,6 +3280,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Tropical Healing Center - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Tropical Healing Center'
@@ -3195,6 +3288,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Tropical Healing Center - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Tropical Healing Center'
@@ -3202,6 +3296,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Tropical Healing Center - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Tropical Healing Center';
@@ -3210,6 +3305,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Arctic Wellness Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge'
@@ -3217,6 +3313,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Arctic Wellness Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge'
@@ -3224,6 +3321,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Arctic Wellness Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge'
@@ -3231,6 +3329,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Arctic Wellness Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge'
@@ -3238,6 +3337,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Arctic Wellness Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Arctic Wellness Lodge';
@@ -3246,6 +3346,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Desert Rose Sanctuary - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary'
@@ -3253,6 +3354,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Desert Rose Sanctuary - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary'
@@ -3260,6 +3362,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Desert Rose Sanctuary - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary'
@@ -3267,6 +3370,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Desert Rose Sanctuary - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary'
@@ -3274,6 +3378,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Desert Rose Sanctuary - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Desert Rose Sanctuary';
@@ -3282,6 +3387,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Mountain Spirit Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge'
@@ -3289,6 +3395,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Mountain Spirit Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge'
@@ -3296,6 +3403,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Mountain Spirit Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge'
@@ -3303,6 +3411,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Mountain Spirit Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge'
@@ -3310,6 +3419,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Mountain Spirit Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Mountain Spirit Lodge';
@@ -3318,6 +3428,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Ocean Spirit Center - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
@@ -3325,6 +3436,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Ocean Spirit Center - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
@@ -3332,6 +3444,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Ocean Spirit Center - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
@@ -3339,6 +3452,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Ocean Spirit Center - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center'
@@ -3346,6 +3460,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Ocean Spirit Center - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Ocean Spirit Center';
@@ -3354,6 +3469,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Forest Wisdom Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3361,6 +3477,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Forest Wisdom Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3368,6 +3485,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Forest Wisdom Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3375,6 +3493,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Forest Wisdom Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3382,6 +3501,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Forest Wisdom Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3389,6 +3509,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Forest Wisdom Retreat - View 6',
+  'Luxurious tropical wellness facilities with natural materials',
   6
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3396,6 +3517,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Forest Wisdom Retreat - View 7',
+  'Luxurious tropical wellness facilities with natural materials',
   7
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3403,6 +3525,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Forest Wisdom Retreat - View 8',
+  'Luxurious tropical wellness facilities with natural materials',
   8
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3410,6 +3533,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Forest Wisdom Retreat - View 9',
+  'Luxurious tropical wellness facilities with natural materials',
   9
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3417,6 +3541,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Forest Wisdom Retreat - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   10
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3424,6 +3549,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-11.avif',
   'Forest Wisdom Retreat - View 11',
+  'Luxurious tropical wellness facilities with natural materials',
   11
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3431,6 +3557,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-12.avif',
   'Forest Wisdom Retreat - View 12',
+  'Luxurious tropical wellness facilities with natural materials',
   12
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3438,6 +3565,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-13.avif',
   'Forest Wisdom Retreat - View 13',
+  'Luxurious tropical wellness facilities with natural materials',
   13
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3445,6 +3573,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-14.avif',
   'Forest Wisdom Retreat - View 14',
+  'Luxurious tropical wellness facilities with natural materials',
   14
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3452,6 +3581,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-15.avif',
   'Forest Wisdom Retreat - View 15',
+  'Luxurious tropical wellness facilities with natural materials',
   15
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3459,6 +3589,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-16.avif',
   'Forest Wisdom Retreat - View 16',
+  'Luxurious tropical wellness facilities with natural materials',
   16
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3466,6 +3597,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-17.avif',
   'Forest Wisdom Retreat - View 17',
+  'Luxurious tropical wellness facilities with natural materials',
   17
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3473,6 +3605,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-18.avif',
   'Forest Wisdom Retreat - View 18',
+  'Luxurious tropical wellness facilities with natural materials',
   18
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3480,6 +3613,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-19.avif',
   'Forest Wisdom Retreat - View 19',
+  'Luxurious tropical wellness facilities with natural materials',
   19
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3487,6 +3621,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-20.avif',
   'Forest Wisdom Retreat - View 20',
+  'Luxurious tropical wellness facilities with natural materials',
   20
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3494,6 +3629,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-21.avif',
   'Forest Wisdom Retreat - View 21',
+  'Luxurious tropical wellness facilities with natural materials',
   21
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3501,6 +3637,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-22.avif',
   'Forest Wisdom Retreat - View 22',
+  'Luxurious tropical wellness facilities with natural materials',
   22
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3508,6 +3645,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-23.avif',
   'Forest Wisdom Retreat - View 23',
+  'Luxurious tropical wellness facilities with natural materials',
   23
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3515,6 +3653,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-24.avif',
   'Forest Wisdom Retreat - View 24',
+  'Luxurious tropical wellness facilities with natural materials',
   24
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat'
@@ -3522,6 +3661,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-25.avif',
   'Forest Wisdom Retreat - View 25',
+  'Luxurious tropical wellness facilities with natural materials',
   25
 FROM venues v
 WHERE v.title = 'Forest Wisdom Retreat';
@@ -3530,6 +3670,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Baltic Serenity Spa - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Baltic Serenity Spa'
@@ -3537,6 +3678,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Baltic Serenity Spa - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Baltic Serenity Spa'
@@ -3544,6 +3686,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Baltic Serenity Spa - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Baltic Serenity Spa'
@@ -3551,6 +3694,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Baltic Serenity Spa - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Baltic Serenity Spa'
@@ -3558,6 +3702,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Baltic Serenity Spa - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Baltic Serenity Spa';
@@ -3566,6 +3711,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sky High Sanctuary - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3573,6 +3719,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Sky High Sanctuary - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3580,6 +3727,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Sky High Sanctuary - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3587,6 +3735,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Sky High Sanctuary - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3594,6 +3743,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Sky High Sanctuary - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3601,6 +3751,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Sky High Sanctuary - View 6',
+  'Luxurious tropical wellness facilities with natural materials',
   6
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3608,6 +3759,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Sky High Sanctuary - View 7',
+  'Luxurious tropical wellness facilities with natural materials',
   7
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3615,6 +3767,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Sky High Sanctuary - View 8',
+  'Luxurious tropical wellness facilities with natural materials',
   8
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3622,6 +3775,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Sky High Sanctuary - View 9',
+  'Luxurious tropical wellness facilities with natural materials',
   9
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3629,6 +3783,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Sky High Sanctuary - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   10
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3636,6 +3791,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-11.avif',
   'Sky High Sanctuary - View 11',
+  'Luxurious tropical wellness facilities with natural materials',
   11
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3643,6 +3799,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-12.avif',
   'Sky High Sanctuary - View 12',
+  'Luxurious tropical wellness facilities with natural materials',
   12
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3650,6 +3807,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-13.avif',
   'Sky High Sanctuary - View 13',
+  'Luxurious tropical wellness facilities with natural materials',
   13
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3657,6 +3815,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-14.avif',
   'Sky High Sanctuary - View 14',
+  'Luxurious tropical wellness facilities with natural materials',
   14
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3664,6 +3823,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-15.avif',
   'Sky High Sanctuary - View 15',
+  'Luxurious tropical wellness facilities with natural materials',
   15
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3671,6 +3831,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-16.avif',
   'Sky High Sanctuary - View 16',
+  'Luxurious tropical wellness facilities with natural materials',
   16
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3678,6 +3839,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-17.avif',
   'Sky High Sanctuary - View 17',
+  'Luxurious tropical wellness facilities with natural materials',
   17
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3685,6 +3847,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-18.avif',
   'Sky High Sanctuary - View 18',
+  'Luxurious tropical wellness facilities with natural materials',
   18
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3692,6 +3855,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-19.avif',
   'Sky High Sanctuary - View 19',
+  'Luxurious tropical wellness facilities with natural materials',
   19
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3699,6 +3863,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-20.avif',
   'Sky High Sanctuary - View 20',
+  'Luxurious tropical wellness facilities with natural materials',
   20
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3706,6 +3871,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-21.avif',
   'Sky High Sanctuary - View 21',
+  'Luxurious tropical wellness facilities with natural materials',
   21
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3713,6 +3879,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-22.avif',
   'Sky High Sanctuary - View 22',
+  'Luxurious tropical wellness facilities with natural materials',
   22
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3720,6 +3887,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-23.avif',
   'Sky High Sanctuary - View 23',
+  'Luxurious tropical wellness facilities with natural materials',
   23
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3727,6 +3895,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-24.avif',
   'Sky High Sanctuary - View 24',
+  'Luxurious tropical wellness facilities with natural materials',
   24
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary'
@@ -3734,6 +3903,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-25.avif',
   'Sky High Sanctuary - View 25',
+  'Luxurious tropical wellness facilities with natural materials',
   25
 FROM venues v
 WHERE v.title = 'Sky High Sanctuary';
@@ -3742,6 +3912,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Valley of Peace - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Valley of Peace'
@@ -3749,6 +3920,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Valley of Peace - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Valley of Peace'
@@ -3756,6 +3928,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Valley of Peace - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Valley of Peace'
@@ -3763,6 +3936,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Valley of Peace - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Valley of Peace'
@@ -3770,6 +3944,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Valley of Peace - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Valley of Peace';
@@ -3778,6 +3953,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Crystal Healing Center - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
@@ -3785,6 +3961,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Crystal Healing Center - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
@@ -3792,6 +3969,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Crystal Healing Center - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
@@ -3799,6 +3977,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Crystal Healing Center - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Crystal Healing Center'
@@ -3806,6 +3985,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Crystal Healing Center - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Crystal Healing Center';
@@ -3814,6 +3994,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-1.avif',
   'Sunrise Wellness Resort - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort'
@@ -3821,6 +4002,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-2.avif',
   'Sunrise Wellness Resort - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort'
@@ -3828,6 +4010,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-3.avif',
   'Sunrise Wellness Resort - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort'
@@ -3835,6 +4018,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-4.avif',
   'Sunrise Wellness Resort - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort'
@@ -3842,6 +4026,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-5.avif',
   'Sunrise Wellness Resort - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Sunrise Wellness Resort';
@@ -3850,6 +4035,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Alpine Zen Hut - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Alpine Zen Hut'
@@ -3857,6 +4043,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Alpine Zen Hut - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Alpine Zen Hut'
@@ -3864,6 +4051,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Alpine Zen Hut - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Alpine Zen Hut'
@@ -3871,6 +4059,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Alpine Zen Hut - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Alpine Zen Hut'
@@ -3878,6 +4067,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Alpine Zen Hut - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Alpine Zen Hut';
@@ -3886,6 +4076,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Sacred Mountain Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Sacred Mountain Lodge'
@@ -3893,6 +4084,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Sacred Mountain Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Sacred Mountain Lodge'
@@ -3900,6 +4092,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Sacred Mountain Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Sacred Mountain Lodge'
@@ -3907,6 +4100,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Sacred Mountain Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Sacred Mountain Lodge'
@@ -3914,6 +4108,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Sacred Mountain Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Sacred Mountain Lodge';
@@ -3922,6 +4117,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Eternal Spring Center - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Eternal Spring Center'
@@ -3929,6 +4125,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Eternal Spring Center - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Eternal Spring Center'
@@ -3936,6 +4133,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Eternal Spring Center - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Eternal Spring Center'
@@ -3943,6 +4141,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Eternal Spring Center - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Eternal Spring Center'
@@ -3950,6 +4149,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Eternal Spring Center - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Eternal Spring Center';
@@ -3958,6 +4158,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Rainforest Harmony Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Rainforest Harmony Lodge'
@@ -3965,6 +4166,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Rainforest Harmony Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Rainforest Harmony Lodge'
@@ -3972,6 +4174,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Rainforest Harmony Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Rainforest Harmony Lodge'
@@ -3979,6 +4182,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Rainforest Harmony Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Rainforest Harmony Lodge'
@@ -3986,6 +4190,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Rainforest Harmony Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Rainforest Harmony Lodge';
@@ -3994,6 +4199,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Nordic Aurora Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Nordic Aurora Retreat'
@@ -4001,6 +4207,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Nordic Aurora Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Nordic Aurora Retreat'
@@ -4008,6 +4215,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Nordic Aurora Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Nordic Aurora Retreat'
@@ -4015,6 +4223,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Nordic Aurora Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Nordic Aurora Retreat'
@@ -4022,6 +4231,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Nordic Aurora Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Nordic Aurora Retreat';
@@ -4030,6 +4240,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Savannah Spirit Camp - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Savannah Spirit Camp'
@@ -4037,6 +4248,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Savannah Spirit Camp - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Savannah Spirit Camp'
@@ -4044,6 +4256,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Savannah Spirit Camp - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Savannah Spirit Camp'
@@ -4051,6 +4264,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Savannah Spirit Camp - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Savannah Spirit Camp'
@@ -4058,6 +4272,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Savannah Spirit Camp - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Savannah Spirit Camp';
@@ -4066,6 +4281,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Himalayan Zen Ashram - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Himalayan Zen Ashram'
@@ -4073,6 +4289,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Himalayan Zen Ashram - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Himalayan Zen Ashram'
@@ -4080,6 +4297,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Himalayan Zen Ashram - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Himalayan Zen Ashram'
@@ -4087,6 +4305,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Himalayan Zen Ashram - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Himalayan Zen Ashram'
@@ -4094,6 +4313,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Himalayan Zen Ashram - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Himalayan Zen Ashram';
@@ -4102,6 +4322,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Mediterranean Bliss Villa - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Mediterranean Bliss Villa'
@@ -4109,6 +4330,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Mediterranean Bliss Villa - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Mediterranean Bliss Villa'
@@ -4116,6 +4338,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Mediterranean Bliss Villa - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Mediterranean Bliss Villa'
@@ -4123,6 +4346,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Mediterranean Bliss Villa - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Mediterranean Bliss Villa'
@@ -4130,6 +4354,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Mediterranean Bliss Villa - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Mediterranean Bliss Villa';
@@ -4138,6 +4363,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Andes Soul Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4145,6 +4371,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Andes Soul Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4152,6 +4379,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Andes Soul Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4159,6 +4387,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Andes Soul Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4166,6 +4395,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Andes Soul Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4173,6 +4403,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-11.avif',
   'Andes Soul Retreat - View 6',
+  'Luxurious tropical wellness facilities with natural materials',
   6
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4180,6 +4411,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-12.avif',
   'Andes Soul Retreat - View 7',
+  'Luxurious tropical wellness facilities with natural materials',
   7
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4187,6 +4419,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-13.avif',
   'Andes Soul Retreat - View 8',
+  'Luxurious tropical wellness facilities with natural materials',
   8
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4194,6 +4427,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-14.avif',
   'Andes Soul Retreat - View 9',
+  'Luxurious tropical wellness facilities with natural materials',
   9
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4201,6 +4435,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-15.avif',
   'Andes Soul Retreat - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   10
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4208,6 +4443,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-16.avif',
   'Andes Soul Retreat - View 11',
+  'Luxurious tropical wellness facilities with natural materials',
   11
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4215,6 +4451,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-17.avif',
   'Andes Soul Retreat - View 12',
+  'Luxurious tropical wellness facilities with natural materials',
   12
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4222,6 +4459,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-18.avif',
   'Andes Soul Retreat - View 13',
+  'Luxurious tropical wellness facilities with natural materials',
   13
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4229,6 +4467,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-19.avif',
   'Andes Soul Retreat - View 14',
+  'Luxurious tropical wellness facilities with natural materials',
   14
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4236,6 +4475,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-20.avif',
   'Andes Soul Retreat - View 15',
+  'Luxurious tropical wellness facilities with natural materials',
   15
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4243,6 +4483,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-21.avif',
   'Andes Soul Retreat - View 16',
+  'Luxurious tropical wellness facilities with natural materials',
   16
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4250,6 +4491,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-22.avif',
   'Andes Soul Retreat - View 17',
+  'Luxurious tropical wellness facilities with natural materials',
   17
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4257,6 +4499,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-23.avif',
   'Andes Soul Retreat - View 18',
+  'Luxurious tropical wellness facilities with natural materials',
   18
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4264,6 +4507,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-24.avif',
   'Andes Soul Retreat - View 19',
+  'Luxurious tropical wellness facilities with natural materials',
   19
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat'
@@ -4271,6 +4515,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-25.avif',
   'Andes Soul Retreat - View 20',
+  'Luxurious tropical wellness facilities with natural materials',
   20
 FROM venues v
 WHERE v.title = 'Andes Soul Retreat';
@@ -4279,6 +4524,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Island Spirit Eco-Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Island Spirit Eco-Lodge'
@@ -4286,6 +4532,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Island Spirit Eco-Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Island Spirit Eco-Lodge'
@@ -4293,6 +4540,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Island Spirit Eco-Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Island Spirit Eco-Lodge'
@@ -4300,6 +4548,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Island Spirit Eco-Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Island Spirit Eco-Lodge'
@@ -4307,6 +4556,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Island Spirit Eco-Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Island Spirit Eco-Lodge';
@@ -4315,6 +4565,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Kyoto Zen House - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Kyoto Zen House'
@@ -4322,6 +4573,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Kyoto Zen House - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Kyoto Zen House'
@@ -4329,6 +4581,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Kyoto Zen House - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Kyoto Zen House'
@@ -4336,6 +4589,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Kyoto Zen House - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Kyoto Zen House'
@@ -4343,6 +4597,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Kyoto Zen House - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Kyoto Zen House';
@@ -4351,6 +4606,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Caribbean Soul Villa - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Caribbean Soul Villa'
@@ -4358,6 +4614,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Caribbean Soul Villa - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Caribbean Soul Villa'
@@ -4365,6 +4622,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Caribbean Soul Villa - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Caribbean Soul Villa'
@@ -4372,6 +4630,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Caribbean Soul Villa - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Caribbean Soul Villa'
@@ -4379,6 +4638,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Caribbean Soul Villa - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Caribbean Soul Villa';
@@ -4387,6 +4647,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Patagonia Nature Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Patagonia Nature Lodge'
@@ -4394,6 +4655,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Patagonia Nature Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Patagonia Nature Lodge'
@@ -4401,6 +4663,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Patagonia Nature Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Patagonia Nature Lodge'
@@ -4408,6 +4671,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Patagonia Nature Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Patagonia Nature Lodge'
@@ -4415,6 +4679,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Patagonia Nature Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Patagonia Nature Lodge';
@@ -4423,6 +4688,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Sahara Healing Dome - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Sahara Healing Dome'
@@ -4430,6 +4696,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Sahara Healing Dome - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Sahara Healing Dome'
@@ -4437,6 +4704,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Sahara Healing Dome - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Sahara Healing Dome'
@@ -4444,6 +4712,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Sahara Healing Dome - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Sahara Healing Dome'
@@ -4451,6 +4720,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Sahara Healing Dome - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Sahara Healing Dome';
@@ -4459,6 +4729,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Arctic Light Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Arctic Light Retreat'
@@ -4466,6 +4737,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Arctic Light Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Arctic Light Retreat'
@@ -4473,6 +4745,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Arctic Light Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Arctic Light Retreat'
@@ -4480,6 +4753,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Arctic Light Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Arctic Light Retreat'
@@ -4487,6 +4761,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Arctic Light Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Arctic Light Retreat';
@@ -4495,6 +4770,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Riviera Wellness Villa - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4502,6 +4778,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Riviera Wellness Villa - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4509,6 +4786,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Riviera Wellness Villa - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4516,6 +4794,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Riviera Wellness Villa - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4523,6 +4802,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Riviera Wellness Villa - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4530,6 +4810,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-11.avif',
   'Riviera Wellness Villa - View 6',
+  'Luxurious tropical wellness facilities with natural materials',
   6
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4537,6 +4818,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-12.avif',
   'Riviera Wellness Villa - View 7',
+  'Luxurious tropical wellness facilities with natural materials',
   7
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4544,6 +4826,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-13.avif',
   'Riviera Wellness Villa - View 8',
+  'Luxurious tropical wellness facilities with natural materials',
   8
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4551,6 +4834,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-14.avif',
   'Riviera Wellness Villa - View 9',
+  'Luxurious tropical wellness facilities with natural materials',
   9
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4558,6 +4842,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-15.avif',
   'Riviera Wellness Villa - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   10
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4565,6 +4850,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-16.avif',
   'Riviera Wellness Villa - View 11',
+  'Luxurious tropical wellness facilities with natural materials',
   11
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4572,6 +4858,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-17.avif',
   'Riviera Wellness Villa - View 12',
+  'Luxurious tropical wellness facilities with natural materials',
   12
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4579,6 +4866,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-18.avif',
   'Riviera Wellness Villa - View 13',
+  'Luxurious tropical wellness facilities with natural materials',
   13
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4586,6 +4874,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-19.avif',
   'Riviera Wellness Villa - View 14',
+  'Luxurious tropical wellness facilities with natural materials',
   14
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4593,6 +4882,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-20.avif',
   'Riviera Wellness Villa - View 15',
+  'Luxurious tropical wellness facilities with natural materials',
   15
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4600,6 +4890,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-11.avif',
   'Riviera Wellness Villa - View 16',
+  'Luxurious tropical wellness facilities with natural materials',
   16
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4607,6 +4898,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-11.avif',
   'Riviera Wellness Villa - View 17',
+  'Luxurious tropical wellness facilities with natural materials',
   17
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4614,6 +4906,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-12.avif',
   'Riviera Wellness Villa - View 18',
+  'Luxurious tropical wellness facilities with natural materials',
   18
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4621,6 +4914,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-13.avif',
   'Riviera Wellness Villa - View 19',
+  'Luxurious tropical wellness facilities with natural materials',
   19
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4628,6 +4922,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-14.avif',
   'Riviera Wellness Villa - View 20',
+  'Luxurious tropical wellness facilities with natural materials',
   20
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4635,6 +4930,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-15.avif',
   'Riviera Wellness Villa - View 21',
+  'Luxurious tropical wellness facilities with natural materials',
   21
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4642,6 +4938,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-16.avif',
   'Riviera Wellness Villa - View 22',
+  'Luxurious tropical wellness facilities with natural materials',
   22
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4649,6 +4946,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-17.avif',
   'Riviera Wellness Villa - View 23',
+  'Luxurious tropical wellness facilities with natural materials',
   23
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4656,6 +4954,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-18.avif',
   'Riviera Wellness Villa - View 24',
+  'Luxurious tropical wellness facilities with natural materials',
   24
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa'
@@ -4663,6 +4962,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-19.avif',
   'Riviera Wellness Villa - View 25',
+  'Luxurious tropical wellness facilities with natural materials',
   25
 FROM venues v
 WHERE v.title = 'Riviera Wellness Villa';
@@ -4671,6 +4971,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Himalayan River Ashram - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Himalayan River Ashram'
@@ -4678,6 +4979,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Himalayan River Ashram - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Himalayan River Ashram'
@@ -4685,6 +4987,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Himalayan River Ashram - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Himalayan River Ashram'
@@ -4692,6 +4995,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Himalayan River Ashram - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Himalayan River Ashram'
@@ -4699,6 +5003,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Himalayan River Ashram - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Himalayan River Ashram';
@@ -4707,6 +5012,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Amazon River Camp - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Amazon River Camp'
@@ -4714,6 +5020,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Amazon River Camp - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Amazon River Camp'
@@ -4721,6 +5028,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Amazon River Camp - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Amazon River Camp'
@@ -4728,6 +5036,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Amazon River Camp - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Amazon River Camp'
@@ -4735,6 +5044,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Amazon River Camp - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Amazon River Camp';
@@ -4743,6 +5053,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Tuscany Harmony Farm - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Tuscany Harmony Farm'
@@ -4750,6 +5061,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Tuscany Harmony Farm - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Tuscany Harmony Farm'
@@ -4757,6 +5069,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Tuscany Harmony Farm - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Tuscany Harmony Farm'
@@ -4764,6 +5077,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Tuscany Harmony Farm - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Tuscany Harmony Farm'
@@ -4771,6 +5085,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Tuscany Harmony Farm - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Tuscany Harmony Farm';
@@ -4779,6 +5094,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Pacific Zen Bungalow - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Pacific Zen Bungalow'
@@ -4786,6 +5102,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Pacific Zen Bungalow - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Pacific Zen Bungalow'
@@ -4793,6 +5110,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Pacific Zen Bungalow - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Pacific Zen Bungalow'
@@ -4800,6 +5118,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Pacific Zen Bungalow - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Pacific Zen Bungalow'
@@ -4807,6 +5126,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Pacific Zen Bungalow - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Pacific Zen Bungalow';
@@ -4815,6 +5135,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Alpine Spirit Chalet - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Alpine Spirit Chalet'
@@ -4822,6 +5143,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Alpine Spirit Chalet - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Alpine Spirit Chalet'
@@ -4829,6 +5151,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Alpine Spirit Chalet - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Alpine Spirit Chalet'
@@ -4836,6 +5159,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Alpine Spirit Chalet - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Alpine Spirit Chalet'
@@ -4843,6 +5167,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Alpine Spirit Chalet - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Alpine Spirit Chalet';
@@ -4851,6 +5176,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Savannah Zen Lodge - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Savannah Zen Lodge'
@@ -4858,6 +5184,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Savannah Zen Lodge - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Savannah Zen Lodge'
@@ -4865,6 +5192,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Savannah Zen Lodge - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Savannah Zen Lodge'
@@ -4872,6 +5200,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Savannah Zen Lodge - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Savannah Zen Lodge'
@@ -4879,6 +5208,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Savannah Zen Lodge - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Savannah Zen Lodge';
@@ -4887,6 +5217,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Baltic Light Center - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Baltic Light Center'
@@ -4894,6 +5225,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Baltic Light Center - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Baltic Light Center'
@@ -4901,6 +5233,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Baltic Light Center - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Baltic Light Center'
@@ -4908,6 +5241,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Baltic Light Center - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Baltic Light Center'
@@ -4915,6 +5249,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Baltic Light Center - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Baltic Light Center';
@@ -4923,6 +5258,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Andes Crystal Retreat - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Andes Crystal Retreat'
@@ -4930,6 +5266,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Andes Crystal Retreat - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Andes Crystal Retreat'
@@ -4937,6 +5274,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Andes Crystal Retreat - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Andes Crystal Retreat'
@@ -4944,6 +5282,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Andes Crystal Retreat - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Andes Crystal Retreat'
@@ -4951,6 +5290,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Andes Crystal Retreat - View 5',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Andes Crystal Retreat';
@@ -4959,6 +5299,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Pacific Healing Haven - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Pacific Healing Haven'
@@ -4966,6 +5307,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Pacific Healing Haven - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Pacific Healing Haven'
@@ -4973,6 +5315,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Pacific Healing Haven - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Pacific Healing Haven'
@@ -4980,6 +5323,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Pacific Healing Haven - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Pacific Healing Haven'
@@ -4987,6 +5331,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Pacific Healing Haven - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Pacific Healing Haven';
@@ -4995,6 +5340,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Zen Garden House - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Zen Garden House'
@@ -5002,6 +5348,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Zen Garden House - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Zen Garden House'
@@ -5009,6 +5356,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Zen Garden House - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Zen Garden House'
@@ -5016,6 +5364,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Zen Garden House - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Zen Garden House'
@@ -5023,6 +5372,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Zen Garden House - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Zen Garden House';
@@ -5031,6 +5381,7 @@ INSERT INTO venue_photos (venue_id, url, alt_text, position)
 SELECT v.id,
   'venue_photos/venue-6.avif',
   'Desert Soul Sanctuary - View 1',
+  'Luxurious tropical wellness facilities with natural materials',
   1
 FROM venues v
 WHERE v.title = 'Desert Soul Sanctuary'
@@ -5038,6 +5389,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-7.avif',
   'Desert Soul Sanctuary - View 2',
+  'Luxurious tropical wellness facilities with natural materials',
   2
 FROM venues v
 WHERE v.title = 'Desert Soul Sanctuary'
@@ -5045,6 +5397,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-8.avif',
   'Desert Soul Sanctuary - View 3',
+  'Luxurious tropical wellness facilities with natural materials',
   3
 FROM venues v
 WHERE v.title = 'Desert Soul Sanctuary'
@@ -5052,6 +5405,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-9.avif',
   'Desert Soul Sanctuary - View 4',
+  'Luxurious tropical wellness facilities with natural materials',
   4
 FROM venues v
 WHERE v.title = 'Desert Soul Sanctuary'
@@ -5059,6 +5413,7 @@ UNION ALL
 SELECT v.id,
   'venue_photos/venue-10.avif',
   'Desert Soul Sanctuary - View 10',
+  'Luxurious tropical wellness facilities with natural materials',
   5
 FROM venues v
 WHERE v.title = 'Desert Soul Sanctuary';

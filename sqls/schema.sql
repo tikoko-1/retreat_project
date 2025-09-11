@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS venue_photos (
     venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
     url TEXT NOT NULL,
     alt_text TEXT,
+    description TEXT,
     position INT DEFAULT 0
 );
 -- AMENITIES

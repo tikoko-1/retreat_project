@@ -124,13 +124,13 @@ export default function GalleryModal({ isOpen, onClose, images, initialIndex = 0
           </div>
 
           {/* Description */}
-          {/* {currentImage?.description && (
+          {currentImage?.description && (
             <div className="text-center mt-3 min-[640px]:mt-4">
               <p className="text-white/90 text-xs min-[640px]:text-sm max-w-2xl mx-auto px-2">
                 {currentImage.description}
               </p>
             </div>
-          )} */}
+          )}
         </div>
       </div>
 

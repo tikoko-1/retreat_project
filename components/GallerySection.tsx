@@ -46,7 +46,7 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-xl flex items-end p-4">
                   <div className="text-white">
                     <h3 className="font-medium mb-1 text-sm">{image.alt_text}</h3>
-                    {/* <p className="text-sm text-white/80">{image.alt_text}</p> */}
+                    <p className="text-sm text-white/80">{image.description}</p>
                   </div>
                 </div>
               </div>
@@ -73,6 +73,7 @@ export default function GallerySection({ galleryImages }: GallerySectionProps) {
                     }`}>
                     <div className="text-white">
                       <h3 className="font-medium mb-1 text-sm">{image.alt_text}</h3>
+                      <p class="text-sm text-white/80">{image.description}</p>
                     </div>
                   </div>
                 </div>

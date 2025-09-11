@@ -375,6 +375,8 @@ SELECT jsonb_build_object(
               vp.url,
               'alt_text',
               vp.alt_text,
+              'description',
+              vp.description,
               'position',
               vp.position
             )

@@ -69,6 +69,7 @@ export interface IVenuePhoto {
   id: string;
   url: string;
   alt_text?: string;
+  description?: string;
   position?: number;
 }
 
