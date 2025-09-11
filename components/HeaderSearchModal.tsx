@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Label } from "./ui/label";
 import { FilterState } from "./SearchFilters";
 import { supabase } from "@/lib/supabase";
+import DynamicIcon from "./ui/dynamic-icon";
 
 interface HeaderSearchModalProps {
   filters: FilterState;
@@ -64,25 +65,6 @@ const guestOptions = [
   { value: "70-99", label: "70–99 guests" },
   { value: "100+", label: "100+ guests" },
 ];
-
-// Dynamic icon component for rendering Lucide icons
-function DynamicIcon({
-  iconName,
-  className,
-}: {
-  iconName: string;
-  className?: string;
-}) {
-  const pascalCaseName = iconName
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join("");
-  const IconComponent = (LucideIcons as any)[pascalCaseName];
-  if (!IconComponent) {
-    return <Star className={className} />;
-  }
-  return <IconComponent className={className} />;
-}
 
 export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }: HeaderSearchModalProps) {
   const [suggestions, setSuggestions] = useState<
@@ -171,7 +153,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
     ],
   });
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
-  
+
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const updateFilters = (updates: Partial<FilterState>) => {
@@ -238,12 +220,12 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
         setShowSuggestions(false);
         return;
       }
-      
+
       if (filters.search.length > 0) {
         const filtered = searchableCountries.filter(location =>
           location.name.toLowerCase().includes(filters.search.toLowerCase())
         ).slice(0, 8);
-        
+
         setSuggestions(filtered);
         setShowSuggestions(filtered.length > 0);
       } else {
@@ -263,7 +245,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
-        setSelectedSuggestionIndex(prev => 
+        setSelectedSuggestionIndex(prev =>
           prev < suggestions.length - 1 ? prev + 1 : prev
         );
         break;
@@ -293,7 +275,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
     }
   };
 
-  const handleSuggestionClick = (suggestion: {name: string; popular: boolean}) => {
+  const handleSuggestionClick = (suggestion: { name: string; popular: boolean }) => {
     updateFilters({ search: suggestion.name });
     setShowSuggestions(false);
     setSelectedSuggestionIndex(-1);
@@ -314,14 +296,14 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
   };
 
   const toggleAmenity = (amenityId: string) => {
-    const newAmenities = filters.amenities.includes(amenityId) 
+    const newAmenities = filters.amenities.includes(amenityId)
       ? filters.amenities.filter(id => id !== amenityId)
       : [...filters.amenities, amenityId];
     updateFilters({ amenities: newAmenities });
   };
 
   const toggleVenueType = (venueTypeId: string) => {
-    const newVenueTypes = filters.venueTypes.includes(venueTypeId) 
+    const newVenueTypes = filters.venueTypes.includes(venueTypeId)
       ? filters.venueTypes.filter(id => id !== venueTypeId)
       : [...filters.venueTypes, venueTypeId];
     updateFilters({ venueTypes: newVenueTypes });
@@ -344,7 +326,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
           <MapPin className="w-5 h-5 text-gray-600" />
           Location
         </h3>
-        
+
         <div className="relative">
           <Label className="text-sm font-medium text-gray-700 mb-3 block">Where do you want to go?</Label>
           <div className="relative">
@@ -361,7 +343,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
               className="pl-11 h-12"
               autoFocus={false}
             />
-            
+
             {/* Auto-suggest Dropdown */}
             {showSuggestions && (
               <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
@@ -376,9 +358,8 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
                       <button
                         key={`${suggestion.name}`}
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${
-                          index === selectedSuggestionIndex ? 'bg-gray-50' : ''
-                        }`}
+                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${index === selectedSuggestionIndex ? 'bg-gray-50' : ''
+                          }`}
                       >
                         <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
                         <div className="flex-1 min-w-0">
@@ -400,9 +381,8 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
                       <button
                         key={`${suggestion.name}`}
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${
-                          index === selectedSuggestionIndex ? 'bg-gray-50' : ''
-                        }`}
+                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${index === selectedSuggestionIndex ? 'bg-gray-50' : ''
+                          }`}
                       >
                         <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
                         <div className="flex-1 min-w-0">
@@ -433,7 +413,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
           <Home className="w-5 h-5 text-gray-600" />
           Property Details
         </h3>
-        
+
         <div>
           <Label className="text-sm font-medium text-gray-700 mb-3 block">Number of guests</Label>
           <div className="relative">
@@ -444,8 +424,8 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
               </SelectTrigger>
               <SelectContent className="bg-white border border-gray-200 rounded-lg shadow-lg">
                 {guestOptions.map((option) => (
-                  <SelectItem 
-                    key={option.value} 
+                  <SelectItem
+                    key={option.value}
                     value={option.value}
                     className="text-sm font-medium text-gray-900 hover:bg-gray-50 focus:bg-gray-50 cursor-pointer px-4 py-2"
                   >
@@ -519,7 +499,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
         <div className="flex flex-wrap gap-2">
           {amenityCategories['Food & Dining'].map((item) => {
             const isSelected = filters.amenities.includes(item.id);
-            
+
             return (
               <button
                 key={item.id}
@@ -546,7 +526,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
         <div className="flex flex-wrap gap-2">
           {amenityCategories['Living & Comfort'].map((item) => {
             const isSelected = filters.amenities.includes(item.id);
-            
+
             return (
               <button
                 key={item.id}
@@ -573,7 +553,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
         <div className="flex flex-wrap gap-2">
           {amenityCategories['Extras & Nature'].map((item) => {
             const isSelected = filters.amenities.includes(item.id);
-            
+
             return (
               <button
                 key={item.id}
@@ -600,7 +580,7 @@ export default function HeaderSearchModal({ filters, onFiltersChange, onSearch }
         <div className="flex flex-wrap gap-2">
           {amenityCategories['Infrastructure & Policies'].map((item) => {
             const isSelected = filters.amenities.includes(item.id);
-            
+
             return (
               <button
                 key={item.id}

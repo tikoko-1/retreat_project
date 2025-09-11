@@ -34,6 +34,7 @@ import {
 } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { supabase } from "@/lib/supabase";
+import DynamicIcon from "./ui/dynamic-icon";
 
 export interface FilterState {
   search: string;
@@ -101,25 +102,6 @@ const guestOptions = [
   { value: "70-99", label: "70–99 guests" },
   { value: "100+", label: "100+ guests" },
 ];
-
-// Dynamic icon component for rendering Lucide icons
-function DynamicIcon({
-  iconName,
-  className,
-}: {
-  iconName: string;
-  className?: string;
-}) {
-  const pascalCaseName = iconName
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join("");
-  const IconComponent = (LucideIcons as any)[pascalCaseName];
-  if (!IconComponent) {
-    return <Star className={className} />;
-  }
-  return <IconComponent className={className} />;
-}
 
 export default function SearchFilters({
   filters,
@@ -496,7 +478,7 @@ export default function SearchFilters({
                 <>
                   {filters.search.length === 0 &&
                     searchableCountries.filter((sc) => sc.popular).length >
-                      0 && (
+                    0 && (
                       <div className="px-4 py-2 text-xs font-medium text-gray-500 border-b border-gray-100">
                         Popular destinations
                       </div>
@@ -507,9 +489,8 @@ export default function SearchFilters({
                       <button
                         key={`${suggestion.name}`}
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${
-                          index === selectedSuggestionIndex ? "bg-gray-50" : ""
-                        }`}
+                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${index === selectedSuggestionIndex ? "bg-gray-50" : ""
+                          }`}
                       >
                         <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
                         <div className="flex-1 min-w-0">
@@ -524,7 +505,7 @@ export default function SearchFilters({
                     ))}
                   {filters.search.length === 0 &&
                     searchableCountries.filter((sc) => !sc.popular).length >
-                      0 && (
+                    0 && (
                       <div className="px-4 py-2 text-xs font-medium text-gray-500 border-b border-gray-100">
                         General destinations
                       </div>
@@ -535,9 +516,8 @@ export default function SearchFilters({
                       <button
                         key={`${suggestion.name}`}
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${
-                          index === selectedSuggestionIndex ? "bg-gray-50" : ""
-                        }`}
+                        className={`w-full px-4 py-3 text-left hover:bg-gray-50 focus:bg-gray-50 focus:outline-none transition-colors duration-150 flex items-center gap-3 ${index === selectedSuggestionIndex ? "bg-gray-50" : ""
+                          }`}
                       >
                         <MapPin className="w-4 h-4 text-gray-400 flex-shrink-0" />
                         <div className="flex-1 min-w-0">
@@ -595,9 +575,8 @@ export default function SearchFilters({
           {/* More Filters */}
           <button
             onClick={openModal}
-            className={`flex-1 lg:flex-none px-4 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-900 transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white focus:outline-none flex items-center justify-center gap-2.5 whitespace-nowrap ${
-              hasActiveFilters ? "border-gray-900 bg-gray-50" : ""
-            }`}
+            className={`flex-1 lg:flex-none px-4 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-900 transition-all duration-200 hover:border-gray-300 hover:bg-gray-50 focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 focus:bg-white focus:outline-none flex items-center justify-center gap-2.5 whitespace-nowrap ${hasActiveFilters ? "border-gray-900 bg-gray-50" : ""
+              }`}
             style={{
               height: "48px",
               lineHeight: "1.5",
@@ -725,9 +704,8 @@ export default function SearchFilters({
                         <button
                           key={type.id}
                           onClick={() => toggleVenueType(type.id)}
-                          className={`modal-filter-tag ${
-                            isSelected ? "active" : "inactive"
-                          }`}
+                          className={`modal-filter-tag ${isSelected ? "active" : "inactive"
+                            }`}
                         >
                           <DynamicIcon
                             iconName={type.icon.name}
@@ -755,9 +733,8 @@ export default function SearchFilters({
                         <button
                           key={amenity.id}
                           onClick={() => toggleAmenity(amenity.id)}
-                          className={`modal-filter-tag ${
-                            isSelected ? "active" : "inactive"
-                          }`}
+                          className={`modal-filter-tag ${isSelected ? "active" : "inactive"
+                            }`}
                         >
                           <DynamicIcon
                             iconName={amenity.icon.name}
@@ -786,9 +763,8 @@ export default function SearchFilters({
                         <button
                           key={item.id}
                           onClick={() => toggleAmenity(item.id)}
-                          className={`modal-filter-tag ${
-                            isSelected ? "active" : "inactive"
-                          }`}
+                          className={`modal-filter-tag ${isSelected ? "active" : "inactive"
+                            }`}
                         >
                           <DynamicIcon
                             iconName={item.icon.name}
@@ -817,9 +793,8 @@ export default function SearchFilters({
                         <button
                           key={item.id}
                           onClick={() => toggleAmenity(item.id)}
-                          className={`modal-filter-tag ${
-                            isSelected ? "active" : "inactive"
-                          }`}
+                          className={`modal-filter-tag ${isSelected ? "active" : "inactive"
+                            }`}
                         >
                           <DynamicIcon
                             iconName={item.icon.name}
@@ -848,9 +823,8 @@ export default function SearchFilters({
                         <button
                           key={item.id}
                           onClick={() => toggleAmenity(item.id)}
-                          className={`modal-filter-tag ${
-                            isSelected ? "active" : "inactive"
-                          }`}
+                          className={`modal-filter-tag ${isSelected ? "active" : "inactive"
+                            }`}
                         >
                           <DynamicIcon
                             iconName={item.icon.name}
@@ -880,9 +854,8 @@ export default function SearchFilters({
                           <button
                             key={item.id}
                             onClick={() => toggleAmenity(item.id)}
-                            className={`modal-filter-tag ${
-                              isSelected ? "active" : "inactive"
-                            }`}
+                            className={`modal-filter-tag ${isSelected ? "active" : "inactive"
+                              }`}
                           >
                             <DynamicIcon
                               iconName={item.icon.name}
