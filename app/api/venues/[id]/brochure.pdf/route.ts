@@ -3,6 +3,8 @@ import { getSupabaseImageUrl } from "@/lib/utils";
 import puppeteer from "puppeteer";
 import { RetreatDetails } from "@/types";
 
+export const runtime = "nodejs";
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -24,7 +26,7 @@ export async function GET(
       venue.retreat?.title?.replace(/[^a-z0-9]/gi, "_") || "retreat"
     }-brochure.pdf`;
 
-    return new NextResponse(pdfBuffer, {
+    return new Response(pdfBuffer as unknown as BodyInit, {
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="${filename}"`,
@@ -597,11 +599,9 @@ function generateBrochureHTML(venue: { retreat: RetreatDetails }): string {
                   (price: any) => `
                 <div class="pricing-item">
                   <div class="pricing-amount">${price.currency || "$"}${
-                    price.amount || 0
+                    price.amount ?? 0
                   }</div>
-                  <div class="pricing-unit">${
-                    price.billing_unit || "per person"
-                  }</div>
+                  <div class="pricing-unit">${price.billing_unit ?? ""}</div>
                   ${
                     price.note
                       ? `<div class="pricing-note">${price.note}</div>`
@@ -738,7 +738,7 @@ function generateBrochureHTML(venue: { retreat: RetreatDetails }): string {
                   <div class="amenity-name">${amenity.name}</div>
                   ${
                     amenity.group
-                      ? `<div class="amenity-group">${amenity.group}</div>`
+                      ? `<div class="amenity-group">${amenity.description}</div>`
                       : ""
                   }
                 </div>
