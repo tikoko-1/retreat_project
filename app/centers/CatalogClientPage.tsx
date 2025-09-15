@@ -35,15 +35,15 @@ export default function CatalogClientPage({
     amenities: Array.isArray(initialSearchParams.amenities)
       ? initialSearchParams.amenities
       : initialSearchParams.amenities
-      ? [initialSearchParams.amenities as string]
-      : [],
+        ? [initialSearchParams.amenities as string]
+        : [],
     bedrooms: (initialSearchParams.bedrooms as string) || "",
     bathrooms: (initialSearchParams.bathrooms as string) || "",
     venueTypes: Array.isArray(initialSearchParams.venueTypes)
       ? initialSearchParams.venueTypes
       : initialSearchParams.venueTypes
-      ? [initialSearchParams.venueTypes as string]
-      : [],
+        ? [initialSearchParams.venueTypes as string]
+        : [],
   });
 
   // Applied filters for actual search (updated only when Search button is clicked)
@@ -63,15 +63,15 @@ export default function CatalogClientPage({
       amenities: Array.isArray(initialSearchParams.amenities)
         ? initialSearchParams.amenities
         : initialSearchParams.amenities
-        ? [initialSearchParams.amenities as string]
-        : [],
+          ? [initialSearchParams.amenities as string]
+          : [],
       bedrooms: (initialSearchParams.bedrooms as string) || "",
       bathrooms: (initialSearchParams.bathrooms as string) || "",
       venueTypes: Array.isArray(initialSearchParams.venueTypes)
         ? initialSearchParams.venueTypes
         : initialSearchParams.venueTypes
-        ? [initialSearchParams.venueTypes as string]
-        : [],
+          ? [initialSearchParams.venueTypes as string]
+          : [],
     };
 
     // Check if URL filters are different from applied filters
@@ -82,9 +82,9 @@ export default function CatalogClientPage({
       urlFilters.bedrooms !== appliedFilters.bedrooms ||
       urlFilters.bathrooms !== appliedFilters.bathrooms ||
       JSON.stringify(urlFilters.amenities.sort()) !==
-        JSON.stringify(appliedFilters.amenities.sort()) ||
+      JSON.stringify(appliedFilters.amenities.sort()) ||
       JSON.stringify(urlFilters.venueTypes.sort()) !==
-        JSON.stringify(appliedFilters.venueTypes.sort());
+      JSON.stringify(appliedFilters.venueTypes.sort());
 
     if (filtersChanged) {
       // Update both filters and appliedFilters to match URL
@@ -140,7 +140,7 @@ export default function CatalogClientPage({
       );
       params.set("offset", offset.toString());
       params.set("limit", "20");
-      const response = await fetch(`/api/centers?${params.toString()}`);
+      const response = await fetch(`/api/venues?${params.toString()}`);
       if (!response.ok) {
         throw new Error("Failed to fetch venues");
       }

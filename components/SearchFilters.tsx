@@ -305,7 +305,7 @@ export default function SearchFilters({
             params.append("amenities", amenity);
           });
           const response = await fetch(
-            `/api/centers/count?${params.toString()}`
+            `/api/venues/count?${params.toString()}`
           );
           const data = await response.json();
           if (response.ok) {
