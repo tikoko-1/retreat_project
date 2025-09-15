@@ -49,7 +49,7 @@ WITH new_users AS (
     ),
     (
       '22222222-2222-2222-2222-222222222222',
-      'raj@mountainview.com',
+      'victory990101@gmail.com',
       crypt('password123', gen_salt('bf'))
     ),
     (
@@ -98,7 +98,7 @@ VALUES (
     '22222222-2222-2222-2222-222222222222',
     'host',
     'Raj Patel',
-    'raj@mountainview.com',
+    'victory990101@gmail.com',
     'Yoga and meditation expert from Rishikesh',
     'avatars/avatar-2.jpg',
     '+1234572990',
@@ -7322,7 +7322,6 @@ WHERE v.title = 'Eternal Spring Center';
 -- Insert sample inquiries from users to venues (10 random inquiries)
 INSERT INTO inquiries (
     venue_id,
-    user_id,
     user_email,
     user_name,
     message,
@@ -7330,7 +7329,6 @@ INSERT INTO inquiries (
     created_at
   )
 SELECT v.id,
-  '11111111-1111-1111-1111-111111111111'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'Hi! I''m interested in booking a wellness retreat for my 40th birthday in March. I''d love to know more about your yoga and meditation programs, and whether you offer special packages for milestone celebrations. Also, what''s the best time to visit Bali?',
@@ -7340,7 +7338,6 @@ FROM venues v
 WHERE v.title = 'Serenity Hills Retreat'
 UNION ALL
 SELECT v.id,
-  '55555555-5555-5555-5555-555555555555'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'Hello! I''m planning a spiritual journey to Rishikesh and your sanctuary looks perfect. I have some questions about the ashram-style accommodation - are the rooms shared or private? Also, do you offer traditional Ayurvedic treatments?',
@@ -7350,7 +7347,6 @@ FROM venues v
 WHERE v.title = 'Mountain View Sanctuary'
 UNION ALL
 SELECT v.id,
-  '11111111-1111-1111-1111-111111111111'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'I''m looking for a beachfront wellness retreat in Tulum for my honeymoon. Your cenote swimming and Mayan culture programs sound amazing! Do you offer couple''s packages? What''s the weather like in December?',
@@ -7360,7 +7356,6 @@ FROM venues v
 WHERE v.title = 'Ocean Bliss Retreat'
 UNION ALL
 SELECT v.id,
-  '55555555-5555-5555-5555-555555555555'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'Bonjour! I''m interested in your alpine wellness lodge for a winter retreat. I love skiing and spa treatments. Do you offer ski-in/ski-out access? Also, what wellness programs do you have during the winter months?',
@@ -7370,7 +7365,6 @@ FROM venues v
 WHERE v.title = 'Alpine Wellness Lodge'
 UNION ALL
 SELECT v.id,
-  '11111111-1111-1111-1111-111111111111'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'Hola! I''m fascinated by Incan culture and would love to experience your Sacred Valley sanctuary. I have some questions about the spiritual ceremonies - are they open to beginners? Also, what''s the altitude like there?',
@@ -7380,7 +7374,6 @@ FROM venues v
 WHERE v.title = 'Sacred Valley Sanctuary'
 UNION ALL
 SELECT v.id,
-  '55555555-5555-5555-5555-555555555555'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'Namaste! I''m a yoga teacher looking to deepen my practice in the Himalayas. Your ashram experience sounds perfect. Do you offer teacher training programs? Also, what''s the daily schedule like?',
@@ -7390,7 +7383,6 @@ FROM venues v
 WHERE v.title = 'Mindful Mountain Retreat'
 UNION ALL
 SELECT v.id,
-  '11111111-1111-1111-1111-111111111111'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'I''m interested in your coastal zen retreat for a digital detox. The tea ceremonies and ocean meditation sound perfect. Do you have WiFi-free zones? Also, what''s the best time to see whales?',
@@ -7400,7 +7392,6 @@ FROM venues v
 WHERE v.title = 'Coastal Zen Retreat'
 UNION ALL
 SELECT v.id,
-  '55555555-5555-5555-5555-555555555555'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'Salaam! I''m looking for a unique desert experience. Your stargazing meditation and Sufi practices sound fascinating. Do you offer camel treks? Also, what''s the temperature like at night?',
@@ -7410,7 +7401,6 @@ FROM venues v
 WHERE v.title = 'Desert Oasis Center'
 UNION ALL
 SELECT v.id,
-  '11111111-1111-1111-1111-111111111111'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'I''m interested in your forest healing lodge for a nature retreat. The forest bathing and eco-friendly accommodation sound perfect. Do you have guided nature walks? Also, what wildlife can I expect to see?',
@@ -7420,7 +7410,6 @@ FROM venues v
 WHERE v.title = 'Forest Healing Lodge'
 UNION ALL
 SELECT v.id,
-  '55555555-5555-5555-5555-555555555555'::uuid,
   'alexandermori1218@gmail.com',
   'Alexander Mori',
   'I''m dreaming of an overwater bungalow experience! Your island paradise retreat looks incredible. Do you offer snorkeling equipment? Also, what''s the best time to avoid monsoon season?',
@@ -7428,6 +7417,70 @@ SELECT v.id,
   NOW() - INTERVAL '2 months'
 FROM venues v
 WHERE v.title = 'Island Paradise Retreat';
+--Insert availability_requests
+INSERT INTO availability_requests (
+    venue_id,
+    start_date,
+    end_date,
+    group_size_min,
+    group_size_max,
+    requester_name,
+    requester_email,
+    requester_phone,
+    organization,
+    program_type,
+    notes,
+    date_flexibility,
+    ip_address
+  )
+  SELECT v.id,
+    '2025-09-20'::date,
+    '2025-10-20'::date,
+    20,
+    20,
+    'Alexander Mori',
+    'alexander@example.com',
+    '1234567890',
+    'Example Organization',
+    'yoga',
+    'Example Notes',
+    'fixed'::date_flexibility,
+    '127.0.0.1'
+  FROM venues v
+  WHERE v.title = 'Serenity Hills Retreat'
+  UNION ALL
+  SELECT v.id,
+    '2025-11-01'::date,
+    '2025-11-13'::date,
+    30,
+    30,
+    'John Doe',
+    'john.doe@example.com',
+    '1234567890',
+    'Example Organization',
+    'meditation',
+    'Example Notes',
+    'flexible'::date_flexibility,
+    '127.0.0.1'
+  FROM venues v
+  WHERE v.title = 'Serenity Hills Retreat'
+  UNION ALL
+  SELECT v.id,
+    '2025-10-01'::date,
+    '2025-10-03'::date,
+    5,
+    5,
+    'William Mackenzie',
+    'williammackenzie@example.com',
+    '1234567890',
+    'Example Organization',
+    'wellness',
+    'Example Notes',
+    '±3d'::date_flexibility,
+    '127.0.0.1'
+  FROM venues v
+  WHERE v.title = 'Serenity Hills Retreat';
+
 -- Insert pricing tiers for venues
 -- =====================================
 -- Serenity Hills Retreat
