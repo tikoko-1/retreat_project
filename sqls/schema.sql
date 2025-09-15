@@ -30,6 +30,7 @@ CREATE TYPE guide_category AS ENUM (
     'other'
 );
 CREATE TYPE review_rating AS ENUM ('1', '2', '3', '4', '5');
+CREATE TYPE date_flexibility AS ENUM ('fixed', '±3d', '±7d', 'flexible');
 -- USERS / PROFILES
 CREATE TABLE IF NOT EXISTS profiles (
     id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -136,11 +137,28 @@ CREATE TABLE IF NOT EXISTS cancellation_policies (
 CREATE TABLE IF NOT EXISTS inquiries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
-    user_id UUID NOT NULL REFERENCES profiles(id) ON DELETE CASCADE,
     user_email TEXT NOT NULL,
     user_name TEXT,
     message TEXT NOT NULL,
     status inquiry_status NOT NULL DEFAULT 'new',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+-- Availability Requests
+CREATE TABLE IF NOT EXISTS availability_requests (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
+    start_date DATE,
+    end_date DATE,
+    group_size_min INT NOT NULL,
+    group_size_max INT NOT NULL,
+    requester_name TEXT NOT NULL,
+    requester_email TEXT NOT NULL,
+    requester_phone TEXT,
+    organization TEXT,
+    program_type TEXT,
+    notes TEXT,
+    date_flexibility date_flexibility,
+    ip_address TEXT NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 -- FAVORITES
