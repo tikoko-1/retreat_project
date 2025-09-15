@@ -20,7 +20,6 @@ export async function GET(
         { status: 400 }
       );
     }
-    // Fetch the retreat with all related data
     const { data, error } = await supabase.rpc("get_venue_by_id", {
       p_venue_id: id,
     });
