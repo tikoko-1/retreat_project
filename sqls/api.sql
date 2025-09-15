@@ -2,6 +2,8 @@ DROP FUNCTION IF EXISTS public.get_filtered_venues_count;
 DROP FUNCTION IF EXISTS public.get_filtered_venues;
 DROP FUNCTION IF EXISTS public.get_venue_by_id;
 DROP FUNCTION IF EXISTS public.get_reviews_by_venue_id;
+DROP FUNCTION IF EXISTS public.create_availability_request;
+DROP FUNCTION IF EXISTS public.get_availability_request_count;
 CREATE OR REPLACE FUNCTION public.get_filtered_venues_count(
     p_search TEXT DEFAULT '',
     p_guests TEXT DEFAULT '',
@@ -670,4 +672,83 @@ from (
   ) r;
 return result;
 end;
+$$;
+-- INSERT AVAILABILITY REQUEST
+create or replace function public.create_availability_request(
+    p_venue_id uuid,
+    p_group_size_min int,
+    p_group_size_max int,
+    p_requester_name text,
+    p_requester_email text,
+    p_ip_address text,
+    p_start_date date default null,
+    p_end_date date default null,
+    p_requester_phone text default null,
+    p_organization text default null,
+    p_program_type text default null,
+    p_notes text default null,
+    p_date_flexibility date_flexibility default null
+  ) returns jsonb language plpgsql as $$
+declare new_id uuid;
+owner_email text;
+owner_name text;
+begin -- insert request
+insert into availability_requests (
+    venue_id,
+    start_date,
+    end_date,
+    group_size_min,
+    group_size_max,
+    requester_name,
+    requester_email,
+    requester_phone,
+    organization,
+    program_type,
+    notes,
+    date_flexibility,
+    ip_address
+  )
+values (
+    p_venue_id,
+    p_start_date,
+    p_end_date,
+    p_group_size_min,
+    p_group_size_max,
+    p_requester_name,
+    p_requester_email,
+    p_requester_phone,
+    p_organization,
+    p_program_type,
+    p_notes,
+    p_date_flexibility,
+    p_ip_address
+  )
+returning id into new_id;
+-- get venue owner email and name
+select p.email,
+  p.name into owner_email,
+  owner_name
+from venues v
+  join profiles p on p.id = v.owner_id
+where v.id = p_venue_id;
+-- return both
+return jsonb_build_object(
+  'new_id',
+  new_id,
+  'owner_email',
+  owner_email,
+  'owner_name',
+  owner_name
+);
+end;
+$$;
+--Get Availability Request Count
+create or replace function public.get_availability_request_count(
+    p_ip_address text,
+    p_hours integer default 1
+  ) returns integer language sql as $$
+select count(*)
+from availability_requests ar
+where ar.ip_address = p_ip_address
+  and ar.created_at >= now() - interval '1 hour' * p_hours;
 $$;
