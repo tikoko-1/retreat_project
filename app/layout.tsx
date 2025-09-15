@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import '../styles/globals.css'
 import { SiteCopyProvider } from '@/contexts/SiteCopyContext'
 import { Toaster } from '@/components/ui/sonner'
+import CrispProvider from '@/components/CrispProvider'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           {children}
         </SiteCopyProvider>
         <Toaster />
+        <CrispProvider />
       </body>
     </html>
   )

@@ -44,6 +44,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
+    "crisp-sdk-web": "^1.0.25",
     "embla-carousel-react": "^8.1.0",
     "input-otp": "^1.2.4",
     "leaflet": "^1.9.4",
