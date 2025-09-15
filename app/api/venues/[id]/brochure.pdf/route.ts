@@ -11,8 +11,14 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
+    if (!id) {
+      return NextResponse.json(
+        { retreat: null, success: false, error: "Retreat ID is required" },
+        { status: 400 }
+      );
+    }
     const baseUrl = `${request.nextUrl.protocol}//${request.nextUrl.host}`;
-    const response = await fetch(`${baseUrl}/api/centers/${id}`);
+    const response = await fetch(`${baseUrl}/api/venues/${id}`);
 
     if (!response.ok) {
       throw new Error("Failed to fetch venue data");
