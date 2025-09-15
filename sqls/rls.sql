@@ -7,7 +7,6 @@ ALTER TABLE amenities ENABLE ROW LEVEL SECURITY;
 ALTER TABLE venue_amenities ENABLE ROW LEVEL SECURITY;
 ALTER TABLE food_dining ENABLE ROW LEVEL SECURITY;
 ALTER TABLE cancellation_policies ENABLE ROW LEVEL SECURITY;
-ALTER TABLE inquiries ENABLE ROW LEVEL SECURITY;
 ALTER TABLE favorites ENABLE ROW LEVEL SECURITY;
 ALTER TABLE reviews ENABLE ROW LEVEL SECURITY;
 ALTER TABLE blog_articles ENABLE ROW LEVEL SECURITY;
@@ -32,9 +31,6 @@ DROP POLICY IF EXISTS "Enable read access for all users on food_dining of publis
 DROP POLICY IF EXISTS "Enable owner to manage food_dining for their venues" ON food_dining;
 DROP POLICY IF EXISTS "Enable read access for all users on cancellation_policies of published venues" ON cancellation_policies;
 DROP POLICY IF EXISTS "Enable owner to manage cancellation_policies for their venues" ON cancellation_policies;
-DROP POLICY IF EXISTS "Enable owner to read their venue inquiries" ON inquiries;
-DROP POLICY IF EXISTS "Enable client to read their own inquiries" ON inquiries;
-DROP POLICY IF EXISTS "Enable authenticated users to insert inquiries" ON inquiries;
 DROP POLICY IF EXISTS "Enable client to manage their own favorites" ON favorites;
 DROP POLICY IF EXISTS "Enable read access for all users on reviews of published venues" ON reviews;
 DROP POLICY IF EXISTS "Enable client to read their own reviews" ON reviews;
@@ -129,19 +125,6 @@ CREATE POLICY "Enable owner to manage cancellation_policies for their venues" ON
     WHERE id = venue_id
   ) = auth.uid()
 );
--- Policies for `inquiries` table
-CREATE POLICY "Enable owner to read their venue inquiries" ON inquiries FOR
-SELECT USING (
-    venue_id IN (
-      SELECT id
-      FROM venues
-      WHERE owner_id = auth.uid()
-    )
-  );
-CREATE POLICY "Enable client to read their own inquiries" ON inquiries FOR
-SELECT USING (user_id = auth.uid());
-CREATE POLICY "Enable authenticated users to insert inquiries" ON inquiries FOR
-INSERT WITH CHECK (auth.uid() = user_id);
 -- Policies for `favorites` table
 CREATE POLICY "Enable client to manage their own favorites" ON favorites FOR ALL USING (user_id = auth.uid());
 -- Policies for `reviews` table
