@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Star, MapPin, Users, Home, Bath } from "lucide-react";
 import { Button } from "./ui/button";
 import { RetreatDetails } from "@/types";
+import { formatPriceNumber } from "@/lib/utils";
 
 interface StickyPricingBarProps {
   onReserveClick?: () => void;
@@ -38,7 +39,7 @@ export default function StickyPricingBar({ onReserveClick, retreat }: StickyPric
           {/* Pricing info */}
           <div>
             <div className="flex items-baseline gap-1">
-              <span className="font-semibold text-gray-900">${retreat.price_min ?? 0}–${retreat.price_max ?? 0}</span>
+              <span className="font-semibold text-gray-900">${formatPriceNumber(retreat.price_min ?? 0)}–${formatPriceNumber(retreat.price_max ?? 0)}</span>
               <span className="text-gray-500 text-sm font-normal">{retreat.price_unit === "per_night" ? "/ night" : retreat.price_unit === "per_person" ? "/ person" : retreat.price_unit === "week" ? "/ week" : retreat.price_unit === "weekend" ? "/ weekend" : retreat.price_unit === "custom" ? "" : "/ night"}</span>
             </div>
             <div className="text-xs text-gray-500">
@@ -73,7 +74,7 @@ export default function StickyPricingBar({ onReserveClick, retreat }: StickyPric
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="font-semibold text-gray-900">${retreat.price_min ?? 0}–${retreat.price_max ?? 0}</span>
+                <span className="font-semibold text-gray-900">${formatPriceNumber(retreat.price_min ?? 0)}–${formatPriceNumber(retreat.price_max ?? 0)}</span>
                 <span className="text-gray-500 text-sm font-normal">{retreat.price_unit === "per_night" ? "/ night" : retreat.price_unit === "per_person" ? "/ person" : retreat.price_unit === "week" ? "/ week" : retreat.price_unit === "weekend" ? "/ weekend" : retreat.price_unit === "custom" ? "" : "/ night"}</span>
               </div>
               <div className="text-xs text-gray-500">
@@ -151,7 +152,7 @@ export default function StickyPricingBar({ onReserveClick, retreat }: StickyPric
             {/* Pricing info */}
             <div>
               <div className="flex items-baseline gap-1">
-                <span className="font-semibold text-gray-900">${retreat.price_min ?? 0}–${retreat.price_max ?? 0}</span>
+                <span className="font-semibold text-gray-900">${formatPriceNumber(retreat.price_min ?? 0)}–${formatPriceNumber(retreat.price_max ?? 0)}</span>
                 <span className="text-gray-500 text-sm font-normal">{retreat.price_unit === "per_night" ? "/ night" : retreat.price_unit === "per_person" ? "/ person" : retreat.price_unit === "week" ? "/ week" : retreat.price_unit === "weekend" ? "/ weekend" : retreat.price_unit === "custom" ? "" : "/ night"}</span>
               </div>
               <div className="text-xs text-gray-500">

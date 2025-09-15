@@ -1,5 +1,6 @@
 import { Users, Bed } from "lucide-react";
 import { EPriceUnit, IRoom } from "@/types";
+import { formatPriceNumber } from "@/lib/utils";
 
 
 interface RoomsSectionProps {
@@ -48,7 +49,7 @@ export default function RoomsSection({ rooms }: RoomsSectionProps) {
                 </div>
               </div>
               <div className="border-t border-gray-100 pt-6 ">
-                <div className="text-2xl font-light text-gray-900 mb-2">{room.currency}{room.price_min ?? 0}-{room.price_max ?? 0} {room.billing_unit == EPriceUnit.PerNight ? '/ night' : room.billing_unit == EPriceUnit.PerPerson ? '/ person' : room.billing_unit == EPriceUnit.Weekend ? '/ weekend' : room.billing_unit == EPriceUnit.Week ? '/ week' : ''}</div>
+                <div className="text-2xl font-light text-gray-900 mb-2">{room.currency}{formatPriceNumber(room.price_min ?? 0)} - {formatPriceNumber(room.price_max ?? 0)} {room.billing_unit == EPriceUnit.PerNight ? '/ night' : room.billing_unit == EPriceUnit.PerPerson ? '/ person' : room.billing_unit == EPriceUnit.Weekend ? '/ weekend' : room.billing_unit == EPriceUnit.Week ? '/ week' : ''}</div>
                 <div className="text-sm text-gray-500">{room.note}</div>
               </div>
             </div>

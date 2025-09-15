@@ -2,7 +2,7 @@ import { Users, MapPin, Heart, Home, Bath } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState } from "react";
 import { RetreatCenter } from "@/types";
-import { getSupabaseImageUrl } from "@/lib/utils";
+import { getSupabaseImageUrl, formatPriceNumber } from "@/lib/utils";
 
 interface RetreatCenterCardProps {
   retreat: RetreatCenter;
@@ -65,11 +65,10 @@ export default function RetreatCenterCard({
           className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-md flex items-center justify-center hover:bg-white transition-all"
         >
           <Heart
-            className={`w-4 h-4 transition-colors ${
-              isLiked
-                ? "fill-red-500 text-red-500"
-                : "text-gray-600 hover:text-red-500"
-            }`}
+            className={`w-4 h-4 transition-colors ${isLiked
+              ? "fill-red-500 text-red-500"
+              : "text-gray-600 hover:text-red-500"
+              }`}
           />
         </button>
       </div>
@@ -135,20 +134,20 @@ export default function RetreatCenterCard({
           <div className="text-right">
             <div className="flex items-baseline gap-1">
               <span className="font-semibold text-gray-900">
-                ${retreat.price_min} - {retreat.price_max}
+                ${formatPriceNumber(retreat.price_min)} - ${formatPriceNumber(retreat.price_max)}
               </span>
               <span className="text-gray-500 text-sm font-normal">
                 {retreat.price_unit === "weekend"
                   ? "/ weekend"
                   : retreat.price_unit === "per_night"
-                  ? "/ night"
-                  : retreat.price_unit === "per_person"
-                  ? "/ person"
-                  : retreat.price_unit === "week"
-                  ? "/ week"
-                  : retreat.price_unit === "custom"
-                  ? ""
-                  : "/ night"}
+                    ? "/ night"
+                    : retreat.price_unit === "per_person"
+                      ? "/ person"
+                      : retreat.price_unit === "week"
+                        ? "/ week"
+                        : retreat.price_unit === "custom"
+                          ? ""
+                          : "/ night"}
               </span>
             </div>
             <div className="text-xs text-gray-500">

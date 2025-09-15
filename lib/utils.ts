@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { NextRequest } from "next/server";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -38,4 +39,31 @@ export function truncateText(text: string, maxLength: number) {
 
 export function getSupabaseImageUrl(path: string) {
   return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${path}`;
+}
+// Format price numbers with thousand separators
+export function formatPriceNumber(
+  value: number | string,
+  locale: string = "en-US"
+) {
+  let num: number;
+  if (typeof value === "number") {
+    num = value;
+  } else {
+    const cleaned = value.replace(/[^0-9.-]/g, "");
+    num = Number(cleaned);
+  }
+  if (!Number.isFinite(num)) return "";
+
+  return new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(num);
+}
+
+// IP Utility Functions
+
+export async function getPublicIP(): Promise<string> {
+  const res = await fetch("https://api64.ipify.org?format=json");
+  const data = await res.json();
+  return data.ip;
 }
