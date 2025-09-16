@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyPricingBar from "@/components/StickyPricingBar";
 import HeroSection from "@/components/HeroSection";
+import ReservationModal from "@/components/ReservationModal";
 import LocationSection from "@/components/LocationSection";
 import GallerySection from "@/components/GallerySection";
 import FeaturesSection from "@/components/FeaturesSection";
@@ -25,12 +26,13 @@ interface RetreatPageProps {
 
 export default function RetreatPage({ params }: RetreatPageProps) {
   const [retreat, setRetreat] = useState<RetreatDetails>();
+  const [showReservationModal, setShowReservationModal] = useState(false);
 
   useEffect(() => {
     const fetchRetreat = async () => {
       try {
         const { id } = await params;
-        const response = await fetch(`/api/centers/${id}`, {
+        const response = await fetch(`/api/venues/${id}`, {
           cache: "no-store",
         });
         if (!response.ok) {
@@ -55,8 +57,8 @@ export default function RetreatPage({ params }: RetreatPageProps) {
       <Header />
       {retreat && (
         <>
-          <StickyPricingBar retreat={retreat} />
-          <HeroSection retreat={retreat} />
+          <StickyPricingBar retreat={retreat} onReserveClick={() => setShowReservationModal(true)} />
+          <HeroSection retreat={retreat} onReserveClick={() => setShowReservationModal(true)} />
           <LocationSection
             latitude={retreat?.latitude}
             longitude={retreat?.longitude}
@@ -101,6 +103,13 @@ export default function RetreatPage({ params }: RetreatPageProps) {
       )}
       <CallToActionSection />
       <Footer />
+      {retreat && (
+        <ReservationModal
+          isOpen={showReservationModal}
+          onClose={() => setShowReservationModal(false)}
+          retreat={retreat}
+        />
+      )}
     </div>
   );
 }
