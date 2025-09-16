@@ -8,6 +8,7 @@ import { getSupabaseImageUrl } from "@/lib/utils";
 import { RetreatDetails, SiteCopyBlock } from "@/types";
 import GalleryModal from "./GalleryModal";
 import { useSiteCopy } from "@/contexts/SiteCopyContext";
+import { openCrispChat } from "./ui/crisp";
 
 interface HeroSectionProps {
   retreat?: RetreatDetails;
@@ -333,7 +334,11 @@ export default function HeroSection({ retreat, onShowAllPhotos, onImageClick, on
                   <p className="text-sm text-gray-600 mb-4">
                     Our retreat specialists can help you customize the perfect experience for your group.
                   </p>
-                  <Button variant="outline" className="w-full border-gray-300">
+                  <Button
+                    variant="outline"
+                    className="w-full border-gray-300"
+                    onClick={openCrispChat}
+                  >
                     Contact specialist
                   </Button>
                 </div>
