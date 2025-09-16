@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getPublicIP } from "@/lib/utils";
 import { supabase } from "@/lib/supabase";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
-) {
+export async function GET(request: NextRequest) {
   try {
     const hours = parseInt(
       process.env.NEXT_PUBLIC_AVAILABILITY_RATE_LIMIT_HOUR || "1"
