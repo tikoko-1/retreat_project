@@ -27,10 +27,12 @@ interface RetreatPageProps {
 export default function RetreatPage({ params }: RetreatPageProps) {
   const [retreat, setRetreat] = useState<RetreatDetails>();
   const [showReservationModal, setShowReservationModal] = useState(false);
+  const [isLoadingRetreat, setIsLoadingRetreat] = useState(true);
 
   useEffect(() => {
     const fetchRetreat = async () => {
       try {
+        setIsLoadingRetreat(true);
         const { id } = await params;
         const response = await fetch(`/api/venues/${id}`, {
           cache: "no-store",
@@ -46,6 +48,8 @@ export default function RetreatPage({ params }: RetreatPageProps) {
       } catch (err) {
         console.error("Error fetching retreat:", err);
         notFound();
+      } finally {
+        setIsLoadingRetreat(false);
       }
     };
 
@@ -55,55 +59,67 @@ export default function RetreatPage({ params }: RetreatPageProps) {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      {retreat && (
-        <>
-          <StickyPricingBar retreat={retreat} onReserveClick={() => setShowReservationModal(true)} />
-          <HeroSection retreat={retreat} onReserveClick={() => setShowReservationModal(true)} />
-          <LocationSection
-            latitude={retreat?.latitude}
-            longitude={retreat?.longitude}
-            address={retreat?.address}
-            city={retreat?.city}
-            country={retreat?.country}
-            locationAbout={retreat?.location_about}
-            howToGetHere={retreat?.how_to_get_here}
-            nearbyAttractions={retreat?.nearby_attractions}
-          />
-          {retreat.photos && retreat.photos.length > 0 && (
-            <GallerySection galleryImages={retreat.photos} />
-          )}
-          {retreat.amenities && retreat.amenities.length > 0 && (
-            <FeaturesSection amenities={retreat.amenities} />
-          )}
-          {retreat.rooms && retreat.rooms.length > 0 && (
-            <RoomsSection rooms={retreat.rooms} />
-          )}
-          <FoodSection
-            amenities={retreat.amenities || []}
-            foodDining={retreat.food_dining || []}
-          />
-          <IncludedSection
-            includedItems={retreat.included_items}
-            excludedItems={retreat.excluded_items}
-          />
-          {retreat.cancellation_policies &&
-            retreat.cancellation_policies.length > 0 && (
-              <CancellationSection
-                cancellationPolicies={retreat.cancellation_policies}
+      {isLoadingRetreat ? (
+        <div className="flex justify-center items-center my-20">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+        </div>
+      ) : (
+        retreat && (
+          <>
+            <StickyPricingBar
+              retreat={retreat}
+              onReserveClick={() => setShowReservationModal(true)}
+            />
+            <HeroSection
+              retreat={retreat}
+              onReserveClick={() => setShowReservationModal(true)}
+            />
+            <LocationSection
+              latitude={retreat?.latitude}
+              longitude={retreat?.longitude}
+              address={retreat?.address}
+              city={retreat?.city}
+              country={retreat?.country}
+              locationAbout={retreat?.location_about}
+              howToGetHere={retreat?.how_to_get_here}
+              nearbyAttractions={retreat?.nearby_attractions}
+            />
+            {retreat.photos && retreat.photos.length > 0 && (
+              <GallerySection galleryImages={retreat.photos} />
+            )}
+            {retreat.amenities && retreat.amenities.length > 0 && (
+              <FeaturesSection amenities={retreat.amenities} />
+            )}
+            {retreat.rooms && retreat.rooms.length > 0 && (
+              <RoomsSection rooms={retreat.rooms} />
+            )}
+            <FoodSection
+              amenities={retreat.amenities || []}
+              foodDining={retreat.food_dining || []}
+            />
+            <IncludedSection
+              includedItems={retreat.included_items}
+              excludedItems={retreat.excluded_items}
+            />
+            {retreat.cancellation_policies &&
+              retreat.cancellation_policies.length > 0 && (
+                <CancellationSection
+                  cancellationPolicies={retreat.cancellation_policies}
+                />
+              )}
+            {retreat.reviews && retreat.reviews.length > 0 && (
+              <TestimonialsSection
+                initReviews={retreat.reviews}
+                review_stats={retreat.review_stats}
+                retreatId={retreat.id}
               />
             )}
-          {retreat.reviews && retreat.reviews.length > 0 && (
-            <TestimonialsSection
-              initReviews={retreat.reviews}
-              review_stats={retreat.review_stats}
-              retreatId={retreat.id}
-            />
-          )}
-        </>
+          </>
+        )
       )}
       <CallToActionSection />
       <Footer />
-      {retreat && (
+      {retreat && !isLoadingRetreat && (
         <ReservationModal
           isOpen={showReservationModal}
           onClose={() => setShowReservationModal(false)}
